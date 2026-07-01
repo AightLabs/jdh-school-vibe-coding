@@ -122,6 +122,12 @@
   .flow .f b{display:block; font-family:var(--mono); font-size:clamp(12px,1.3vw,17px); color:var(--indigo-d)}
   .flow .f span{font-size:clamp(11px,1.3vw,16px); color:var(--muted)}
 
+  figure.fig{margin:clamp(16px,2.2vw,28px) 0 0}
+  figure.fig .svgbox{border:1px solid var(--line); border-radius:16px; background:#fff; padding:clamp(10px,1.4vw,18px)}
+  figure.fig svg{display:block; width:100%; height:auto; max-width:660px; margin:0 auto}
+  figure.fig figcaption{margin:10px 2px 0; text-align:center; font-size:clamp(13px,1.55vw,20px); font-weight:600; color:var(--ink-2)}
+  svg text{font-family:'Pretendard','Noto Sans SC',sans-serif}
+
   .nav{position:fixed; bottom:20px; right:20px; z-index:37; display:flex; gap:10px}
   .nav button{width:46px; height:46px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--ink); font-size:18px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.08); display:flex; align-items:center; justify-content:center}
   .nav button:hover{background:var(--indigo); color:#fff; border-color:var(--indigo)}
@@ -170,6 +176,7 @@
   <a href="#s-ch6"><span class="n">06</span> <span class="ko">기획 · PRD→목업→MVP</span><span class="zh">规划 · PRD→原型→MVP</span></a>
   <a href="#s-ch7"><span class="n">07</span> <span class="ko">개발 · MVP 만들기</span><span class="zh">开发 · 做出 MVP</span></a>
   <a href="#s-ch8"><span class="n">08</span> <span class="ko">배포 · 여러 방법</span><span class="zh">部署 · 多种方法</span></a>
+  <a href="#s-bonus"><span class="n">＋</span> <span class="ko">교양 · 더 알면 좋은 것</span><span class="zh">拓展 · 了解更多</span></a>
   <a href="#s-ch9"><span class="n">09</span> <span class="ko">이후 3일 &amp; 부록</span><span class="zh">之后3天 &amp; 附录</span></a>
 </nav>
 <div id="scrim" onclick="toggleToc(false)"></div>
@@ -184,7 +191,7 @@
     <div class="ssub"><span class="ko">AI와 대화하며 나만의 웹앱 만들기</span><span class="zh">与 AI 对话，做出自己的网页应用</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">중·고등 코딩 수업 · 3시간</span><span class="zh">初·高中编程课 · 3小时</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">중·고등 코딩 수업 · 3시간</span><span class="zh">初·高中编程课 · 3小时</span></div>
   </section>
 
   <section class="slide top" data-chap="INTRO" data-chap-zh="INTRO">
@@ -212,6 +219,24 @@
     <div class="note ok"><div class="nt">✅ <span class="ko">완성은 목표가 아니에요</span><span class="zh">完成不是目标</span></div><p><span class="ko">오늘 못 끝내도 괜찮아요. <b>이후 3일 동안 매일 조금씩</b> 이어서 완성하면 됩니다.</span><span class="zh">今天做不完也没关系。<b>之后 3 天每天做一点</b>，慢慢完成就行。</span></p></div>
   </section>
 
+  <section class="slide" data-chap="INTRO" data-chap-zh="INTRO">
+    <div class="kick">LINKS · QR</div>
+    <h2 class="title"><span class="ko">이 자료 열기 · 저장소</span><span class="zh">打开课件 · 代码仓库</span></h2>
+    <div class="row">
+      <div class="pane accent" style="text-align:center">
+        <div class="pt"><span class="ko">📊 강의 슬라이드 (휴대폰으로 열기)</span><span class="zh">📊 课件(手机打开)</span></div>
+        <img src="assets/qr-slides.svg" alt="slides QR" style="width:150px;height:150px;margin:12px auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff"/>
+        <div class="code plain"><div class="chd"><span class="fn">slides</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>https://aightlabs.github.io/jdh-school-vibe-coding/</code></pre></div>
+      </div>
+      <div class="pane" style="text-align:center">
+        <div class="pt"><span class="ko">📦 저장소 (스타터 받기)</span><span class="zh">📦 仓库(下载模板)</span></div>
+        <img src="assets/qr-repo.svg" alt="repo QR" style="width:150px;height:150px;margin:12px auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff"/>
+        <div class="code plain"><div class="chd"><span class="fn">repo</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>https://github.com/AightLabs/jdh-school-vibe-coding</code></pre></div>
+      </div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">지금 해보세요</span><span class="zh">现在试试</span></div><p><span class="ko">휴대폰 카메라로 왼쪽 QR을 찍으면 이 슬라이드가 열려요. 수업 내내 옆에 두고 따라오세요.</span><span class="zh">用手机相机扫左边二维码就能打开本课件。整堂课放在旁边跟着做。</span></p></div>
+  </section>
+
   <!-- ===== CH1 ===== -->
   <section class="slide" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?" id="s-ch1">
     <div class="kick">CHAPTER 01</div>
@@ -220,12 +245,22 @@
     <div class="ssub"><span class="ko">코딩을 몰라도, 아이디어만 있으면 시작할 수 있어요.</span><span class="zh">不懂编程也没关系，只要有想法就能开始。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?">
     <div class="kick"><span class="ko">개념 · CH1</span><span class="zh">概念 · CH1</span></div>
     <h2 class="title"><span class="ko">코딩 = 컴퓨터에게 주는 명령서</span><span class="zh">编程 = 给电脑的命令书</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 140" role="img">
+      <rect x="44" y="20" width="210" height="102" rx="14" fill="#eef2ff" stroke="#4f46e5"/>
+      <text x="149" y="54" font-size="30" text-anchor="middle">📋</text>
+      <rect x="76" y="70" width="146" height="9" rx="4" fill="#c7d2fe"/>
+      <rect x="76" y="88" width="146" height="9" rx="4" fill="#c7d2fe"/>
+      <rect x="76" y="106" width="96" height="9" rx="4" fill="#c7d2fe"/>
+      <text x="312" y="82" font-size="36" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="372" y="20" width="224" height="102" rx="14" fill="#fff" stroke="#e4e4e7"/>
+      <text x="484" y="88" font-size="46" text-anchor="middle">💻</text>
+    </svg></div><figcaption><span class="ko">🍜 레시피처럼 순서대로 적어주면, 컴퓨터가 그대로 따라 해요</span><span class="zh">🍜 像菜谱一样按顺序写，电脑就照着做</span></figcaption></figure>
     <p class="lead"><span class="ko">컴퓨터는 빠르지만 <b>스스로 알아서 하지 못해요.</b> “이걸 이렇게, 그다음 저렇게”를 <b>순서대로 정확히</b> 적어줘야 하죠.</span><span class="zh">电脑很快，但 <b>不会自己判断</b>。要 <b>按顺序、精确地</b> 写清「先这样，再那样」。</span></p>
     <div class="row">
       <div class="pane"><div class="pt"><span class="ko">예전 방식</span><span class="zh">过去的方式</span></div><p><span class="ko">문법을 하나하나 외워서 처음부터 직접 타이핑. 오타 하나에 멈춤.</span><span class="zh">要背下所有语法，从头一个个手敲。一个错字就卡住。</span></p></div>
@@ -267,7 +302,7 @@
     <div class="ssub"><span class="ko">코드를 만지기 전, 꼭 필요한 상식만 짚어요.</span><span class="zh">动手写代码前，先掌握必要的常识。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
@@ -284,6 +319,16 @@
   <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
     <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
     <h2 class="title"><span class="ko">프로그래밍 언어는 어떻게 작동할까?</span><span class="zh">编程语言是怎么运作的?</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 130" role="img">
+      <rect x="20" y="34" width="176" height="66" rx="14" fill="#eef2ff" stroke="#4f46e5"/>
+      <text x="108" y="72" font-size="24" text-anchor="middle">🙂 💬</text>
+      <text x="215" y="74" font-size="26" fill="#4f46e5" text-anchor="middle">→</text>
+      <circle cx="320" cy="67" r="36" fill="#fff" stroke="#4f46e5"/>
+      <text x="320" y="78" font-size="30" text-anchor="middle">⚙️</text>
+      <text x="425" y="74" font-size="26" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="452" y="34" width="168" height="66" rx="14" fill="#0e1524"/>
+      <text x="536" y="73" font-size="17" fill="#7fd0a6" text-anchor="middle" font-family="monospace">01001000</text>
+    </svg></div><figcaption><span class="ko">🗣️ 사람 말을 '번역기(통역사)'가 0과 1로 바꿔줘요</span><span class="zh">🗣️ 「翻译器(口译员)」把人话变成 0 和 1</span></figcaption></figure>
     <p class="lead"><span class="ko">컴퓨터가 진짜 이해하는 건 <b>0과 1(기계어)</b>뿐. 사람이 읽기 쉬운 언어로 쓰면 <b>번역기</b>가 기계어로 바꿔줍니다.</span><span class="zh">电脑真正懂的只有 <b>0 和 1(机器语言)</b>。人用易读的语言写，<b>翻译器</b> 再转成机器语言。</span></p>
     <div class="row">
       <div class="pane"><div class="pt">📚 <span class="ko">컴파일 방식</span><span class="zh">编译型</span></div><p><span class="ko">전체를 <b>미리 통째로</b> 번역. 빠름.<br/><small style="color:var(--muted)">예: C, C++, Rust</small></span><span class="zh">把整个程序 <b>提前整体</b> 翻译。快。<br/><small style="color:var(--muted)">例: C, C++, Rust</small></span></p></div>
@@ -309,6 +354,18 @@
   <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
     <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
     <h2 class="title">GUI <span class="ko">와</span><span class="zh">与</span> CLI</h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 150" role="img">
+      <rect x="40" y="22" width="250" height="106" rx="12" fill="#fff" stroke="#4f46e5"/>
+      <rect x="40" y="22" width="250" height="22" rx="12" fill="#eef2ff"/>
+      <circle cx="58" cy="33" r="4" fill="#ff5f57"/><circle cx="72" cy="33" r="4" fill="#febc2e"/><circle cx="86" cy="33" r="4" fill="#28c840"/>
+      <rect x="70" y="66" width="86" height="30" rx="8" fill="#4f46e5"/>
+      <rect x="166" y="66" width="86" height="30" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+      <text x="150" y="120" font-size="20" text-anchor="middle">🖱️ 👆</text>
+      <rect x="350" y="22" width="250" height="106" rx="12" fill="#0e1524"/>
+      <text x="366" y="58" font-size="13" fill="#7fd0a6" font-family="monospace">&gt; winget install...</text>
+      <text x="366" y="84" font-size="13" fill="#e7ecf6" font-family="monospace">running ████ 100%</text>
+      <text x="366" y="116" font-size="18">⌨️</text>
+    </svg></div><figcaption><span class="ko">왼쪽은 버튼을 눌러서(GUI), 오른쪽은 글자로 명령해서(CLI)</span><span class="zh">左边点按钮(GUI)，右边打字下命令(CLI)</span></figcaption></figure>
     <div class="row">
       <div class="pane accent"><div class="pt">🖱️ GUI · <span class="ko">클릭 방식</span><span class="zh">点击式</span></div><p><span class="ko">아이콘·버튼을 <b>눈으로 보고 클릭</b>. 평소 쓰는 화면.</span><span class="zh">看着图标·按钮 <b>用眼看、用手点</b>。就是平时用的界面。</span></p></div>
       <div class="pane"><div class="pt">⌨️ CLI · <span class="ko">명령어 방식</span><span class="zh">命令式</span></div><p><span class="ko">검은 창에 <b>글자로 명령을 타이핑</b>. 빠르고 정확.</span><span class="zh">在黑窗口里 <b>用文字敲命令</b>。快而准。</span></p></div>
@@ -319,6 +376,18 @@
   <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
     <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
     <h2 class="title"><span class="ko">웹앱을 이루는 세 가지</span><span class="zh">组成网页应用的三样东西</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 160" role="img">
+      <rect x="56" y="24" width="210" height="34" rx="8" fill="#fdecef" stroke="#e59aa9"/>
+      <text x="161" y="47" font-size="15" font-weight="700" fill="#b3125a" text-anchor="middle">🦴 HTML</text>
+      <rect x="56" y="64" width="210" height="34" rx="8" fill="#eafaf1" stroke="#96d9b6"/>
+      <text x="161" y="87" font-size="15" font-weight="700" fill="#12996b" text-anchor="middle">🎨 CSS</text>
+      <rect x="56" y="104" width="210" height="34" rx="8" fill="#eef2ff" stroke="#9cb6ff"/>
+      <text x="161" y="127" font-size="15" font-weight="700" fill="#4338ca" text-anchor="middle">⚡ JS</text>
+      <text x="308" y="90" font-size="32" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="366" y="22" width="230" height="118" rx="12" fill="#fff" stroke="#4f46e5"/>
+      <rect x="366" y="22" width="230" height="20" rx="12" fill="#eef2ff"/>
+      <text x="481" y="94" font-size="34" text-anchor="middle">🖥️</text>
+    </svg></div><figcaption><span class="ko">뼈대(HTML) + 꾸미기(CSS) + 움직임(JS) → 하나의 화면 (집: 골조+페인트+전기)</span><span class="zh">骨架(HTML) + 美化(CSS) + 交互(JS) → 一个页面 (房子: 骨架+油漆+电)</span></figcaption></figure>
     <ul class="blist">
       <li><b>HTML</b> — <span class="ko">뼈대 · 무엇이 있는지 (제목, 버튼, 이미지)</span><span class="zh">骨架 · 有什么(标题、按钮、图片)</span></li>
       <li><b>CSS</b> — <span class="ko">꾸미기 · 어떻게 보이는지 (색, 크기, 배치)</span><span class="zh">美化 · 长什么样(颜色、大小、排版)</span></li>
@@ -346,6 +415,17 @@
   <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
     <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
     <h2 class="title">Git<span class="ko">이란 무엇인가?</span><span class="zh">是什么?</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 130" role="img">
+      <text x="44" y="66" font-size="22" text-anchor="middle">🎮</text>
+      <line x1="78" y1="60" x2="300" y2="60" stroke="#c7d2fe" stroke-width="4"/>
+      <circle cx="110" cy="60" r="9" fill="#4f46e5"/><circle cx="180" cy="60" r="9" fill="#4f46e5"/><circle cx="250" cy="60" r="9" fill="#4f46e5"/><circle cx="300" cy="60" r="11" fill="#4338ca"/>
+      <text x="190" y="92" font-size="12" fill="#71717a" text-anchor="middle" font-family="monospace">save · save · save</text>
+      <text x="330" y="68" font-size="26" fill="#4f46e5">→</text>
+      <text x="416" y="60" font-size="34" text-anchor="middle">☁️</text>
+      <text x="416" y="92" font-size="12" fill="#71717a" text-anchor="middle">GitHub</text>
+      <text x="486" y="68" font-size="26" fill="#12996b">→</text>
+      <text x="556" y="62" font-size="32" text-anchor="middle">🌐</text>
+    </svg></div><figcaption><span class="ko">게임 세이브처럼 저장(커밋)하고, 인터넷 창고(GitHub)에 올려요</span><span class="zh">像游戏存档一样保存(commit)，再上传到网络仓库(GitHub)</span></figcaption></figure>
     <p class="lead"><span class="ko"><b>Git</b>은 코드의 <b>“세이브 포인트”</b>를 관리하는 도구. 저장(커밋)해두면 <b>언제든 되돌릴 수</b> 있어요.</span><span class="zh"><b>Git</b> 是管理代码 <b>「存档点」</b> 的工具。存档(提交)后 <b>随时能回退</b>。</span></p>
     <table class="kv">
       <tr><th style="width:20%"> </th><th>Git</th><th>GitHub</th></tr>
@@ -363,7 +443,7 @@
     <div class="ssub"><span class="ko">코드를 쓰고 올릴 나만의 작업실을 준비해요.</span><span class="zh">准备好写代码、上传代码的专属工作台。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
@@ -429,6 +509,30 @@ git config --global user.email "my@email.com"</code></pre>
     </div>
   </section>
 
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">스타터 · CH3</span><span class="zh">模板 · CH3</span></div>
+    <h2 class="title"><span class="ko">스타터 내려받기 (git clone)</span><span class="zh">下载模板 (git clone)</span></h2>
+    <p class="lead"><span class="ko">빈 화면부터 시작하지 않아도 돼요. <b>이미 돌아가는 스타터</b>를 받아 내 것으로 바꾸면 빨라요.</span><span class="zh">不必从空白开始。下载 <b>已经能跑的模板</b> 改成自己的，更快。</span></p>
+    <div class="code plain"><div class="chd"><span class="fn">Terminal / PowerShell</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>git clone https://github.com/AightLabs/jdh-school-vibe-coding.git</code></pre></div>
+    <a class="linkbtn" href="https://github.com/AightLabs/jdh-school-vibe-coding" target="_blank" rel="noopener"><span class="ko">또는 저장소에서 Code → Download ZIP</span><span class="zh">或在仓库点 Code → Download ZIP</span></a>
+    <div class="row">
+      <div class="pane accent"><div class="pt">🎮 starters/game</div><p><span class="ko">웹게임 (Phaser 3)</span><span class="zh">网页游戏 (Phaser 3)</span></p></div>
+      <div class="pane accent"><div class="pt">🌟 starters/nongame</div><p><span class="ko">소개 페이지 (Tailwind + JS)</span><span class="zh">介绍页 (Tailwind + JS)</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">내 것으로</span><span class="zh">变成自己的</span></div><p><span class="ko">원하는 스타터 폴더를 <b>내 새 폴더로 복사</b>한 뒤 VS Code로 열어요. (자세히: STARTER-GUIDE.md)</span><span class="zh">把想用的模板文件夹 <b>复制到自己的新文件夹</b>，再用 VS Code 打开。(详见 STARTER-GUIDE.md)</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">미리보기 · CH3</span><span class="zh">预览 · CH3</span></div>
+    <h2 class="title"><span class="ko">결과를 바로 보는 법 (미리보기)</span><span class="zh">如何即时预览结果</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>가장 간단:</b> <code class="mono">index.html</code>을 <b>브라우저로 더블클릭</b>해서 열기</span><span class="zh"><b>最简单:</b> 把 <code class="mono">index.html</code> <b>双击用浏览器打开</b></span></li>
+      <li><span class="ko"><b>Live Server (추천):</b> 확장에서 <b>Live Server</b> 설치 → 파일 우클릭 <b>Open with Live Server</b> (또는 우측 아래 <b>Go Live</b>) → 저장할 때마다 <b>자동 새로고침</b></span><span class="zh"><b>Live Server(推荐):</b> 扩展里装 <b>Live Server</b> → 右键 <b>Open with Live Server</b>(或右下角 <b>Go Live</b>) → 每次保存 <b>自动刷新</b></span></li>
+      <li><span class="ko"><b>마크다운(.md) 미리보기:</b> 파일을 열고 <code class="mono">Ctrl+Shift+V</code></span><span class="zh"><b>Markdown(.md) 预览:</b> 打开文件按 <code class="mono">Ctrl+Shift+V</code></span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">개발 리듬</span><span class="zh">开发节奏</span></div><p><span class="ko"><b>고치기 → 저장(Ctrl+S) → 미리보기에서 확인</b>을 계속 반복해요.</span><span class="zh"><b>修改 → 保存(Ctrl+S) → 在预览里确认</b>，不断重复。</span></p></div>
+  </section>
+
   <!-- ===== CH4 프롬프트 ===== -->
   <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程" id="s-ch4">
     <div class="kick">CHAPTER 04</div>
@@ -437,12 +541,20 @@ git config --global user.email "my@email.com"</code></pre>
     <div class="ssub"><span class="ko">AI에게 ‘잘 시키는’ 기술 — 결과의 절반이 여기서 갈려요.</span><span class="zh">「把话说好」的技术 — 结果一半在这里决定。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程">
     <div class="kick"><span class="ko">개념 · CH4</span><span class="zh">概念 · CH4</span></div>
     <h2 class="title"><span class="ko">프롬프트 = AI에게 주는 설계도</span><span class="zh">提示词 = 给 AI 的设计图</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 128" role="img">
+      <rect x="64" y="20" width="196" height="88" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+      <g stroke="#c7d2fe" stroke-width="1"><line x1="64" y1="44" x2="260" y2="44"/><line x1="64" y1="66" x2="260" y2="66"/><line x1="64" y1="88" x2="260" y2="88"/><line x1="112" y1="20" x2="112" y2="108"/><line x1="162" y1="20" x2="162" y2="108"/><line x1="212" y1="20" x2="212" y2="108"/></g>
+      <text x="162" y="72" font-size="26" text-anchor="middle">📐</text>
+      <text x="306" y="72" font-size="30" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="366" y="20" width="196" height="88" rx="12" fill="#fff" stroke="#e4e4e7"/>
+      <text x="464" y="78" font-size="34" text-anchor="middle">🖥️</text>
+    </svg></div><figcaption><span class="ko">설계도(프롬프트)가 정확할수록, 결과물도 정확해져요</span><span class="zh">设计图(提示词)越准确，成品也越准确</span></figcaption></figure>
     <p class="lead"><span class="ko">똑같은 AI라도 <b>어떻게 부탁하느냐</b>에 따라 결과가 완전히 달라져요. 좋은 프롬프트의 3원칙:</span><span class="zh">同一个 AI，<b>怎么问</b> 决定结果天差地别。好提示词的 3 原则:</span></p>
     <ul class="blist">
       <li><span class="ko"><b>구체적으로</b> — “예쁘게” ❌ → “배경 남색, 버튼 크고 둥글게, 글씨 흰색” ⭕</span><span class="zh"><b>要具体</b> — 「好看点」❌ → 「深蓝背景、按钮又大又圆、白字」⭕</span></li>
@@ -483,12 +595,20 @@ git config --global user.email "my@email.com"</code></pre>
     <div class="ssub"><span class="ko">AI의 ‘기억’을 관리하는 법 — 길고 큰 작업의 핵심.</span><span class="zh">管理 AI「记忆」的方法 — 长而大的项目的关键。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
     <div class="kick"><span class="ko">개념 · CH5</span><span class="zh">概念 · CH5</span></div>
     <h2 class="title"><span class="ko">컨텍스트 = AI가 지금 아는 정보</span><span class="zh">上下文 = AI 此刻知道的信息</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 140" role="img">
+      <text x="300" y="26" font-size="18" text-anchor="middle">💧</text>
+      <path d="M250 34 L392 34 L379 128 L263 128 Z" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+      <path d="M259 74 L383 74 L379 128 L263 128 Z" fill="#c7d2fe"/>
+      <text x="321" y="108" font-size="13" fill="#4338ca" text-anchor="middle" font-weight="700">200K</text>
+      <text x="450" y="86" font-size="30">🧠</text>
+      <text x="150" y="86" font-size="30">📚</text>
+    </svg></div><figcaption><span class="ko">AI의 '기억 컵'엔 담을 수 있는 양의 한계가 있어, 넘치면 앞을 잊어요</span><span class="zh">AI 的「记忆杯」容量有限，装满了就会忘掉前面的</span></figcaption></figure>
     <p class="lead"><span class="ko">AI는 내 머릿속을 못 봐요. <b>내가 준 정보(창)만큼만</b> 봅니다. 이 창의 크기를 <b>컨텍스트 창</b>이라고 해요.</span><span class="zh">AI 看不到我脑子里。它只看得到 <b>我给的信息(窗口)</b>。这个窗口的大小叫 <b>上下文窗口</b>。</span></p>
     <ul class="blist">
       <li><span class="ko">요즘 AI의 창은 <b>대략 책 한 권 분량</b>(예: 20만 토큰)까지 커졌어요</span><span class="zh">如今 AI 的窗口大到 <b>约一本书的量</b>(例如 20 万 tokens)</span></li>
@@ -533,6 +653,21 @@ git config --global user.email "my@email.com"</code></pre>
   <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
     <div class="kick"><span class="ko">코드 · CH5</span><span class="zh">代码 · CH5</span></div>
     <h2 class="title"><span class="ko">새 세션에서 기억 불러오기</span><span class="zh">在新会话里载入记忆</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 126" role="img">
+      <rect x="24" y="32" width="150" height="62" rx="12" fill="#fff" stroke="#4f46e5"/>
+      <text x="99" y="66" font-size="22" text-anchor="middle">💬</text>
+      <text x="99" y="86" font-size="11" fill="#71717a" text-anchor="middle">Session 1</text>
+      <text x="200" y="56" font-size="11" fill="#71717a" text-anchor="middle">save</text>
+      <text x="200" y="74" font-size="22" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="236" y="32" width="150" height="62" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+      <text x="311" y="64" font-size="20" text-anchor="middle">📄</text>
+      <text x="311" y="86" font-size="11" fill="#4338ca" text-anchor="middle" font-family="monospace">context.md</text>
+      <text x="412" y="56" font-size="11" fill="#71717a" text-anchor="middle">load</text>
+      <text x="412" y="74" font-size="22" fill="#12996b" text-anchor="middle">→</text>
+      <rect x="448" y="32" width="150" height="62" rx="12" fill="#fff" stroke="#12996b"/>
+      <text x="523" y="66" font-size="22" text-anchor="middle">💬</text>
+      <text x="523" y="86" font-size="11" fill="#71717a" text-anchor="middle">Session 2</text>
+    </svg></div><figcaption><span class="ko">세션이 끝나도 기억을 파일(context.md)에 남겨, 새 세션에서 불러와요</span><span class="zh">会话结束也把记忆留在文件(context.md)，新会话再载入</span></figcaption></figure>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">새 채팅 첫 메시지</span><span class="zh">新聊天的第一句</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
 <pre><code>아래는 이 프로젝트의 context.md와 현재 index.html이야.
@@ -553,12 +688,34 @@ git config --global user.email "my@email.com"</code></pre>
     <div class="ssub"><span class="ko">아이디어를 제품으로 바꾸는 5단계.</span><span class="zh">把想法变成产品的 5 个阶段。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
     <div class="kick"><span class="ko">개념 · CH6</span><span class="zh">概念 · CH6</span></div>
     <h2 class="title"><span class="ko">기획의 5단계</span><span class="zh">规划的 5 个阶段</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 150" role="img">
+      <rect x="10" y="16" width="98" height="104" rx="10" fill="#fff" stroke="#4f46e5"/>
+      <text x="59" y="52" font-size="22" text-anchor="middle">📄</text>
+      <rect x="26" y="66" width="66" height="6" rx="3" fill="#c7d2fe"/><rect x="26" y="78" width="66" height="6" rx="3" fill="#c7d2fe"/><rect x="26" y="90" width="42" height="6" rx="3" fill="#c7d2fe"/>
+      <text x="59" y="139" font-size="11" font-weight="700" fill="#4338ca" text-anchor="middle">PRD</text>
+      <text x="121" y="72" font-size="18" fill="#a1a1aa" text-anchor="middle">→</text>
+      <rect x="134" y="16" width="98" height="104" rx="10" fill="#fff" stroke="#a1a1aa"/>
+      <rect x="146" y="28" width="74" height="12" rx="3" fill="#e4e4e7"/><rect x="146" y="46" width="74" height="22" rx="3" fill="#f4f4f5" stroke="#d4d4d8"/><rect x="146" y="74" width="34" height="14" rx="3" fill="#e4e4e7"/><rect x="186" y="74" width="34" height="14" rx="3" fill="#e4e4e7"/>
+      <text x="183" y="139" font-size="11" font-weight="700" fill="#71717a" text-anchor="middle">Wireframe</text>
+      <text x="245" y="72" font-size="18" fill="#a1a1aa" text-anchor="middle">→</text>
+      <rect x="258" y="16" width="98" height="104" rx="10" fill="#fff" stroke="#4f46e5"/><rect x="258" y="16" width="98" height="15" rx="10" fill="#eef2ff"/>
+      <text x="307" y="60" font-size="15" text-anchor="middle">🎨</text><rect x="272" y="72" width="70" height="8" rx="4" fill="#c7d2fe"/><rect x="284" y="88" width="46" height="16" rx="6" fill="#4f46e5"/>
+      <text x="307" y="139" font-size="11" font-weight="700" fill="#4338ca" text-anchor="middle">Mockup</text>
+      <text x="369" y="72" font-size="18" fill="#a1a1aa" text-anchor="middle">→</text>
+      <rect x="382" y="16" width="98" height="104" rx="10" fill="#fff" stroke="#4f46e5"/><rect x="382" y="16" width="98" height="15" rx="10" fill="#eef2ff"/>
+      <rect x="408" y="66" width="46" height="16" rx="6" fill="#4f46e5"/><text x="452" y="102" font-size="16">👆</text>
+      <text x="431" y="139" font-size="11" font-weight="700" fill="#4338ca" text-anchor="middle">Prototype</text>
+      <text x="493" y="72" font-size="18" fill="#12996b" text-anchor="middle">→</text>
+      <rect x="506" y="16" width="98" height="104" rx="10" fill="#ecfdf5" stroke="#12996b"/>
+      <text x="555" y="58" font-size="22" text-anchor="middle">🚀</text><text x="555" y="90" font-size="16" text-anchor="middle">✅</text>
+      <text x="555" y="139" font-size="11" font-weight="700" fill="#12996b" text-anchor="middle">MVP</text>
+    </svg></div><figcaption><span class="ko">밑그림 → 뼈대 → 색 입힌 화면 → 눌러지는 시제품 → 진짜 도는 제품</span><span class="zh">草图 → 骨架 → 上色画面 → 可点击样品 → 真正能跑的产品</span></figcaption></figure>
     <div class="flow">
       <div class="f"><b>PRD</b><span><span class="ko">무엇을·왜</span><span class="zh">做什么·为何</span></span></div>
       <div class="f"><b>Wireframe</b><span><span class="ko">뼈대 배치</span><span class="zh">骨架布局</span></span></div>
@@ -632,7 +789,7 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <div class="ssub"><span class="ko">목업을 진짜로 ‘도는’ 제품으로.</span><span class="zh">把原型变成真正「能跑」的产品。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="7 · 개발 · MVP 만들기" data-chap-zh="7 · 开发 · 做出 MVP">
@@ -682,12 +839,22 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <div class="ssub"><span class="ko">오늘은 GitHub Pages로 — 그리고 다른 방법들도.</span><span class="zh">今天用 GitHub Pages — 也看看其他方法。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法">
     <div class="kick"><span class="ko">흐름 · CH8</span><span class="zh">流程 · CH8</span></div>
     <h2 class="title">GitHub Pages — <span class="ko">내 컴퓨터에서 웹으로</span><span class="zh">从电脑到网页</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 130" role="img">
+      <rect x="34" y="40" width="150" height="60" rx="12" fill="#fff" stroke="#e4e4e7"/>
+      <text x="109" y="82" font-size="30" text-anchor="middle">💻</text>
+      <text x="206" y="78" font-size="26" fill="#4f46e5" text-anchor="middle">→</text>
+      <text x="290" y="88" font-size="44" text-anchor="middle">🚀</text>
+      <text x="374" y="78" font-size="26" fill="#12996b" text-anchor="middle">→</text>
+      <rect x="416" y="38" width="196" height="64" rx="12" fill="#ecfdf5" stroke="#12996b"/>
+      <text x="514" y="70" font-size="26" text-anchor="middle">🌐</text>
+      <text x="514" y="92" font-size="11" fill="#12996b" text-anchor="middle" font-family="monospace">ID.github.io</text>
+    </svg></div><figcaption><span class="ko">내 작품을 로켓처럼 인터넷으로 발사! 누구나 볼 수 있는 주소가 생겨요</span><span class="zh">把作品像火箭一样发射到网上! 生成人人可看的网址</span></figcaption></figure>
     <div class="flow">
       <div class="f"><b><span class="ko">커밋</span><span class="zh">提交</span></b><span><span class="ko">세이브</span><span class="zh">存档</span></span></div>
       <div class="f"><b><span class="ko">푸시</span><span class="zh">推送</span></b><span><span class="ko">GitHub로</span><span class="zh">到 GitHub</span></span></div>
@@ -739,6 +906,125 @@ git push</code></pre>
     </div>
   </section>
 
+  <!-- ===== BONUS 교양 ===== -->
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多" id="s-bonus">
+    <div class="kick">BONUS</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">더 알면 좋은 것들</span><span class="zh">了解更多会更好</span></div>
+    <div class="ssub"><span class="ko">오늘 실습엔 없어도 되지만, 알면 세상이 넓어지는 교양이에요.</span><span class="zh">今天实操用不到，但懂了眼界更宽的常识。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · 서버와 클라우드</span><span class="zh">拓展 · 服务器与云</span></div>
+    <h2 class="title"><span class="ko">서버와 클라우드란?</span><span class="zh">什么是服务器和云?</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 130" role="img">
+      <rect x="34" y="30" width="160" height="72" rx="12" fill="#fff" stroke="#4f46e5"/><rect x="34" y="30" width="160" height="16" rx="12" fill="#eef2ff"/>
+      <text x="114" y="82" font-size="28" text-anchor="middle">🧑‍💻</text>
+      <text x="320" y="52" font-size="13" fill="#71717a" text-anchor="middle">요청 request →</text>
+      <text x="320" y="90" font-size="13" fill="#71717a" text-anchor="middle">← 응답 response</text>
+      <line x1="205" y1="60" x2="435" y2="60" stroke="#c7d2fe" stroke-width="3"/>
+      <line x1="435" y1="74" x2="205" y2="74" stroke="#a7f3d0" stroke-width="3"/>
+      <rect x="446" y="26" width="160" height="80" rx="12" fill="#eef2ff" stroke="#4f46e5"/>
+      <text x="526" y="64" font-size="26" text-anchor="middle">🖥️</text>
+      <text x="526" y="92" font-size="12" fill="#4338ca" text-anchor="middle">☁️ server</text>
+    </svg></div><figcaption><span class="ko">손님(브라우저)이 주문하면, 주방(서버)이 만들어 내주는 것과 같아요</span><span class="zh">就像客人(浏览器)点单，厨房(服务器)做好端出来</span></figcaption></figure>
+    <div class="row">
+      <div class="pane accent"><div class="pt"><span class="ko">서버</span><span class="zh">服务器</span></div><p><span class="ko">요청하면 응답하는 <b>항상 켜진 컴퓨터</b> (식당 주방)</span><span class="zh">有请求就回应的 <b>常开电脑</b>(餐厅厨房)</span></p></div>
+      <div class="pane"><div class="pt"><span class="ko">클라우드</span><span class="zh">云</span></div><p><span class="ko">그 컴퓨터를 사지 않고 <b>빌려 쓰는 것</b> (전기·수도처럼)</span><span class="zh">不买那台电脑，而是 <b>租用</b>(像水电)</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">오늘과 연결</span><span class="zh">与今天的联系</span></div><p><span class="ko"><b>GitHub Pages</b>도 클라우드 서버에 내 파일을 올려 24시간 보여주는 거예요.</span><span class="zh"><b>GitHub Pages</b> 也是把我的文件放到云服务器上，24 小时展示。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · 인터넷 주소</span><span class="zh">拓展 · 网络地址</span></div>
+    <h2 class="title"><span class="ko">도메인 · IP · DNS</span><span class="zh">域名 · IP · DNS</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 120" role="img">
+      <rect x="30" y="40" width="180" height="46" rx="10" fill="#eef2ff" stroke="#4f46e5"/>
+      <text x="120" y="69" font-size="15" fill="#4338ca" text-anchor="middle" font-family="monospace">google.com</text>
+      <text x="252" y="58" font-size="12" fill="#71717a" text-anchor="middle">📖 DNS</text>
+      <text x="252" y="76" font-size="22" fill="#4f46e5" text-anchor="middle">→</text>
+      <rect x="300" y="40" width="180" height="46" rx="10" fill="#0e1524"/>
+      <text x="390" y="69" font-size="14" fill="#7fd0a6" text-anchor="middle" font-family="monospace">142.250.x.x</text>
+      <text x="510" y="76" font-size="22" fill="#12996b" text-anchor="middle">→</text>
+      <text x="565" y="72" font-size="28" text-anchor="middle">🖥️</text>
+    </svg></div><figcaption><span class="ko">DNS는 이름↔번호를 바꿔주는 '인터넷 전화번호부'예요</span><span class="zh">DNS 是把名字↔号码互换的「互联网电话簿」</span></figcaption></figure>
+    <ul class="blist">
+      <li><span class="ko"><b>IP</b> — 컴퓨터의 진짜 번호 (예: 142.250.x.x)</span><span class="zh"><b>IP</b> — 电脑真正的号码(例: 142.250.x.x)</span></li>
+      <li><span class="ko"><b>도메인</b> — 사람이 외우기 쉬운 이름 (google.com)</span><span class="zh"><b>域名</b> — 人易记的名字(google.com)</span></li>
+      <li><span class="ko"><b>DNS</b> — 이름을 번호로 바꿔주는 전화번호부</span><span class="zh"><b>DNS</b> — 把名字换成号码的电话簿</span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">내 주소도 도메인</span><span class="zh">我的网址也是域名</span></div><p><span class="ko"><code class="mono">아이디.github.io</code>도 도메인이에요. 나중에 <code class="mono">mysite.com</code>을 사서 연결할 수도 있어요.</span><span class="zh"><code class="mono">ID.github.io</code> 也是域名。以后可买 <code class="mono">mysite.com</code> 绑定。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · 프론트/백엔드</span><span class="zh">拓展 · 前端/后端</span></div>
+    <h2 class="title"><span class="ko">프론트엔드 vs 백엔드</span><span class="zh">前端 vs 后端</span></h2>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 120" role="img">
+      <rect x="40" y="26" width="200" height="70" rx="12" fill="#fff" stroke="#4f46e5"/><rect x="40" y="26" width="200" height="16" rx="12" fill="#eef2ff"/>
+      <text x="140" y="76" font-size="26" text-anchor="middle">🖥️</text>
+      <text x="320" y="54" font-size="22" fill="#a1a1aa" text-anchor="middle">⇄</text>
+      <text x="320" y="78" font-size="11" fill="#71717a" text-anchor="middle">주문/음식</text>
+      <rect x="400" y="26" width="200" height="70" rx="12" fill="#f4f4f5" stroke="#a1a1aa"/>
+      <text x="470" y="70" font-size="24" text-anchor="middle">⚙️</text>
+      <text x="540" y="70" font-size="24" text-anchor="middle">🗄️</text>
+    </svg></div><figcaption><span class="ko">식당으로 치면 — 홀·메뉴판(프론트) ↔ 주방(백엔드)</span><span class="zh">用餐厅比喻 — 大厅·菜单(前端) ↔ 厨房(后端)</span></figcaption></figure>
+    <div class="row">
+      <div class="pane accent"><div class="pt"><span class="ko">프론트엔드</span><span class="zh">前端</span></div><p><span class="ko">눈에 <b>보이는 화면</b> · HTML/CSS/JS</span><span class="zh"><b>看得见的界面</b> · HTML/CSS/JS</span></p></div>
+      <div class="pane"><div class="pt"><span class="ko">백엔드</span><span class="zh">后端</span></div><p><span class="ko">안 보이는 <b>처리·저장</b> · 서버·DB</span><span class="zh">看不见的 <b>处理·存储</b> · 服务器·数据库</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">오늘 만든 건?</span><span class="zh">今天做的是?</span></div><p><span class="ko"><b>프론트엔드</b>예요. 회원가입·데이터 저장이 필요해지면 백엔드가 붙어요.</span><span class="zh">是 <b>前端</b>。需要注册·存数据时，才加上后端。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · 데이터베이스</span><span class="zh">拓展 · 数据库</span></div>
+    <h2 class="title"><span class="ko">데이터베이스란?</span><span class="zh">什么是数据库?</span></h2>
+    <p class="lead"><span class="ko">정보를 차곡차곡 저장하고 빠르게 찾는 <b>전문 창고</b>. 거대한 엑셀표라고 생각하면 쉬워요.</span><span class="zh">把信息整齐存好、快速查找的 <b>专业仓库</b>。想成一张超大的 Excel 表就好。</span></p>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 110" role="img">
+      <text x="80" y="70" font-size="40" text-anchor="middle">🗄️</text>
+      <rect x="160" y="26" width="420" height="20" fill="#eef2ff" stroke="#c7d2fe"/><rect x="160" y="46" width="420" height="18" fill="#fff" stroke="#e4e4e7"/><rect x="160" y="64" width="420" height="18" fill="#fff" stroke="#e4e4e7"/>
+      <text x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름 / 名字   ·   점수 / 分数</text>
+      <text x="176" y="60" font-size="12" fill="#3f3f46" font-family="monospace">민준 · 120</text>
+      <text x="176" y="78" font-size="12" fill="#3f3f46" font-family="monospace">Wei · 95</text>
+    </svg></div><figcaption><span class="ko">회원·점수·글 같은 정보를 표로 저장하고, SQL 언어로 찾아요</span><span class="zh">把会员·分数·帖子等以表格存储，用 SQL 语言查询</span></figcaption></figure>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · API</span><span class="zh">拓展 · API</span></div>
+    <h2 class="title"><span class="ko">API란?</span><span class="zh">什么是 API?</span></h2>
+    <p class="lead"><span class="ko">프로그램끼리 정보를 주고받는 <b>약속된 창구</b>. 식당 <b>웨이터</b>와 같아요 — 주문하면 주방에서 받아 음식을 가져다줘요.</span><span class="zh">程序之间交换信息的 <b>约定窗口</b>。就像餐厅 <b>服务员</b> — 你点单，他从厨房取菜端来。</span></p>
+    <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 110" role="img">
+      <rect x="40" y="34" width="150" height="52" rx="12" fill="#fff" stroke="#4f46e5"/><text x="115" y="68" font-size="22" text-anchor="middle">📱</text>
+      <rect x="245" y="34" width="150" height="52" rx="12" fill="#eef2ff" stroke="#4f46e5"/><text x="320" y="60" font-size="15" fill="#4338ca" text-anchor="middle">🧑‍🍳 API</text>
+      <rect x="450" y="34" width="150" height="52" rx="12" fill="#fff" stroke="#a1a1aa"/><text x="525" y="68" font-size="22" text-anchor="middle">🗄️🖥️</text>
+      <text x="218" y="64" font-size="20" fill="#4f46e5" text-anchor="middle">→</text>
+      <text x="423" y="64" font-size="20" fill="#12996b" text-anchor="middle">→</text>
+    </svg></div><figcaption><span class="ko">날씨 앱은 기상청 API로 날씨를 받아와요 · 지도·로그인·결제도 API로</span><span class="zh">天气 App 通过气象局 API 取天气 · 地图·登录·支付也靠 API</span></figcaption></figure>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · AI와 LLM</span><span class="zh">拓展 · AI 与 LLM</span></div>
+    <h2 class="title"><span class="ko">왜 바이브코딩이 될까? (LLM)</span><span class="zh">为什么 Vibe 编程行得通? (LLM)</span></h2>
+    <p class="lead"><span class="ko">오늘 쓰는 Copilot 같은 AI는 <b>LLM(대규모 언어 모델)</b>이에요. 엄청난 글을 학습해 <b>“다음에 올 말”을 예측</b>하는 똑똑한 자동완성이죠.</span><span class="zh">今天用的 Copilot 这类 AI 是 <b>LLM(大语言模型)</b>。学了海量文本，去 <b>预测「下一个词」</b> 的聪明自动补全。</span></p>
+    <ul class="blist">
+      <li><span class="ko">코드도 “이럴 땐 보통 이렇게”를 잘 만들어줘요</span><span class="zh">写代码时也能给出「这种情况通常这样」</span></li>
+      <li><span class="ko">똑똑하지만 <b>가끔 틀려요</b> → 확인은 사람 몫</span><span class="zh">聪明但 <b>偶尔会错</b> → 检查靠人</span></li>
+      <li><span class="ko">그래서 <b>프롬프트·컨텍스트</b>가 중요했던 거예요</span><span class="zh">所以 <b>提示词·上下文</b> 才那么重要</span></li>
+    </ul>
+  </section>
+
+  <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
+    <div class="kick"><span class="ko">교양 · 오픈소스 & 버그</span><span class="zh">拓展 · 开源 & Bug</span></div>
+    <h2 class="title"><span class="ko">오픈소스 · 버그와 디버깅</span><span class="zh">开源 · Bug 与调试</span></h2>
+    <div class="row">
+      <div class="pane accent"><div class="pt">🌍 <span class="ko">오픈소스</span><span class="zh">开源</span></div><p><span class="ko">코드를 누구나 <b>보고·쓰고·고치도록</b> 공개한 것. Phaser·Tailwind·리눅스 모두 오픈소스! GitHub이 그 광장이에요.</span><span class="zh">把代码 <b>公开给所有人看·用·改</b>。Phaser·Tailwind·Linux 都是开源! GitHub 就是这个广场。</span></p></div>
+      <div class="pane"><div class="pt">🐛 <span class="ko">버그 · 디버깅</span><span class="zh">Bug · 调试</span></div><p><span class="ko">오류 = <b>버그(벌레)</b>, 고치는 일 = <b>디버깅</b>. 옛날 컴퓨터에 진짜 나방이 껴 고장 난 데서 유래했대요.</span><span class="zh">错误 = <b>Bug(虫子)</b>，修它 = <b>调试</b>。据说源自旧电脑里真卡进一只蛾子。</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">기억하기</span><span class="zh">记住</span></div><p><span class="ko">에러는 실패가 아니라 <b>힌트</b>예요. 메시지를 읽고(또는 AI에게 주고) 하나씩 고치면 돼요.</span><span class="zh">报错不是失败，是 <b>提示</b>。读它(或给 AI)，一个个修就好。</span></p></div>
+  </section>
+
   <!-- ===== CH9 이후 & 부록 ===== -->
   <section class="slide" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录" id="s-ch9">
     <div class="kick">CHAPTER 09</div>
@@ -747,7 +1033,7 @@ git push</code></pre>
     <div class="ssub"><span class="ko">집에서 매일 조금씩 완성하고, 막히면 여기를 봐요.</span><span class="zh">在家每天做一点，卡住就看这里。</span></div>
     <div class="abar"></div>
     <div class="grow"></div>
-    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+    <div class="foot"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
   </section>
 
   <section class="slide" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
@@ -807,13 +1093,29 @@ git push</code></pre>
     </table>
   </section>
 
+  <section class="slide top" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick"><span class="ko">부록 D · CH9</span><span class="zh">附录 D · CH9</span></div>
+    <h2 class="title"><span class="ko">Markdown(.md) 기초 문법</span><span class="zh">Markdown(.md) 基础语法</span></h2>
+    <p class="lead"><span class="ko"><code class="mono">prd.md · context.md · README</code>에 쓰는 간단한 글 문법. 미리보기는 <code class="mono">Ctrl+Shift+V</code></span><span class="zh">写 <code class="mono">prd.md · context.md · README</code> 的简单文本语法。预览按 <code class="mono">Ctrl+Shift+V</code></span></p>
+    <table class="kv">
+      <tr><th style="width:44%"><span class="ko">문법</span><span class="zh">语法</span></th><th><span class="ko">결과</span><span class="zh">效果</span></th></tr>
+      <tr><td class="mono"># 제목  ·  ## 소제목</td><td><span class="ko">큰 제목 · 중간 제목</span><span class="zh">大标题 · 中标题</span></td></tr>
+      <tr><td class="mono">**굵게**</td><td><span class="ko"><b>굵게</b> 표시</span><span class="zh"><b>加粗</b></span></td></tr>
+      <tr><td class="mono">- 항목  ·  1. 항목</td><td><span class="ko">글머리 목록 · 번호 목록</span><span class="zh">项目符号 · 有序列表</span></td></tr>
+      <tr><td class="mono">`코드`</td><td><span class="ko">코드 글자 강조</span><span class="zh">行内代码</span></td></tr>
+      <tr><td class="mono">[링크](https://...)</td><td><span class="ko">클릭되는 링크</span><span class="zh">可点击链接</span></td></tr>
+      <tr><td class="mono">![설명](image.png)</td><td><span class="ko">이미지 넣기</span><span class="zh">插入图片</span></td></tr>
+    </table>
+    <div class="note"><div class="nt">💡 <span class="ko">코드블록</span><span class="zh">代码块</span></div><p><span class="ko">백틱 3개 <code class="mono">```</code> 로 위아래를 감싸면 여러 줄 코드가 상자로 보여요.</span><span class="zh">用三个反引号 <code class="mono">```</code> 上下包住，多行代码会显示成代码框。</span></p></div>
+  </section>
+
   <section class="slide ink" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
     <div class="kick">THE END</div>
     <div class="grow"></div>
     <div class="stitle"><span class="ko">이제 여러분은<br/>진짜 개발자예요 🚀</span><span class="zh">现在，你们<br/>就是真正的开发者了 🚀</span></div>
     <div class="ssub" style="color:#a1a1aa"><span class="ko">기획하고, 만들고, 세상에 배포했어요.<br/>남은 건 재미있게, 계속 만들어보는 것뿐!</span><span class="zh">你规划了、做出来了、还部署到了世界上。<br/>剩下的，就是开心地一直做下去!</span></div>
     <div class="grow"></div>
-    <div class="foot" style="color:#71717a"><b>jdhschool.org</b> · <span class="ko">바이브코딩 원데이 클래스</span><span class="zh">Vibe 编程一日课</span></div>
+    <div class="foot" style="color:#71717a"><b>장대현중고등학교</b> · <span class="ko">바이브코딩 원데이 클래스</span><span class="zh">Vibe 编程一日课</span></div>
   </section>
 
 </div>
@@ -830,7 +1132,7 @@ git push</code></pre>
   var countEl=document.getElementById('count'), chapEl=document.getElementById('chapLabel'),
       progEl=document.getElementById('prog'), prevB=document.getElementById('prev'), nextB=document.getElementById('next');
   var tocLinks = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
-  var chapIds=['s-intro','s-ch1','s-ch2','s-ch3','s-ch4','s-ch5','s-ch6','s-ch7','s-ch8','s-ch9'];
+  var chapIds=['s-intro','s-ch1','s-ch2','s-ch3','s-ch4','s-ch5','s-ch6','s-ch7','s-ch8','s-bonus','s-ch9'];
 
   function pad(n){ return (n<10?'0':'')+n; }
   function idIndex(id){ var el=document.getElementById(id); return el?slides.indexOf(el):-1; }
