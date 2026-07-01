@@ -80,7 +80,9 @@
   .blist small{color:var(--muted); font-weight:400}
 
   .row{display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,1.8vw,22px); margin:clamp(18px,2.4vw,32px) 0 0}
-  .pane{border:1px solid var(--line); border-radius:16px; padding:clamp(15px,1.9vw,26px); background:#fff}
+  .pane{border:1px solid var(--line); border-radius:16px; padding:clamp(15px,1.9vw,26px); background:#fff; min-width:0}
+  .pane .code pre{white-space:pre-wrap; word-break:break-all}
+  .pane img{max-width:100%; height:auto}
   .pane .pt{font-family:var(--mono); font-weight:700; font-size:clamp(12px,1.35vw,18px); color:var(--muted); letter-spacing:.03em}
   .pane.accent{border-color:var(--indigo-100); background:var(--indigo-soft)}
   .pane.accent .pt{color:var(--indigo-d)}
