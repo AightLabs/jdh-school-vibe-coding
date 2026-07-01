@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 소개 페이지 · 웹앱 스타터</title>
+
+  <!-- Tailwind CSS 를 인터넷에서 불러와요 (클래스로 예쁘게 꾸미는 도구). 인터넷 필요. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style> body{ font-family:'Pretendard', system-ui, sans-serif; } </style>
+</head>
+
+<!--
+  ============================================================
+  🌟 비게임 웹앱 스타터 (Tailwind + Vanilla JS)
+  ------------------------------------------------------------
+  이 파일 하나가 완성된 웹앱이에요. 자기소개/관심사 페이지로
+  바로 쓸 수 있고, Copilot에게 말하며 원하는 대로 키우세요.
+  - 꾸미기: <태그 class="..."> 안의 Tailwind 클래스를 바꾸면 돼요
+  - 움직임: 맨 아래 <script>의 자바스크립트를 고치면 돼요
+  ============================================================
+-->
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300">
+
+  <!-- 상단 바 -->
+  <header class="sticky top-0 z-10 backdrop-blur bg-white/70 border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-5 h-14 flex items-center justify-between">
+      <span class="font-extrabold text-indigo-600">MY PAGE</span>
+      <button id="themeBtn" class="text-sm font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100">
+        🌙 다크모드
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-5">
+
+    <!-- 히어로(첫 화면) -->
+    <section class="py-16 text-center">
+      <div class="w-24 h-24 mx-auto rounded-full bg-indigo-100 flex items-center justify-center text-4xl">👋</div>
+      <h1 class="mt-6 text-4xl sm:text-5xl font-extrabold tracking-tight">
+        안녕하세요, <span class="text-indigo-600">내 이름</span>이에요
+      </h1>
+      <p class="mt-4 text-lg text-slate-500">여기에 나를 한 문장으로 소개해 보세요.</p>
+      <div class="mt-8 flex gap-3 justify-center">
+        <a href="#about" class="px-5 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700">더 알아보기</a>
+        <a href="#like" class="px-5 py-3 rounded-xl border border-slate-300 font-semibold hover:bg-slate-100">응원하기</a>
+      </div>
+    </section>
+
+    <!-- 소개 -->
+    <section id="about" class="py-12 border-t border-slate-200">
+      <h2 class="text-2xl font-bold">내가 좋아하는 것</h2>
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <div class="text-3xl">🎮</div><h3 class="mt-3 font-bold">게임</h3>
+          <p class="mt-1 text-sm text-slate-500">좋아하는 것을 여기에 적어요.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <div class="text-3xl">🎵</div><h3 class="mt-3 font-bold">음악</h3>
+          <p class="mt-1 text-sm text-slate-500">좋아하는 것을 여기에 적어요.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-slate-200">
+          <div class="text-3xl">⚽</div><h3 class="mt-3 font-bold">운동</h3>
+          <p class="mt-1 text-sm text-slate-500">좋아하는 것을 여기에 적어요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 움직이는 예시: 응원 카운터 -->
+    <section id="like" class="py-12 border-t border-slate-200 text-center">
+      <h2 class="text-2xl font-bold">응원 버튼 (자바스크립트 예시)</h2>
+      <p class="mt-2 text-slate-500">버튼을 누르면 숫자가 올라가요. 맨 아래 script를 고쳐 동작을 바꿔 보세요.</p>
+      <div class="mt-6 text-5xl font-extrabold text-indigo-600"><span id="likeCount">0</span> ❤️</div>
+      <button id="likeBtn" class="mt-6 px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 active:scale-95 transition">
+        응원 +1
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="max-w-3xl mx-auto px-5 py-10 text-center text-sm text-slate-400">
+    made with 바이브코딩 · <span id="year"></span>
+  </footer>
+
+  <script>
+    /* ===== 자바스크립트: 화면을 '움직이게' 하는 부분 ===== */
+
+    // 1) 응원 카운터 --------------------------------------------------
+    let count = 0;                                   // 숫자를 저장하는 상자
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCount = document.getElementById('likeCount');
+    likeBtn.addEventListener('click', () => {        // 버튼을 누르면
+      count = count + 1;                             // 1 더하고
+      likeCount.textContent = count;                 // 화면에 보여주기
+    });
+
+    // 2) 다크모드 토글 ------------------------------------------------
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', () => {
+      const dark = document.body.classList.toggle('bg-slate-900');  // 배경 어둡게
+      document.body.classList.toggle('text-slate-100');
+      themeBtn.textContent = dark ? '☀️ 라이트모드' : '🌙 다크모드';
+    });
+
+    // 3) 올해 연도 자동 표시 ------------------------------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

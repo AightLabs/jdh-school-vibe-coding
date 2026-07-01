@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>바이브 코딩 첫걸음 · 장대현중고등학교</title>
+<meta name="description" content="AI와 대화하며 나만의 웹앱 만들기 — 중·고등 코딩 수업 슬라이드 (한국어/中文)" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#4f46e5; --indigo-d:#4338ca; --indigo-soft:#eef2ff; --indigo-100:#e0e7ff;
+    --ink:#18181b; --ink-2:#3f3f46; --muted:#71717a; --muted-2:#a1a1aa; --line:#e4e4e7;
+    --bg:#ffffff; --bg-zinc:#f4f4f5; --bg-soft:#fafafa;
+    --ok:#059669; --warn:#b45309; --warn-bg:#fffbeb; --warn-line:#fde68a;
+    --c-tag:#4f46e5; --c-punc:#a1a1aa; --c-attr:#71717a; --c-str:#059669; --c-fn:#0891b2;
+    --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+    --topH:52px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{font-family:'Pretendard','Noto Sans SC',system-ui,-apple-system,sans-serif; color:var(--ink); background:var(--bg-zinc); -webkit-font-smoothing:antialiased}
+  a{color:var(--indigo-d)}
+
+  /* language toggle */
+  .zh{display:none}
+  body.lang-zh .ko{display:none}
+  body.lang-zh .zh{display:inline}
+
+  #top{position:fixed; top:0; left:0; right:0; height:var(--topH); z-index:40; display:flex; align-items:center; gap:10px;
+    padding:0 12px; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  #top .menu,#top .lng{font-family:var(--mono); font-weight:700; font-size:12px; border:1px solid var(--line); background:#fff; color:var(--ink); padding:7px 10px; border-radius:8px; cursor:pointer}
+  #top .lng{border-color:var(--indigo-100); color:var(--indigo-d); background:var(--indigo-soft)}
+  #top .brand{font-weight:800; font-size:14px; letter-spacing:-.01em}
+  #top .brand span{color:var(--indigo)}
+  #top .chap{font-family:var(--mono); font-size:12px; color:var(--muted); font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  #top .spacer{flex:1}
+  #top .count{font-family:var(--mono); font-size:12.5px; color:var(--muted-2); font-weight:500}
+  #top .pbtn{font-family:var(--mono); font-weight:700; font-size:12px; border:1px solid var(--indigo); background:var(--indigo); color:#fff; padding:7px 10px; border-radius:8px; cursor:pointer}
+  #prog{position:fixed; top:var(--topH); left:0; height:3px; background:var(--indigo); z-index:41; width:0; transition:width .25s}
+
+  #toc{position:fixed; top:var(--topH); left:0; bottom:0; width:280px; z-index:39; background:#fff; border-right:1px solid var(--line); padding:16px 12px; overflow-y:auto; transform:translateX(-102%); transition:transform .22s}
+  #toc.open{transform:none}
+  #toc .h{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted-2); font-weight:700; margin:6px 8px 8px}
+  #toc a{display:flex; gap:9px; align-items:baseline; padding:9px 10px; border-radius:9px; text-decoration:none; color:var(--ink-2); font-size:13px; font-weight:600}
+  #toc a .n{font-family:var(--mono); font-size:11px; color:var(--muted-2); min-width:16px}
+  #toc a:hover{background:var(--indigo-soft); color:var(--indigo-d)}
+  #toc a.active{background:var(--indigo); color:#fff}
+  #toc a.active .n{color:#c7d2fe}
+  #scrim{position:fixed; inset:var(--topH) 0 0 0; background:rgba(0,0,0,.28); z-index:38; opacity:0; pointer-events:none; transition:.2s}
+  #scrim.show{opacity:1; pointer-events:auto}
+
+  #deck{position:relative; padding-top:var(--topH); min-height:100%}
+  .slide{min-height:calc(100vh - var(--topH)); display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(30px,4.6vw,72px) clamp(24px,6vw,92px); background:var(--bg); position:relative; max-width:1100px; margin:0 auto}
+  .slide.top{justify-content:flex-start}
+  .slide.zinc{background:var(--bg-zinc)}
+  .slide.ink{background:var(--ink); color:#fff}
+  .is-hidden{display:none !important}
+
+  .kick{font-family:var(--mono); font-weight:700; font-size:clamp(13px,1.5vw,20px); letter-spacing:.12em; color:var(--indigo)}
+  .slide.ink .kick{color:#a5b4fc}
+  .stitle{font-weight:800; font-size:clamp(30px,6.2vw,72px); line-height:1.12; letter-spacing:-.02em; margin:14px 0 0}
+  .ssub{font-size:clamp(16px,2.5vw,30px); line-height:1.45; color:var(--muted); margin:18px 0 0; font-weight:400}
+  .abar{width:clamp(64px,7vw,96px); height:6px; background:var(--indigo); border-radius:3px; margin:clamp(22px,3vw,44px) 0 0}
+  .foot{font-size:clamp(12px,1.4vw,18px); color:var(--muted-2)}
+  .foot b{color:var(--ink); font-weight:700}
+  .slide.ink .foot b{color:#fff}
+  .grow{flex:1 1 auto; min-height:12px}
+
+  h2.title{font-weight:800; font-size:clamp(26px,4.6vw,54px); line-height:1.2; letter-spacing:-.01em; margin:12px 0 0}
+  .lead{font-size:clamp(15px,2.1vw,26px); line-height:1.5; color:var(--ink-2); margin:14px 0 0}
+
+  .blist{list-style:none; padding:0; margin:clamp(18px,2.6vw,34px) 0 0; display:flex; flex-direction:column; gap:clamp(11px,1.5vw,17px)}
+  .blist li{display:flex; gap:15px; align-items:flex-start; font-size:clamp(15px,1.95vw,28px); line-height:1.42; color:var(--ink-2)}
+  .blist li::before{content:""; width:clamp(9px,1.1vw,13px); height:clamp(9px,1.1vw,13px); border-radius:50%; background:var(--indigo); margin-top:.5em; flex:none}
+  .blist.checks li::before{content:""; width:1.05em; height:1.05em; border-radius:6px; background:transparent; border:2.5px solid var(--muted-2); margin-top:.15em}
+  .blist small{color:var(--muted); font-weight:400}
+
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,1.8vw,22px); margin:clamp(18px,2.4vw,32px) 0 0}
+  .pane{border:1px solid var(--line); border-radius:16px; padding:clamp(15px,1.9vw,26px); background:#fff}
+  .pane .pt{font-family:var(--mono); font-weight:700; font-size:clamp(12px,1.35vw,18px); color:var(--muted); letter-spacing:.03em}
+  .pane.accent{border-color:var(--indigo-100); background:var(--indigo-soft)}
+  .pane.accent .pt{color:var(--indigo-d)}
+  .pane p{margin:8px 0 0; font-size:clamp(13.5px,1.7vw,24px); line-height:1.4; color:var(--ink-2)}
+
+  .note{margin:clamp(18px,2.4vw,30px) 0 0; border-radius:14px; padding:clamp(14px,1.8vw,24px) clamp(16px,2vw,28px); background:var(--indigo-soft); border:1px solid var(--indigo-100)}
+  .note .nt{font-weight:800; font-size:clamp(13px,1.5vw,20px); color:var(--indigo-d)}
+  .note p{margin:6px 0 0; font-size:clamp(14px,1.7vw,23px); line-height:1.45; color:var(--ink-2)}
+  .note.warn{background:var(--warn-bg); border-color:var(--warn-line)}
+  .note.warn .nt{color:var(--warn)}
+  .note.ok{background:#ecfdf5; border-color:#a7f3d0}
+  .note.ok .nt{color:var(--ok)}
+
+  .code{margin:clamp(16px,2.2vw,28px) 0 0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff}
+  .code .chd{display:flex; align-items:center; gap:12px; padding:13px 20px; background:var(--bg-soft); border-bottom:1px solid var(--line)}
+  .code .dot{width:12px; height:12px; border-radius:50%}
+  .code .fn{font-family:var(--mono); font-weight:500; font-size:clamp(12px,1.35vw,19px); color:var(--muted)}
+  .code .cp{margin-left:auto; font-family:var(--mono); font-weight:700; font-size:clamp(12px,1.25vw,16px); color:var(--indigo-d); background:var(--indigo-soft); border:1px solid var(--indigo-100); padding:8px 14px; border-radius:9px; cursor:pointer}
+  .code .cp:hover{background:var(--indigo); color:#fff; border-color:var(--indigo)}
+  .code pre{margin:0; padding:clamp(15px,1.9vw,24px) clamp(18px,2.2vw,30px); font-family:var(--mono); font-size:clamp(12px,1.5vw,21px); line-height:1.65; overflow-x:auto; white-space:pre; color:var(--ink)}
+  .t-tag{color:var(--c-tag)} .t-punc{color:var(--c-punc)} .t-attr{color:var(--c-attr)} .t-str{color:var(--c-str)} .t-fn{color:var(--c-fn)}
+  .code.plain pre{color:#e7ecf6; background:#0e1524} .code.plain .chd{background:#0e1524; border-bottom-color:#25324a} .code.plain .fn{color:#9fb3d1}
+  .mono{font-family:var(--mono)}
+
+  a.linkbtn{display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-family:var(--mono); font-weight:700; font-size:clamp(12px,1.45vw,18px); color:var(--indigo-d); text-decoration:none; border:1px solid var(--indigo-100); background:var(--indigo-soft); padding:9px 15px; border-radius:10px}
+  a.linkbtn:hover{background:var(--indigo); color:#fff}
+
+  .slide.mission{justify-content:center}
+  .mcard{background:#fff; border:1px solid var(--line); border-radius:26px; padding:clamp(30px,4vw,64px) clamp(26px,3.4vw,60px); box-shadow:0 24px 60px rgba(20,20,40,.07); max-width:900px; margin:0 auto; width:100%}
+  .mbadge{display:inline-block; font-family:var(--mono); font-weight:700; font-size:clamp(13px,1.4vw,22px); letter-spacing:.08em; color:#fff; background:var(--indigo); padding:11px 20px; border-radius:11px}
+  .mtitle{font-weight:800; font-size:clamp(24px,3.6vw,50px); line-height:1.25; letter-spacing:-.01em; margin:clamp(18px,2.2vw,32px) 0 0}
+  .mmeta{margin:clamp(20px,2.6vw,40px) 0 0; padding-top:clamp(14px,1.6vw,24px); border-top:1px solid var(--line); font-family:var(--mono); font-weight:500; font-size:clamp(12px,1.4vw,21px); color:var(--muted-2)}
+
+  .kv{width:100%; border-collapse:collapse; margin:clamp(16px,2vw,26px) 0 0; font-size:clamp(13px,1.5vw,21px)}
+  .kv th,.kv td{border:1px solid var(--line); padding:clamp(9px,1.05vw,14px) clamp(11px,1.3vw,18px); text-align:left; vertical-align:top}
+  .kv th{background:var(--bg-soft); font-weight:700}
+  .flow{display:flex; flex-wrap:wrap; gap:8px; margin:clamp(18px,2.4vw,30px) 0 0; align-items:stretch}
+  .flow .f{flex:1 1 130px; border:1.5px solid var(--indigo-100); background:var(--indigo-soft); border-radius:13px; padding:clamp(12px,1.5vw,18px); text-align:center}
+  .flow .f b{display:block; font-family:var(--mono); font-size:clamp(12px,1.3vw,17px); color:var(--indigo-d)}
+  .flow .f span{font-size:clamp(11px,1.3vw,16px); color:var(--muted)}
+
+  .nav{position:fixed; bottom:20px; right:20px; z-index:37; display:flex; gap:10px}
+  .nav button{width:46px; height:46px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--ink); font-size:18px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.08); display:flex; align-items:center; justify-content:center}
+  .nav button:hover{background:var(--indigo); color:#fff; border-color:var(--indigo)}
+  .nav button:disabled{opacity:.35; cursor:default}
+  .hint{position:fixed; bottom:26px; left:50%; transform:translateX(-50%); z-index:36; font-family:var(--mono); font-size:11.5px; color:var(--muted-2); background:rgba(255,255,255,.8); padding:5px 12px; border-radius:20px; border:1px solid var(--line)}
+
+  @media (max-width:760px){ .row{grid-template-columns:1fr} #top .brand{display:none} .hint{display:none} }
+
+  @media print{
+    @page{size:A4 landscape; margin:12mm}
+    #top,#toc,#scrim,#prog,.nav,.hint{display:none !important}
+    body{background:#fff}
+    #deck{padding-top:0}
+    .slide,.is-hidden{display:flex !important; min-height:auto; page-break-after:always; break-after:page; box-shadow:none; max-width:100%; border-bottom:none; padding:9mm 8mm}
+    .slide:last-child{page-break-after:auto}
+    .stitle{font-size:32px} h2.title{font-size:26px} .mtitle{font-size:24px}
+    .blist li,.pane p,.note p,.lead,.ssub,.kv{font-size:14px}
+    .code pre{white-space:pre-wrap; word-break:break-word; font-size:11.5px; color:#111 !important; background:#f4f4f5 !important}
+    .code.plain pre{color:#111 !important; background:#f4f4f5 !important}
+    .code .cp{display:none}
+    .mcard{box-shadow:none}
+  }
+</style>
+</head>
+<body class="lang-ko">
+
+<div id="top">
+  <button class="menu" onclick="toggleToc()"><span class="ko">☰ 목차</span><span class="zh">☰ 目录</span></button>
+  <button class="lng" onclick="toggleLang()"><span class="ko">中文</span><span class="zh">한국어</span></button>
+  <div class="brand"><span>JDH</span> <span class="ko">바이브코딩</span><span class="zh">Vibe 编程</span></div>
+  <div class="chap" id="chapLabel">INTRO</div>
+  <div class="spacer"></div>
+  <div class="count" id="count">01 / 00</div>
+  <button class="pbtn no-print" onclick="window.print()">🖨 <span class="ko">인쇄</span><span class="zh">打印</span></button>
+</div>
+<div id="prog"></div>
+
+<nav id="toc">
+  <div class="h">목차 · CONTENTS</div>
+  <a href="#s-intro"><span class="n">00</span> <span class="ko">시작 · 오늘 배울 것</span><span class="zh">开始 · 今天要学的</span></a>
+  <a href="#s-ch1"><span class="n">01</span> <span class="ko">바이브 코딩이란?</span><span class="zh">什么是 Vibe 编程?</span></a>
+  <a href="#s-ch2"><span class="n">02</span> <span class="ko">기초 CS 지식</span><span class="zh">基础计算机知识</span></a>
+  <a href="#s-ch3"><span class="n">03</span> <span class="ko">개발환경 설치</span><span class="zh">安装开发环境</span></a>
+  <a href="#s-ch4"><span class="n">04</span> <span class="ko">프롬프트 엔지니어링</span><span class="zh">提示词工程</span></a>
+  <a href="#s-ch5"><span class="n">05</span> <span class="ko">컨텍스트 엔지니어링</span><span class="zh">上下文工程</span></a>
+  <a href="#s-ch6"><span class="n">06</span> <span class="ko">기획 · PRD→목업→MVP</span><span class="zh">规划 · PRD→原型→MVP</span></a>
+  <a href="#s-ch7"><span class="n">07</span> <span class="ko">개발 · MVP 만들기</span><span class="zh">开发 · 做出 MVP</span></a>
+  <a href="#s-ch8"><span class="n">08</span> <span class="ko">배포 · 여러 방법</span><span class="zh">部署 · 多种方法</span></a>
+  <a href="#s-ch9"><span class="n">09</span> <span class="ko">이후 3일 &amp; 부록</span><span class="zh">之后3天 &amp; 附录</span></a>
+</nav>
+<div id="scrim" onclick="toggleToc(false)"></div>
+
+<div id="deck">
+
+  <!-- ===== INTRO ===== -->
+  <section class="slide" data-chap="INTRO" data-chap-zh="INTRO" id="s-intro">
+    <div class="kick">JDHSCHOOL · CODING</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">바이브 코딩<br/>첫걸음</span><span class="zh">Vibe 编程<br/>第一步</span></div>
+    <div class="ssub"><span class="ko">AI와 대화하며 나만의 웹앱 만들기</span><span class="zh">与 AI 对话，做出自己的网页应用</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">중·고등 코딩 수업 · 3시간</span><span class="zh">初·高中编程课 · 3小时</span></div>
+  </section>
+
+  <section class="slide top" data-chap="INTRO" data-chap-zh="INTRO">
+    <div class="kick">INTRO</div>
+    <h2 class="title"><span class="ko">오늘 배울 것</span><span class="zh">今天要学的</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>1 · 바이브 코딩이란?</b>&nbsp; <small>AI와 함께 만드는 새로운 코딩</small></span><span class="zh"><b>1 · 什么是 Vibe 编程?</b>&nbsp; <small>与 AI 一起做的新式编程</small></span></li>
+      <li><span class="ko"><b>2 · 기초 CS 지식</b>&nbsp; <small>언어·GUI/CLI·웹 3종·Git</small></span><span class="zh"><b>2 · 基础计算机知识</b>&nbsp; <small>语言·GUI/CLI·网页三件套·Git</small></span></li>
+      <li><span class="ko"><b>3 · 개발환경 설치</b>&nbsp; <small>VS Code·Git·Copilot</small></span><span class="zh"><b>3 · 安装开发环境</b>&nbsp; <small>VS Code·Git·Copilot</small></span></li>
+      <li><span class="ko"><b>4 · 프롬프트 엔지니어링</b>&nbsp; <small>AI에게 잘 시키는 법</small></span><span class="zh"><b>4 · 提示词工程</b>&nbsp; <small>如何把话说清楚让 AI 做好</small></span></li>
+      <li><span class="ko"><b>5 · 컨텍스트 엔지니어링</b>&nbsp; <small>AI의 기억을 관리하는 법</small></span><span class="zh"><b>5 · 上下文工程</b>&nbsp; <small>管理 AI「记忆」的方法</small></span></li>
+      <li><span class="ko"><b>6 · 기획 → 7 · 개발 → 8 · 배포</b>&nbsp; <small>PRD·목업·MVP·인터넷 공개</small></span><span class="zh"><b>6 · 规划 → 7 · 开发 → 8 · 部署</b>&nbsp; <small>PRD·原型·MVP·上线公开</small></span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">사용법</span><span class="zh">使用方法</span></div><p><span class="ko">키보드 <b>← →</b> 또는 오른쪽 아래 화살표로 이동. 코드 상자의 <b>복사</b> 버튼으로 명령어를 그대로 가져가요. 수업 후 <b>3일 동안</b> 복습할 자료이기도 해요.</span><span class="zh">用键盘 <b>← →</b> 或右下角箭头翻页。用代码框的 <b>复制</b> 按钮直接拿走命令。它也是课后 <b>3 天</b> 复习的资料。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="INTRO" data-chap-zh="INTRO">
+    <div class="kick">TODAY'S GOAL</div>
+    <h2 class="title"><span class="ko">오늘의 목표는 딱 하나</span><span class="zh">今天的目标只有一个</span></h2>
+    <p class="lead"><span class="ko">“내가 기획한 것을, 만든 데까지, <b>인터넷 주소로 올려본다.</b>”</span><span class="zh">“把我规划的东西，做到哪算哪，<b>发布成一个网址。</b>”</span></p>
+    <div class="row">
+      <div class="pane accent"><div class="pt"><span class="ko">기획 → 목업</span><span class="zh">规划 → 原型</span></div><p><span class="ko">무엇을 만들지 글과 화면으로 정리</span><span class="zh">用文字和画面理清要做什么</span></p></div>
+      <div class="pane accent"><div class="pt"><span class="ko">개발 → 배포</span><span class="zh">开发 → 部署</span></div><p><span class="ko">Copilot과 만들고 인터넷에 공개</span><span class="zh">用 Copilot 做出来并发布上线</span></p></div>
+    </div>
+    <div class="note ok"><div class="nt">✅ <span class="ko">완성은 목표가 아니에요</span><span class="zh">完成不是目标</span></div><p><span class="ko">오늘 못 끝내도 괜찮아요. <b>이후 3일 동안 매일 조금씩</b> 이어서 완성하면 됩니다.</span><span class="zh">今天做不完也没关系。<b>之后 3 天每天做一点</b>，慢慢完成就行。</span></p></div>
+  </section>
+
+  <!-- ===== CH1 ===== -->
+  <section class="slide" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?" id="s-ch1">
+    <div class="kick">CHAPTER 01</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">바이브 코딩이란?</span><span class="zh">什么是 Vibe 编程?</span></div>
+    <div class="ssub"><span class="ko">코딩을 몰라도, 아이디어만 있으면 시작할 수 있어요.</span><span class="zh">不懂编程也没关系，只要有想法就能开始。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?">
+    <div class="kick"><span class="ko">개념 · CH1</span><span class="zh">概念 · CH1</span></div>
+    <h2 class="title"><span class="ko">코딩 = 컴퓨터에게 주는 명령서</span><span class="zh">编程 = 给电脑的命令书</span></h2>
+    <p class="lead"><span class="ko">컴퓨터는 빠르지만 <b>스스로 알아서 하지 못해요.</b> “이걸 이렇게, 그다음 저렇게”를 <b>순서대로 정확히</b> 적어줘야 하죠.</span><span class="zh">电脑很快，但 <b>不会自己判断</b>。要 <b>按顺序、精确地</b> 写清「先这样，再那样」。</span></p>
+    <div class="row">
+      <div class="pane"><div class="pt"><span class="ko">예전 방식</span><span class="zh">过去的方式</span></div><p><span class="ko">문법을 하나하나 외워서 처음부터 직접 타이핑. 오타 하나에 멈춤.</span><span class="zh">要背下所有语法，从头一个个手敲。一个错字就卡住。</span></p></div>
+      <div class="pane accent"><div class="pt"><span class="ko">바이브 코딩</span><span class="zh">Vibe 编程</span></div><p><span class="ko">“이렇게 만들어줘”라고 <b>말</b>하고, 결과를 확인하며 고쳐 나감.</span><span class="zh">用 <b>话</b> 说「帮我做成这样」，看结果再慢慢改。</span></p></div>
+    </div>
+    <div class="note"><div class="nt"><span class="ko">핵심</span><span class="zh">核心</span></div><p><span class="ko">“<b>무엇을 만들고 싶은지</b>”를 잘 설명하는 것이 실력이 돼요. (이 방식을 AI 연구자 안드레이 카파시가 ‘바이브코딩’이라 불렀어요.)</span><span class="zh">把「<b>想做什么</b>」讲清楚，就是本事。(AI 研究者 Andrej Karpathy 把这种方式叫「Vibe Coding」。)</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?">
+    <div class="kick"><span class="ko">개념 · CH1</span><span class="zh">概念 · CH1</span></div>
+    <h2 class="title"><span class="ko">그래도 원리는 알아야 해요</span><span class="zh">但原理还是要懂</span></h2>
+    <p class="lead"><span class="ko">AI가 코드를 대신 써줘도, <b>어디를 어떻게 고쳐달라</b> 말하려면 코드가 어떻게 동작하는지 알아야 합니다.</span><span class="zh">就算 AI 帮你写代码，想说清 <b>改哪里、怎么改</b>，也得懂代码是怎么运作的。</span></p>
+    <ul class="blist">
+      <li><span class="ko">결과가 안 나올 때 <b>무엇이 문제인지</b> 짚을 수 있어요</span><span class="zh">出问题时能指出 <b>哪里错了</b></span></li>
+      <li><span class="ko">AI에게 <b>더 정확하게</b> 부탁할 수 있어요</span><span class="zh">能 <b>更准确地</b> 给 AI 下指令</span></li>
+      <li><span class="ko">작은 부분은 <b>내 손으로 직접</b> 고칠 수 있어요</span><span class="zh">小地方能 <b>自己动手</b> 改</span></li>
+    </ul>
+    <div class="note warn"><div class="nt">⚠️ <span class="ko">오해 금지</span><span class="zh">别误会</span></div><p><span class="ko">“AI가 다 해주니 몰라도 된다”는 아니에요. AI는 <b>똑똑한 조수</b>, 방향을 정하고 판단하는 건 <b>나</b>예요. (개발자를 꿈꾼다면 특히!)</span><span class="zh">不是「AI 全包了就不用懂」。AI 是 <b>聪明的助手</b>，定方向、做判断的是 <b>我</b>。(想当开发者更要懂!)</span></p></div>
+  </section>
+
+  <section class="slide mission zinc" data-chap="1 · 바이브 코딩이란?" data-chap-zh="1 · 什么是 Vibe 编程?">
+    <div class="mcard">
+      <span class="mbadge"><span class="ko">잠깐, 생각해보기</span><span class="zh">停一下，想一想</span></span>
+      <div class="mtitle"><span class="ko">내가 만들어보고 싶은<br/>웹앱은 무엇인가요?</span><span class="zh">我想做的<br/>网页应用是什么?</span></div>
+      <ul class="blist" style="margin-top:28px">
+        <li><span class="ko">간단한 자기소개 페이지</span><span class="zh">简单的自我介绍页面</span></li>
+        <li><span class="ko">좋아하는 것들(게임·아이돌·음식)을 모은 페이지</span><span class="zh">收集喜欢的东西(游戏·偶像·美食)的页面</span></li>
+        <li><span class="ko">가위바위보 같은 간단한 웹게임</span><span class="zh">像石头剪刀布一样的小网页游戏</span></li>
+      </ul>
+      <div class="mmeta"><span class="ko">오늘 그 첫 웹앱을 직접 만들어 봅니다.</span><span class="zh">今天就亲手做出你的第一个网页应用。</span></div>
+    </div>
+  </section>
+
+  <!-- ===== CH2 기초 CS ===== -->
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识" id="s-ch2">
+    <div class="kick">CHAPTER 02</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">기초 CS 지식</span><span class="zh">基础计算机知识</span></div>
+    <div class="ssub"><span class="ko">코드를 만지기 전, 꼭 필요한 상식만 짚어요.</span><span class="zh">动手写代码前，先掌握必要的常识。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">기초 · CH2</span><span class="zh">基础 · CH2</span></div>
+    <h2 class="title"><span class="ko">코딩의 4가지 기본 감각</span><span class="zh">编程的 4 个基本直觉</span></h2>
+    <ul class="blist">
+      <li><span class="ko">코드는 결국 <b>“글자(텍스트) 파일”</b>이에요</span><span class="zh">代码说到底就是 <b>「文字(文本)文件」</b></span></li>
+      <li><span class="ko">파일 <b>확장자</b>(<code class="mono">.html .js</code>)가 파일의 <b>종류</b>를 정해요</span><span class="zh">文件 <b>后缀名</b>(<code class="mono">.html .js</code>)决定文件的 <b>类型</b></span></li>
+      <li><span class="ko">바꾸면 <b>저장(Ctrl+S)</b>해야 반영돼요</span><span class="zh">改完要 <b>保存(Ctrl+S)</b> 才生效</span></li>
+      <li><span class="ko">저장한 걸 <b>실행(브라우저로 열기)</b>해야 결과가 보여요</span><span class="zh">保存后要 <b>运行(用浏览器打开)</b> 才看得到结果</span></li>
+    </ul>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
+    <h2 class="title"><span class="ko">프로그래밍 언어는 어떻게 작동할까?</span><span class="zh">编程语言是怎么运作的?</span></h2>
+    <p class="lead"><span class="ko">컴퓨터가 진짜 이해하는 건 <b>0과 1(기계어)</b>뿐. 사람이 읽기 쉬운 언어로 쓰면 <b>번역기</b>가 기계어로 바꿔줍니다.</span><span class="zh">电脑真正懂的只有 <b>0 和 1(机器语言)</b>。人用易读的语言写，<b>翻译器</b> 再转成机器语言。</span></p>
+    <div class="row">
+      <div class="pane"><div class="pt">📚 <span class="ko">컴파일 방식</span><span class="zh">编译型</span></div><p><span class="ko">전체를 <b>미리 통째로</b> 번역. 빠름.<br/><small style="color:var(--muted)">예: C, C++, Rust</small></span><span class="zh">把整个程序 <b>提前整体</b> 翻译。快。<br/><small style="color:var(--muted)">例: C, C++, Rust</small></span></p></div>
+      <div class="pane accent"><div class="pt">🗣️ <span class="ko">인터프리터 방식</span><span class="zh">解释型</span></div><p><span class="ko"><b>한 줄씩 그때그때</b> 번역. 결과를 바로 봄.<br/><small style="color:var(--muted)">예: Python, JavaScript</small></span><span class="zh"><b>一行一行即时</b> 翻译。马上看到结果。<br/><small style="color:var(--muted)">例: Python, JavaScript</small></span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">비유</span><span class="zh">打个比方</span></div><p><span class="ko">컴파일 = 책을 통째로 번역·출판 / 인터프리터 = 옆에서 실시간 통역. 우리가 쓸 <b>JavaScript는 인터프리터</b>라 브라우저가 바로 실행해요.</span><span class="zh">编译 = 把整本书翻译出版 / 解释 = 在旁边实时口译。我们用的 <b>JavaScript 是解释型</b>，浏览器直接运行。</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">지도 · CH2</span><span class="zh">地图 · CH2</span></div>
+    <h2 class="title"><span class="ko">세상에는 어떤 언어들이 있을까?</span><span class="zh">世界上有哪些语言?</span></h2>
+    <table class="kv">
+      <tr><th style="width:26%"><span class="ko">언어</span><span class="zh">语言</span></th><th><span class="ko">주로 쓰는 곳</span><span class="zh">主要用途</span></th></tr>
+      <tr><td><b>JavaScript</b></td><td><span class="ko">웹페이지의 움직임 · 브라우저가 기본 실행 → <b>오늘 쓰는 언어</b></span><span class="zh">网页的交互 · 浏览器直接运行 → <b>今天要用的语言</b></span></td></tr>
+      <tr><td><b>HTML / CSS</b></td><td><span class="ko">화면의 뼈대와 꾸미기 (화면 구성 언어)</span><span class="zh">页面的骨架与美化(页面构成语言)</span></td></tr>
+      <tr><td><b>Python</b></td><td><span class="ko">AI·데이터·자동화 · 문법이 쉬워 입문용 인기</span><span class="zh">AI·数据·自动化 · 语法简单，很适合入门</span></td></tr>
+      <tr><td><b>C / C++</b></td><td><span class="ko">게임 엔진·운영체제 등 빠른 속도가 필요한 곳</span><span class="zh">游戏引擎·操作系统等需要高速的地方</span></td></tr>
+      <tr><td><b>Java · Swift · Kotlin</b></td><td><span class="ko">대형 서비스 · 아이폰·안드로이드 앱</span><span class="zh">大型服务 · iPhone·安卓 App</span></td></tr>
+    </table>
+    <div class="note"><div class="nt">💡 <span class="ko">개발자 지망생에게</span><span class="zh">给想当开发者的你</span></div><p><span class="ko">언어는 <b>목적에 맞는 도구</b>일 뿐. 하나를 제대로 익히면 나머지는 훨씬 빨리 배워요.</span><span class="zh">语言只是 <b>合适的工具</b>。把一门学扎实，其余的会学得快很多。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
+    <h2 class="title">GUI <span class="ko">와</span><span class="zh">与</span> CLI</h2>
+    <div class="row">
+      <div class="pane accent"><div class="pt">🖱️ GUI · <span class="ko">클릭 방식</span><span class="zh">点击式</span></div><p><span class="ko">아이콘·버튼을 <b>눈으로 보고 클릭</b>. 평소 쓰는 화면.</span><span class="zh">看着图标·按钮 <b>用眼看、用手点</b>。就是平时用的界面。</span></p></div>
+      <div class="pane"><div class="pt">⌨️ CLI · <span class="ko">명령어 방식</span><span class="zh">命令式</span></div><p><span class="ko">검은 창에 <b>글자로 명령을 타이핑</b>. 빠르고 정확.</span><span class="zh">在黑窗口里 <b>用文字敲命令</b>。快而准。</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">겁먹지 마세요</span><span class="zh">别害怕</span></div><p><span class="ko">우리가 쓰는 <b>PowerShell·터미널</b>이 CLI예요. 오늘은 <b>복사→붙여넣기→Enter</b>만 하면 끝. 설치·배포에서 잠깐만 씁니다.</span><span class="zh">我们用的 <b>PowerShell·终端</b> 就是 CLI。今天只要 <b>复制→粘贴→回车</b> 就行，只在安装·部署时用一下。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
+    <h2 class="title"><span class="ko">웹앱을 이루는 세 가지</span><span class="zh">组成网页应用的三样东西</span></h2>
+    <ul class="blist">
+      <li><b>HTML</b> — <span class="ko">뼈대 · 무엇이 있는지 (제목, 버튼, 이미지)</span><span class="zh">骨架 · 有什么(标题、按钮、图片)</span></li>
+      <li><b>CSS</b> — <span class="ko">꾸미기 · 어떻게 보이는지 (색, 크기, 배치)</span><span class="zh">美化 · 长什么样(颜色、大小、排版)</span></li>
+      <li><b>JavaScript</b> — <span class="ko">움직임 · 무엇을 하는지 (클릭, 반응, 계산)</span><span class="zh">交互 · 会做什么(点击、反应、计算)</span></li>
+    </ul>
+    <div class="note"><div class="nt">👉 <span class="ko">왜 우리는 이걸 택할까?</span><span class="zh">为什么选它们?</span></div><p><span class="ko"><b>설치가 필요 없고</b>, <b>결과가 바로 보이고</b>, <b>배포가 제일 쉬우며</b>, <b>AI가 특히 잘 다뤄요.</b> 오늘은 이 셋을 <b>한 파일(index.html)</b>에 담는 <b>단일 웹앱</b>으로 만듭니다.</span><span class="zh"><b>不用安装</b>、<b>结果立刻可见</b>、<b>部署最简单</b>、<b>AI 尤其擅长</b>。今天把这三样放进 <b>一个文件(index.html)</b>，做成 <b>单文件网页应用</b>。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">코드 · CH2</span><span class="zh">代码 · CH2</span></div>
+    <h2 class="title"><span class="ko">세상에서 제일 짧은 웹페이지</span><span class="zh">世界上最短的网页</span></h2>
+    <div class="code">
+      <div class="chd"><span class="dot" style="background:#ff5f56"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#27c93f"></span><span class="fn">index.html</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code><span class="t-punc">&lt;!DOCTYPE html&gt;</span>
+<span class="t-punc">&lt;</span><span class="t-tag">html</span><span class="t-punc">&gt;</span>
+  <span class="t-punc">&lt;</span><span class="t-tag">body</span><span class="t-punc">&gt;</span>
+    <span class="t-punc">&lt;</span><span class="t-tag">h1</span><span class="t-punc">&gt;</span>Hello!<span class="t-punc">&lt;/</span><span class="t-tag">h1</span><span class="t-punc">&gt;</span>
+    <span class="t-punc">&lt;</span><span class="t-tag">button</span> <span class="t-attr">onclick</span>=<span class="t-str">"alert('Hi')"</span><span class="t-punc">&gt;</span>Click<span class="t-punc">&lt;/</span><span class="t-tag">button</span><span class="t-punc">&gt;</span>
+  <span class="t-punc">&lt;/</span><span class="t-tag">body</span><span class="t-punc">&gt;</span>
+<span class="t-punc">&lt;/</span><span class="t-tag">html</span><span class="t-punc">&gt;</span></code></pre>
+    </div>
+    <div class="note"><div class="nt"><span class="ko">브라우저가 읽는 순서</span><span class="zh">浏览器读取顺序</span></div><p><span class="ko">① 파일을 연다 → ② 위에서 아래로 한 줄씩 읽는다 → ③ 화면에 그리고 클릭 같은 반응을 기다린다.</span><span class="zh">① 打开文件 → ② 从上到下一行行读 → ③ 画到屏幕上，等待点击等反应。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="2 · 기초 CS 지식" data-chap-zh="2 · 基础计算机知识">
+    <div class="kick"><span class="ko">개념 · CH2</span><span class="zh">概念 · CH2</span></div>
+    <h2 class="title">Git<span class="ko">이란 무엇인가?</span><span class="zh">是什么?</span></h2>
+    <p class="lead"><span class="ko"><b>Git</b>은 코드의 <b>“세이브 포인트”</b>를 관리하는 도구. 저장(커밋)해두면 <b>언제든 되돌릴 수</b> 있어요.</span><span class="zh"><b>Git</b> 是管理代码 <b>「存档点」</b> 的工具。存档(提交)后 <b>随时能回退</b>。</span></p>
+    <table class="kv">
+      <tr><th style="width:20%"> </th><th>Git</th><th>GitHub</th></tr>
+      <tr><td><b><span class="ko">무엇</span><span class="zh">是什么</span></b></td><td><span class="ko">세이브·버전관리 <b>도구</b></span><span class="zh">存档·版本管理 <b>工具</b></span></td><td><span class="ko">코드를 올려두는 <b>인터넷 창고</b></span><span class="zh">存放代码的 <b>网络仓库</b></span></td></tr>
+      <tr><td><b><span class="ko">어디</span><span class="zh">在哪</span></b></td><td><span class="ko">내 컴퓨터 안</span><span class="zh">我的电脑里</span></td><td><span class="ko">인터넷(클라우드)</span><span class="zh">互联网(云端)</span></td></tr>
+    </table>
+    <div class="note"><div class="nt">💡 <span class="ko">한 줄 정리</span><span class="zh">一句话</span></div><p><span class="ko"><b>Git으로 세이브(커밋) → GitHub로 보내기(푸시) → GitHub Pages로 공개(배포).</b> GitHub를 쓰는 이유 = 무료 + 올리면 바로 웹사이트!</span><span class="zh"><b>用 Git 存档(commit) → 推送到 GitHub(push) → 用 GitHub Pages 公开(部署)。</b> 用 GitHub 的理由 = 免费 + 一上传就是网站!</span></p></div>
+  </section>
+
+  <!-- ===== CH3 설치 ===== -->
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境" id="s-ch3">
+    <div class="kick">CHAPTER 03</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">개발환경 설치</span><span class="zh">安装开发环境</span></div>
+    <div class="ssub"><span class="ko">코드를 쓰고 올릴 나만의 작업실을 준비해요.</span><span class="zh">准备好写代码、上传代码的专属工作台。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">준비물 · CH3</span><span class="zh">要准备的 · CH3</span></div>
+    <h2 class="title"><span class="ko">네 가지를 준비해요</span><span class="zh">准备四样东西</span></h2>
+    <div class="row">
+      <div class="pane accent"><div class="pt">🗂️ GitHub <span class="ko">계정</span><span class="zh">账号</span></div><p><span class="ko">코드 보관·공개하는 곳. <b>이미 가입 완료!</b></span><span class="zh">保管·公开代码的地方。<b>已经注册好了!</b></span></p></div>
+      <div class="pane"><div class="pt">📝 VS Code</div><p><span class="ko">코드를 쓰는 작업실(에디터).</span><span class="zh">写代码的工作台(编辑器)。</span></p></div>
+      <div class="pane"><div class="pt">🌱 Git</div><p><span class="ko">코드를 GitHub로 보내는 배달부.</span><span class="zh">把代码送到 GitHub 的快递员。</span></p></div>
+      <div class="pane"><div class="pt">🤖 Copilot</div><p><span class="ko">코드를 대신 써주는 AI 조수.</span><span class="zh">替你写代码的 AI 助手。</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">CLI로 빠르게</span><span class="zh">用 CLI 快速安装</span></div><p><span class="ko">아래 명령어는 <b>PowerShell</b>(시작 버튼 옆 돋보기에서 검색)에 <b>복사→붙여넣기→Enter</b>. 안 되면 다운로드 링크를 쓰세요.</span><span class="zh">下面的命令在 <b>PowerShell</b>(开始按钮旁的搜索里找)中 <b>复制→粘贴→回车</b>。不行就用下载链接。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">설치 · CH3</span><span class="zh">安装 · CH3</span></div>
+    <h2 class="title">1) <span class="ko">VS Code 설치</span><span class="zh">安装 VS Code</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn">PowerShell</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>winget install Microsoft.VisualStudioCode</code></pre>
+    </div>
+    <a class="linkbtn" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"><span class="ko">직접 다운로드</span><span class="zh">直接下载</span> → code.visualstudio.com/download</a>
+    <div class="note warn"><div class="nt">⚠️ <span class="ko">직접 설치할 때</span><span class="zh">手动安装时</span></div><p><span class="ko">설치 화면에서 <b>“Add to PATH”</b>, <b>“Open with Code”</b> 항목이 보이면 <b>모두 체크</b>하세요.</span><span class="zh">安装界面里看到 <b>“Add to PATH”</b>、<b>“Open with Code”</b> 就 <b>全部勾选</b>。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">설치 · CH3</span><span class="zh">安装 · CH3</span></div>
+    <h2 class="title">2) <span class="ko">Git 설치 + 이름표 등록</span><span class="zh">安装 Git + 登记名字</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn">PowerShell</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>winget install Git.Git</code></pre>
+    </div>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">따옴표 안을 내 것으로 · 한 번만</span><span class="zh">引号里改成自己的 · 只需一次</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>git config --global user.name "My Name"
+git config --global user.email "my@email.com"</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">확인</span><span class="zh">检查</span></div><p><span class="ko">PowerShell을 껐다 켠 뒤 <code class="mono">git --version</code> → 숫자가 나오면 성공.</span><span class="zh">关掉再打开 PowerShell，输入 <code class="mono">git --version</code> → 出现数字就成功。</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">연결 · CH3</span><span class="zh">连接 · CH3</span></div>
+    <h2 class="title">3) <span class="ko">GitHub 로그인 · 4) Copilot 켜기</span><span class="zh">登录 GitHub · 4) 打开 Copilot</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>GitHub 로그인:</b> VS Code 왼쪽 아래 <b>계정 아이콘</b> → “Sign in with GitHub” → 브라우저에서 <b>Authorize</b></span><span class="zh"><b>登录 GitHub:</b> VS Code 左下角 <b>账号图标</b> → “Sign in with GitHub” → 浏览器里点 <b>Authorize</b></span></li>
+      <li><span class="ko"><b>Copilot 설치:</b> 왼쪽 <b>확장(Extensions)</b> → <b>GitHub Copilot</b>과 <b>Copilot Chat</b> 두 개 Install</span><span class="zh"><b>安装 Copilot:</b> 左侧 <b>扩展(Extensions)</b> → 安装 <b>GitHub Copilot</b> 和 <b>Copilot Chat</b> 两个</span></li>
+      <li><span class="ko">로그인한 계정으로 <b>자동 연결</b> → 오른쪽에 채팅 아이콘 등장</span><span class="zh">用登录的账号 <b>自动连接</b> → 右侧出现聊天图标</span></li>
+    </ul>
+    <div class="note warn"><div class="nt">⚠️ <span class="ko">아주 중요 — 학생(Student) 플랜인지 확인!</span><span class="zh">非常重要 — 确认是否为学生(Student)套餐!</span></div><p><span class="ko">2026년 정책 변경으로 <b>무료(Free)</b>면 <b>채팅 월 50회</b>뿐이라 금방 바닥나요. <a href="https://github.com/settings/copilot" target="_blank" rel="noopener">github.com/settings/copilot</a>에서 <b>Free가 아닌지</b> 확인하고, Free면 학생 혜택을 <b>활성화</b> 하세요.</span><span class="zh">2026 年政策变更后，<b>免费(Free)</b> 套餐每月只有 <b>50 次聊天</b>，很快用完。到 <a href="https://github.com/settings/copilot" target="_blank" rel="noopener">github.com/settings/copilot</a> 确认 <b>是否为 Free</b>，若是就 <b>激活</b> 学生权益。</span></p></div>
+  </section>
+
+  <section class="slide mission zinc" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="mcard">
+      <span class="mbadge">MISSION 01</span>
+      <div class="mtitle"><span class="ko">개발환경 완성하기</span><span class="zh">搭好开发环境</span></div>
+      <ul class="blist checks" style="margin-top:28px">
+        <li><span class="ko">VS Code 설치 완료</span><span class="zh">安装好 VS Code</span></li>
+        <li><span class="ko">Git 설치 + 이름·이메일 설정 완료</span><span class="zh">安装 Git + 设置名字·邮箱</span></li>
+        <li><span class="ko">VS Code에서 GitHub 로그인 완료</span><span class="zh">在 VS Code 登录 GitHub</span></li>
+        <li><span class="ko">Copilot 설치 + <b>Free가 아닌지</b> 확인 완료</span><span class="zh">安装 Copilot + 确认 <b>不是 Free</b></span></li>
+      </ul>
+      <div class="mmeta"><span class="ko">예상 30분 · 난이도 보통 · 막히면 손 들기 🙋</span><span class="zh">约 30 分钟 · 难度中等 · 卡住就举手 🙋</span></div>
+    </div>
+  </section>
+
+  <!-- ===== CH4 프롬프트 ===== -->
+  <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程" id="s-ch4">
+    <div class="kick">CHAPTER 04</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">프롬프트<br/>엔지니어링</span><span class="zh">提示词<br/>工程</span></div>
+    <div class="ssub"><span class="ko">AI에게 ‘잘 시키는’ 기술 — 결과의 절반이 여기서 갈려요.</span><span class="zh">「把话说好」的技术 — 结果一半在这里决定。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程">
+    <div class="kick"><span class="ko">개념 · CH4</span><span class="zh">概念 · CH4</span></div>
+    <h2 class="title"><span class="ko">프롬프트 = AI에게 주는 설계도</span><span class="zh">提示词 = 给 AI 的设计图</span></h2>
+    <p class="lead"><span class="ko">똑같은 AI라도 <b>어떻게 부탁하느냐</b>에 따라 결과가 완전히 달라져요. 좋은 프롬프트의 3원칙:</span><span class="zh">同一个 AI，<b>怎么问</b> 决定结果天差地别。好提示词的 3 原则:</span></p>
+    <ul class="blist">
+      <li><span class="ko"><b>구체적으로</b> — “예쁘게” ❌ → “배경 남색, 버튼 크고 둥글게, 글씨 흰색” ⭕</span><span class="zh"><b>要具体</b> — 「好看点」❌ → 「深蓝背景、按钮又大又圆、白字」⭕</span></li>
+      <li><span class="ko"><b>예시를 보여주기</b> — 원하는 화면·문구·목업을 함께 주기</span><span class="zh"><b>给例子</b> — 把想要的画面·文案·原型一起给它</span></li>
+      <li><span class="ko"><b>하나씩 시키기</b> — 한 번에 열 개 말고 작게 쪼개서</span><span class="zh"><b>一次一件</b> — 别一口气十件，拆小了做</span></li>
+    </ul>
+  </section>
+
+  <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程">
+    <div class="kick"><span class="ko">비교 · CH4</span><span class="zh">对比 · CH4</span></div>
+    <h2 class="title"><span class="ko">아쉬운 vs 좋은 프롬프트</span><span class="zh">差的 vs 好的提示词</span></h2>
+    <div class="row">
+      <div class="pane"><div class="pt">🙅 <span class="ko">아쉬운</span><span class="zh">差的</span></div><p><span class="ko">“게임 만들어줘”<br/><small style="color:var(--muted)">→ AI가 뭘 만들지 몰라 엉뚱한 걸 만듦</small></span><span class="zh">「做个游戏」<br/><small style="color:var(--muted)">→ AI 不知道做什么，做出跑偏的东西</small></span></p></div>
+      <div class="pane accent"><div class="pt">🙆 <span class="ko">좋은</span><span class="zh">好的</span></div><p><span class="ko">“가위·바위·보 버튼 3개, 누르면 컴퓨터가 랜덤으로 내서 승패를 크게 표시, 이기면 점수 +1”</span><span class="zh">「石头剪刀布 3 个按钮，点了电脑随机出，大大显示胜负，赢了分数 +1」</span></p></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">좋은 프롬프트의 구조</span><span class="zh">好提示词的结构</span></div><p><span class="ko"><b>역할</b>(초보 학생이야) + <b>맥락</b>(prd.md 참고) + <b>요청</b>(무엇을) + <b>조건</b>(순수 HTML/JS, 주석) + <b>출력형식</b>(전체 코드로).</span><span class="zh"><b>角色</b>(我是初学者) + <b>背景</b>(参考 prd.md) + <b>要求</b>(做什么) + <b>条件</b>(纯 HTML/JS、加注释) + <b>输出形式</b>(给出完整代码)。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="4 · 프롬프트 엔지니어링" data-chap-zh="4 · 提示词工程">
+    <div class="kick"><span class="ko">템플릿 · CH4</span><span class="zh">模板 · CH4</span></div>
+    <h2 class="title"><span class="ko">그대로 쓰는 프롬프트 틀</span><span class="zh">可直接套用的提示词</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>[역할/角色] 나는 코딩 처음인 학생이야 / 我是初学编程的学生
+[맥락/背景] 이 폴더의 prd.md와 mockup.html을 참고해줘 / 参考本文件夹的 prd.md 和 mockup.html
+[요청/要求] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘 / 用一个 index.html 做出(什么)
+[조건/条件] 외부 라이브러리 없이, 초보용 주석 / 不用外部库，加初学者注释
+[출력/输出] 완성된 전체 코드 / 给出完整代码</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">고칠 때</span><span class="zh">要修改时</span></div><p><span class="ko">“버튼이 작아. 가운데로 모으고 2배 크게, 이기면 🎉를 결과 옆에 보여줘.” — <b>구체적으로, 하나씩.</b></span><span class="zh">「按钮太小。居中并放大 2 倍，赢了在结果旁显示 🎉。」— <b>要具体、一次一件。</b></span></p></div>
+  </section>
+
+  <!-- ===== CH5 컨텍스트 ===== -->
+  <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程" id="s-ch5">
+    <div class="kick">CHAPTER 05</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">컨텍스트<br/>엔지니어링</span><span class="zh">上下文<br/>工程</span></div>
+    <div class="ssub"><span class="ko">AI의 ‘기억’을 관리하는 법 — 길고 큰 작업의 핵심.</span><span class="zh">管理 AI「记忆」的方法 — 长而大的项目的关键。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
+    <div class="kick"><span class="ko">개념 · CH5</span><span class="zh">概念 · CH5</span></div>
+    <h2 class="title"><span class="ko">컨텍스트 = AI가 지금 아는 정보</span><span class="zh">上下文 = AI 此刻知道的信息</span></h2>
+    <p class="lead"><span class="ko">AI는 내 머릿속을 못 봐요. <b>내가 준 정보(창)만큼만</b> 봅니다. 이 창의 크기를 <b>컨텍스트 창</b>이라고 해요.</span><span class="zh">AI 看不到我脑子里。它只看得到 <b>我给的信息(窗口)</b>。这个窗口的大小叫 <b>上下文窗口</b>。</span></p>
+    <ul class="blist">
+      <li><span class="ko">요즘 AI의 창은 <b>대략 책 한 권 분량</b>(예: 20만 토큰)까지 커졌어요</span><span class="zh">如今 AI 的窗口大到 <b>约一本书的量</b>(例如 20 万 tokens)</span></li>
+      <li><span class="ko">하지만 <b>무한하지 않아요</b> — 대화가 길어지면 창이 꽉 차요</span><span class="zh">但 <b>不是无限的</b> — 对话变长，窗口会被塞满</span></li>
+      <li><span class="ko">창이 차면 <b>앞 내용을 잊거나 흐릿하게</b> 기억해요</span><span class="zh">塞满后会 <b>忘掉或记不清</b> 前面的内容</span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">그래서</span><span class="zh">所以</span></div><p><span class="ko">큰 걸 만들수록 <b>“무엇을 기억시킬지”를 내가 관리</b>해야 해요. 이게 컨텍스트 엔지니어링이에요.</span><span class="zh">做得越大，越要 <b>由我来管理「让它记住什么」</b>。这就是上下文工程。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
+    <div class="kick"><span class="ko">방법 · CH5</span><span class="zh">方法 · CH5</span></div>
+    <h2 class="title"><span class="ko">세 가지 습관 (도구 무관 원리)</span><span class="zh">三个习惯(与工具无关的原理)</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>① 문서화</b> — 중요한 결정·규칙을 <b>파일로</b> 적어두기 (<code class="mono">context.md</code>, <code class="mono">prd.md</code>)</span><span class="zh"><b>① 记录成文</b> — 把重要决定·规则 <b>写进文件</b>(<code class="mono">context.md</code>、<code class="mono">prd.md</code>)</span></li>
+      <li><span class="ko"><b>② 요약</b> — 세션(대화)이 길어지면 <b>“지금까지 요약”</b>을 만들어 파일에 저장</span><span class="zh"><b>② 做摘要</b> — 对话变长时，做一份 <b>「到目前为止的摘要」</b> 存进文件</span></li>
+      <li><span class="ko"><b>③ 재적재</b> — 새 세션을 시작할 때 그 <b>요약을 먼저 불러오기</b>(붙여넣기/참조)</span><span class="zh"><b>③ 重新载入</b> — 开新会话时先 <b>把摘要读进来</b>(粘贴/引用)</span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">왜 새 세션?</span><span class="zh">为什么开新会话?</span></div><p><span class="ko">대화가 너무 길어지면 느려지고 흐려져요. <b>한 세션 = 한 목표</b>로 짧게 유지하고, 기억은 <b>파일에 남겨</b> 이어가는 게 프로의 방식이에요.</span><span class="zh">对话太长会变慢变糊。<b>一个会话 = 一个目标</b>，保持简短，记忆 <b>留在文件里</b> 接着做，这才是老手的方式。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
+    <div class="kick"><span class="ko">코드 · CH5</span><span class="zh">代码 · CH5</span></div>
+    <h2 class="title">context.md — <span class="ko">프로젝트 기억 파일</span><span class="zh">项目记忆文件</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn">context.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code># 프로젝트 기억 / 项目记忆 (context)
+
+## 무엇을 만드나 / 在做什么
+가위바위보 웹게임 (index.html 단일 파일)
+
+## 지금까지 결정 / 已决定
+- 색: 남색 배경 + 흰 글씨, 버튼 크고 둥글게
+- 점수 기능 추가함 / 다시하기 버튼은 아직
+
+## 다음에 할 일 / 下一步
+- 이기면 🎉 애니메이션
+- 휴대폰에서 버튼 크기 조정</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">습관</span><span class="zh">习惯</span></div><p><span class="ko">작업을 멈추기 전, 이 파일의 <b>“다음에 할 일”</b>만 업데이트해두면 내일의 내가 편해져요.</span><span class="zh">停工前只要更新这份文件的 <b>「下一步」</b>，明天的自己就轻松了。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="5 · 컨텍스트 엔지니어링" data-chap-zh="5 · 上下文工程">
+    <div class="kick"><span class="ko">코드 · CH5</span><span class="zh">代码 · CH5</span></div>
+    <h2 class="title"><span class="ko">새 세션에서 기억 불러오기</span><span class="zh">在新会话里载入记忆</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">새 채팅 첫 메시지</span><span class="zh">新聊天的第一句</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>아래는 이 프로젝트의 context.md와 현재 index.html이야.
+以下是本项目的 context.md 和当前 index.html。
+이 내용을 기준으로 이어서 작업하자 / 请以此为准继续。
+오늘 할 일 / 今天要做: "이기면 🎉 애니메이션 추가"
+
+(여기에 context.md + 코드 붙여넣기 / 在此粘贴)</code></pre>
+    </div>
+    <div class="note ok"><div class="nt">✅ <span class="ko">핵심</span><span class="zh">核心</span></div><p><span class="ko">AI의 기억은 <b>사람이 관리</b>해요. <b>파일에 적고 → 새 세션에서 불러오기.</b> 이 습관이 큰 프로젝트를 가능하게 합니다.</span><span class="zh">AI 的记忆 <b>由人来管理</b>。<b>写进文件 → 在新会话里载入。</b> 这个习惯让大项目成为可能。</span></p></div>
+  </section>
+
+  <!-- ===== CH6 기획 ===== -->
+  <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP" id="s-ch6">
+    <div class="kick">CHAPTER 06</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">기획 · PRD에서<br/>MVP까지</span><span class="zh">规划 · 从 PRD<br/>到 MVP</span></div>
+    <div class="ssub"><span class="ko">아이디어를 제품으로 바꾸는 5단계.</span><span class="zh">把想法变成产品的 5 个阶段。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
+    <div class="kick"><span class="ko">개념 · CH6</span><span class="zh">概念 · CH6</span></div>
+    <h2 class="title"><span class="ko">기획의 5단계</span><span class="zh">规划的 5 个阶段</span></h2>
+    <div class="flow">
+      <div class="f"><b>PRD</b><span><span class="ko">무엇을·왜</span><span class="zh">做什么·为何</span></span></div>
+      <div class="f"><b>Wireframe</b><span><span class="ko">뼈대 배치</span><span class="zh">骨架布局</span></span></div>
+      <div class="f"><b>Mockup</b><span><span class="ko">실제 모습</span><span class="zh">真实外观</span></span></div>
+      <div class="f"><b>Prototype</b><span><span class="ko">눌러지는 시제품</span><span class="zh">可点击样品</span></span></div>
+      <div class="f"><b>MVP</b><span><span class="ko">핵심이 도는 제품</span><span class="zh">核心可用产品</span></span></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">오늘의 실습은 압축 버전</span><span class="zh">今天是压缩版</span></div><p><span class="ko"><b>PRD.md 작성 → Interactive Mockup.html 생성 → MVP 구현.</b> 와이어프레임·프로토타입은 이 안에 자연스럽게 녹아있어요.</span><span class="zh"><b>写 PRD.md → 生成 Interactive Mockup.html → 实现 MVP。</b> 线框图·原型自然融入其中。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
+    <div class="kick"><span class="ko">개념 · CH6</span><span class="zh">概念 · CH6</span></div>
+    <h2 class="title"><span class="ko">용어 빠르게 정리</span><span class="zh">术语快速梳理</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>Wireframe(와이어프레임)</b> — 색·꾸밈 없이 <b>어디에 무엇이</b> 있는지 뼈대만</span><span class="zh"><b>Wireframe(线框图)</b> — 无颜色装饰，只画 <b>什么在哪</b> 的骨架</span></li>
+      <li><span class="ko"><b>Mockup(목업)</b> — 색·글꼴까지 입힌 <b>실제로 보일 모습</b> (아직 안 눌림)</span><span class="zh"><b>Mockup(视觉稿)</b> — 加上颜色·字体的 <b>真实外观</b>(还不能点)</span></li>
+      <li><span class="ko"><b>Prototype(프로토타입)</b> — 버튼이 <b>눌러지고 화면이 넘어가는</b> 시제품</span><span class="zh"><b>Prototype(原型)</b> — 按钮 <b>能点、画面能跳转</b> 的样品</span></li>
+      <li><span class="ko"><b>MVP</b> — <em>Minimum Viable Product</em>, <b>핵심 하나가 진짜로 도는</b> 최소 제품</span><span class="zh"><b>MVP</b> — <em>最小可行产品</em>，<b>核心功能真的能跑</b> 的最小产品</span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">왜 MVP부터?</span><span class="zh">为何从 MVP 开始?</span></div><p><span class="ko">완벽을 노리면 못 끝내요. <b>핵심 하나가 도는 것</b>을 먼저 만들고, 거기서부터 키웁니다.</span><span class="zh">追求完美就做不完。先做出 <b>一个核心能跑的东西</b>，再往上加。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
+    <div class="kick"><span class="ko">코드 · CH6</span><span class="zh">代码 · CH6</span></div>
+    <h2 class="title"><span class="ko">1단계 — prd.md 작성</span><span class="zh">第 1 步 — 写 prd.md</span></h2>
+    <div class="code">
+      <div class="chd"><span class="dot" style="background:#ff5f56"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#27c93f"></span><span class="fn">prd.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code># 제품 기획서 / 产品需求 (PRD)
+## ① 한 줄 소개 / 一句话介绍
+## ② 누가 볼까 / 给谁看
+## ③ 어떤 화면 / 有哪些画面
+## ④ 핵심 기능 / 核心功能
+## ⑤ 분위기 / 风格氛围</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">주제 팁</span><span class="zh">选题小贴士</span></div><p><span class="ko">거창할 필요 없어요. <b>내가 좋아하는 것</b>이면 충분. 막히면 <b>더 작게</b> 줄이세요.</span><span class="zh">不用宏大。<b>自己喜欢的</b> 就够。卡住就 <b>再缩小</b>。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
+    <div class="kick"><span class="ko">코드 · CH6</span><span class="zh">代码 · CH6</span></div>
+    <h2 class="title"><span class="ko">2단계 — Interactive Mockup.html 생성</span><span class="zh">第 2 步 — 生成 Interactive Mockup.html</span></h2>
+    <p class="lead"><span class="ko">종이 대신 <b>눌러지는 목업</b>을 AI에게 만들게 해요. prd.md를 열어둔 채:</span><span class="zh">不用纸，让 AI 做一个 <b>能点击的原型</b>。打开着 prd.md:</span></p>
+    <div class="code plain">
+      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
+mockup.html 하나로 만들어줘. 디자인은 단순하게,
+버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.
+参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
+设计简单，点按钮时能看到画面如何变化。</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">목업 → MVP</span><span class="zh">原型 → MVP</span></div><p><span class="ko">이 목업이 마음에 들면, 다음 챕터에서 <b>진짜 동작(MVP)</b>을 채워 <code class="mono">index.html</code>로 완성해요.</span><span class="zh">原型满意后，下一章补上 <b>真正的功能(MVP)</b>，完成 <code class="mono">index.html</code>。</span></p></div>
+  </section>
+
+  <section class="slide mission zinc" data-chap="6 · 기획 · PRD→MVP" data-chap-zh="6 · 规划 · PRD→MVP">
+    <div class="mcard">
+      <span class="mbadge">MISSION 02</span>
+      <div class="mtitle"><span class="ko">내 PRD와 목업 만들기</span><span class="zh">做出我的 PRD 和原型</span></div>
+      <ul class="blist checks" style="margin-top:28px">
+        <li><span class="ko">작업 폴더(영어 이름) 만들고 VS Code로 열기</span><span class="zh">建工作文件夹(英文名)并用 VS Code 打开</span></li>
+        <li><span class="ko"><b>prd.md</b> 만들어 5항목 채우기</span><span class="zh">建 <b>prd.md</b> 填好 5 项</span></li>
+        <li><span class="ko"><b>mockup.html</b> 프롬프트로 생성하고 브라우저로 확인</span><span class="zh">用提示词生成 <b>mockup.html</b> 并在浏览器查看</span></li>
+      </ul>
+      <div class="mmeta"><span class="ko">예상 25분 · 난이도 보통</span><span class="zh">约 25 分钟 · 难度中等</span></div>
+    </div>
+  </section>
+
+  <!-- ===== CH7 개발 ===== -->
+  <section class="slide" data-chap="7 · 개발 · MVP 만들기" data-chap-zh="7 · 开发 · 做出 MVP" id="s-ch7">
+    <div class="kick">CHAPTER 07</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">개발 · MVP<br/>만들기</span><span class="zh">开发 · 做出<br/>MVP</span></div>
+    <div class="ssub"><span class="ko">목업을 진짜로 ‘도는’ 제품으로.</span><span class="zh">把原型变成真正「能跑」的产品。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="7 · 개발 · MVP 만들기" data-chap-zh="7 · 开发 · 做出 MVP">
+    <div class="kick"><span class="ko">코드 · CH7</span><span class="zh">代码 · CH7</span></div>
+    <h2 class="title"><span class="ko">3단계 — MVP 구현 프롬프트</span><span class="zh">第 3 步 — 实现 MVP 的提示词</span></h2>
+    <p class="lead"><span class="ko"><code class="mono">index.html</code>을 새로 만들고, <b>prd.md·mockup.html을 함께 열어둔 채</b> 요청해요.</span><span class="zh">新建 <code class="mono">index.html</code>，<b>同时打开 prd.md·mockup.html</b> 再提要求。</span></p>
+    <div class="code plain">
+      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
+동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.
+参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
+做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</code></pre>
+    </div>
+    <div class="note ok"><div class="nt">✅ <span class="ko">확인</span><span class="zh">检查</span></div><p><span class="ko">코드 위 <b>Apply</b>로 넣고 저장 → <b>브라우저로 열어</b> 핵심 기능이 도는지 확인!</span><span class="zh">点代码上的 <b>Apply</b> 放入并保存 → <b>用浏览器打开</b> 看核心功能是否运行!</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="7 · 개발 · MVP 만들기" data-chap-zh="7 · 开发 · 做出 MVP">
+    <div class="kick"><span class="ko">개념 · CH7</span><span class="zh">概念 · CH7</span></div>
+    <h2 class="title"><span class="ko">개발 리듬 — 짧은 고리를 반복</span><span class="zh">开发节奏 — 反复短循环</span></h2>
+    <div class="flow">
+      <div class="f"><b><span class="ko">부탁</span><span class="zh">提要求</span></b><span><span class="ko">구체적으로</span><span class="zh">要具体</span></span></div>
+      <div class="f"><b><span class="ko">받기</span><span class="zh">拿代码</span></b><span>Apply</span></div>
+      <div class="f"><b><span class="ko">확인</span><span class="zh">看结果</span></b><span><span class="ko">브라우저</span><span class="zh">浏览器</span></span></div>
+      <div class="f"><b><span class="ko">다시 부탁</span><span class="zh">再要求</span></b><span><span class="ko">조금씩 수정</span><span class="zh">一点点改</span></span></div>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">막힐 때</span><span class="zh">卡住时</span></div><p><span class="ko">빨간 에러는 <b>그대로 복사</b>해서 “이 에러 났어, 고쳐줘”. 꼬이면 context.md를 들고 <b>새 세션</b>으로.</span><span class="zh">红色报错就 <b>原样复制</b>，说「出了这个错，帮我修」。乱了就带上 context.md <b>开新会话</b>。</span></p></div>
+  </section>
+
+  <section class="slide mission zinc" data-chap="7 · 개발 · MVP 만들기" data-chap-zh="7 · 开发 · 做出 MVP">
+    <div class="mcard">
+      <span class="mbadge">MISSION 03</span>
+      <div class="mtitle"><span class="ko">내 MVP 만들기</span><span class="zh">做出我的 MVP</span></div>
+      <ul class="blist checks" style="margin-top:28px">
+        <li><span class="ko">index.html에 핵심 기능 1개가 도는 MVP 만들기</span><span class="zh">在 index.html 做出 1 个核心功能能跑的 MVP</span></li>
+        <li><span class="ko">브라우저로 확인하고 3번 이상 고쳐 부탁하기</span><span class="zh">用浏览器查看并至少修改 3 次</span></li>
+        <li><span class="ko">context.md에 “다음에 할 일” 적어두기</span><span class="zh">在 context.md 写下「下一步」</span></li>
+      </ul>
+      <div class="mmeta"><span class="ko">예상 40분 · 난이도 보통 · 완성 안 해도 OK</span><span class="zh">约 40 分钟 · 难度中等 · 没做完也 OK</span></div>
+    </div>
+  </section>
+
+  <!-- ===== CH8 배포 ===== -->
+  <section class="slide" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法" id="s-ch8">
+    <div class="kick">CHAPTER 08</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">배포 · 세상에<br/>내놓기</span><span class="zh">部署 · 让它<br/>上线</span></div>
+    <div class="ssub"><span class="ko">오늘은 GitHub Pages로 — 그리고 다른 방법들도.</span><span class="zh">今天用 GitHub Pages — 也看看其他方法。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法">
+    <div class="kick"><span class="ko">흐름 · CH8</span><span class="zh">流程 · CH8</span></div>
+    <h2 class="title">GitHub Pages — <span class="ko">내 컴퓨터에서 웹으로</span><span class="zh">从电脑到网页</span></h2>
+    <div class="flow">
+      <div class="f"><b><span class="ko">커밋</span><span class="zh">提交</span></b><span><span class="ko">세이브</span><span class="zh">存档</span></span></div>
+      <div class="f"><b><span class="ko">푸시</span><span class="zh">推送</span></b><span><span class="ko">GitHub로</span><span class="zh">到 GitHub</span></span></div>
+      <div class="f"><b>Pages <span class="ko">켜기</span><span class="zh">开启</span></b><span><span class="ko">주소 공개</span><span class="zh">公开网址</span></span></div>
+    </div>
+    <div class="note"><div class="nt">👍 <span class="ko">초보는 버튼으로 (GUI)</span><span class="zh">新手用按钮(GUI)</span></div><p><span class="ko">VS Code 왼쪽 <b>Source Control</b> → 메시지 <b>first commit</b> → <b>✓ Commit</b> → <b>Publish to GitHub</b> → <b>public</b> 선택. 커밋·푸시가 한 번에!</span><span class="zh">VS Code 左侧 <b>Source Control</b> → 写 <b>first commit</b> → <b>✓ Commit</b> → <b>Publish to GitHub</b> → 选 <b>public</b>。提交·推送一步到位!</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法">
+    <div class="kick"><span class="ko">코드 · CH8</span><span class="zh">代码 · CH8</span></div>
+    <h2 class="title"><span class="ko">명령어로 하면 (CLI · 원리)</span><span class="zh">用命令行(CLI · 原理)</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn">Terminal</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>git add .
+git commit -m "first commit"
+git push</code></pre>
+    </div>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">내 웹사이트 주소 (Pages 켠 뒤)</span><span class="zh">我的网址(开启 Pages 后)</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>https://ID.github.io/REPO/</code></pre>
+    </div>
+    <div class="note"><div class="nt">Pages <span class="ko">켜기</span><span class="zh">开启</span></div><p><span class="ko">GitHub 창고 → <b>Settings → Pages</b> → Branch <b>main</b>/(root) → Save → 1~2분 뒤 주소 등장.</span><span class="zh">GitHub 仓库 → <b>Settings → Pages</b> → Branch <b>main</b>/(root) → Save → 1~2 分钟后出现网址。</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法">
+    <div class="kick"><span class="ko">확장 · CH8</span><span class="zh">拓展 · CH8</span></div>
+    <h2 class="title"><span class="ko">다른 배포·출시 방법들</span><span class="zh">其他部署·上线方法</span></h2>
+    <table class="kv">
+      <tr><th style="width:30%"><span class="ko">방법</span><span class="zh">方法</span></th><th><span class="ko">어떤 때</span><span class="zh">什么时候用</span></th></tr>
+      <tr><td><b>GitHub Pages</b></td><td><span class="ko">정적 웹앱 무료 공개 · <b>오늘 우리가 쓰는 방법</b></span><span class="zh">静态网页免费公开 · <b>今天用的方法</b></span></td></tr>
+      <tr><td><b>Netlify · Vercel</b></td><td><span class="ko">폴더를 끌어다 놓으면 자동 배포 · 커스텀 도메인 쉬움</span><span class="zh">拖入文件夹即自动部署 · 自定义域名简单</span></td></tr>
+      <tr><td><b>itch.io</b></td><td><span class="ko">웹게임을 올려 공유·플레이 (게임 스타터에 적합)</span><span class="zh">上传网页游戏分享·试玩(适合游戏模板)</span></td></tr>
+      <tr><td><b><span class="ko">앱스토어 · 구글플레이</span><span class="zh">App Store · Google Play</span></b></td><td><span class="ko">‘앱’으로 출시 (심사·계정 비용 필요)</span><span class="zh">以「App」上架(需审核·账号费用)</span></td></tr>
+      <tr><td><b><span class="ko">내 도메인 연결</span><span class="zh">绑定自有域名</span></b></td><td><span class="ko">mysite.com 같은 주소 구매해 연결</span><span class="zh">购买 mysite.com 之类的网址并绑定</span></td></tr>
+    </table>
+    <div class="note"><div class="nt">💡 <span class="ko">배포는 끝이 아니라 시작</span><span class="zh">部署不是终点，是起点</span></div><p><span class="ko">올린 뒤 <b>사람들의 반응</b>을 보고 고쳐가는 게 진짜 개발이에요.</span><span class="zh">上线后看 <b>大家的反馈</b> 再改进，这才是真正的开发。</span></p></div>
+  </section>
+
+  <section class="slide mission zinc" data-chap="8 · 배포 · 여러 방법" data-chap-zh="8 · 部署 · 多种方法">
+    <div class="mcard">
+      <span class="mbadge">MISSION 04</span>
+      <div class="mtitle"><span class="ko">배포하고 주소 공유하기 🎉</span><span class="zh">部署并分享网址 🎉</span></div>
+      <ul class="blist checks" style="margin-top:28px">
+        <li><span class="ko">커밋 → Publish(푸시)로 GitHub에 올리기</span><span class="zh">提交 → Publish(推送)上传到 GitHub</span></li>
+        <li><span class="ko">Settings → Pages 켜기</span><span class="zh">Settings → 开启 Pages</span></li>
+        <li><span class="ko">내 주소를 <b>친구·가족에게</b> 보내보기</span><span class="zh">把网址 <b>发给朋友·家人</b></span></li>
+      </ul>
+      <div class="mmeta"><span class="ko">예상 25분 · 오늘의 하이라이트!</span><span class="zh">约 25 分钟 · 今天的高潮!</span></div>
+    </div>
+  </section>
+
+  <!-- ===== CH9 이후 & 부록 ===== -->
+  <section class="slide" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录" id="s-ch9">
+    <div class="kick">CHAPTER 09</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">이후 3일 &amp; 부록</span><span class="zh">之后 3 天 &amp; 附录</span></div>
+    <div class="ssub"><span class="ko">집에서 매일 조금씩 완성하고, 막히면 여기를 봐요.</span><span class="zh">在家每天做一点，卡住就看这里。</span></div>
+    <div class="abar"></div>
+    <div class="grow"></div>
+    <div class="foot"><b>jdhschool.org</b> · <span class="ko">바이브코딩 강의</span><span class="zh">Vibe 编程课</span></div>
+  </section>
+
+  <section class="slide" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick"><span class="ko">셀프 · CH9</span><span class="zh">自学 · CH9</span></div>
+    <h2 class="title"><span class="ko">이후 3일, 매일 반복하는 4단계</span><span class="zh">之后 3 天，每天重复的 4 步</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>열기</b> — VS Code로 내 폴더 열기 (context.md 먼저 읽기)</span><span class="zh"><b>打开</b> — 用 VS Code 打开我的文件夹(先读 context.md)</span></li>
+      <li><span class="ko"><b>고치기</b> — Copilot에게 “오늘은 ○○ 추가” → 저장 → 확인</span><span class="zh"><b>修改</b> — 对 Copilot 说「今天加 ○○」→ 保存 → 查看</span></li>
+      <li><span class="ko"><b>세이브</b> — Source Control에서 ✓ Commit</span><span class="zh"><b>存档</b> — 在 Source Control 点 ✓ Commit</span></li>
+      <li><span class="ko"><b>올리기</b> — Sync/Push → 1~2분 뒤 내 주소에 반영!</span><span class="zh"><b>上传</b> — Sync/Push → 1~2 分钟后网址就更新!</span></li>
+    </ul>
+    <div class="note"><div class="nt">💡 <span class="ko">3일 아이디어</span><span class="zh">3 天点子</span></div><p><span class="ko">Day1 색·폰트·이모지 · Day2 기능 하나 추가 · Day3 내용 채우고 휴대폰 점검 후 공유.</span><span class="zh">Day1 颜色·字体·表情 · Day2 加一个功能 · Day3 填内容、手机上检查后分享。</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick"><span class="ko">부록 A · CH9</span><span class="zh">附录 A · CH9</span></div>
+    <h2 class="title"><span class="ko">문제 해결 — 자주 막히는 곳</span><span class="zh">问题解决 — 常见卡点</span></h2>
+    <ul class="blist">
+      <li><span class="ko"><b>winget이 안 돼요</b> → 다운로드 링크(방법 B)로 설치</span><span class="zh"><b>winget 不行</b> → 用下载链接(方法 B)安装</span></li>
+      <li><span class="ko"><b>git 명령이 인식 안 됨</b> → PowerShell을 껐다 켜기</span><span class="zh"><b>git 命令不识别</b> → 关掉再打开 PowerShell</span></li>
+      <li><span class="ko"><b>Copilot “한도 초과”</b> → Free 플랜(월 50회). 학생 플랜 활성화 / Tab 자동완성 활용</span><span class="zh"><b>Copilot「超出额度」</b> → Free 套餐(月 50 次)。激活学生套餐 / 多用 Tab 补全</span></li>
+      <li><span class="ko"><b>배포 404</b> → 파일명 index.html · Branch main · 1~2분 대기</span><span class="zh"><b>部署 404</b> → 文件名 index.html · Branch main · 等 1~2 分钟</span></li>
+      <li><span class="ko"><b>바꿨는데 반영 안 됨</b> → Commit+Push 했는지 확인, 강력 새로고침(Ctrl+Shift+R)</span><span class="zh"><b>改了没生效</b> → 确认已 Commit+Push，强制刷新(Ctrl+Shift+R)</span></li>
+    </ul>
+  </section>
+
+  <section class="slide" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick"><span class="ko">부록 B · CH9</span><span class="zh">附录 B · CH9</span></div>
+    <h2 class="title"><span class="ko">명령어 치트시트</span><span class="zh">命令速查表</span></h2>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">설치 · 최초 설정 (한 번만)</span><span class="zh">安装 · 初次设置(只需一次)</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>winget install Microsoft.VisualStudioCode
+winget install Git.Git
+git config --global user.name "My Name"
+git config --global user.email "my@email.com"</code></pre>
+    </div>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">코드 올리기 (매번 반복)</span><span class="zh">上传代码(每次重复)</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>git add .
+git commit -m "memo"
+git push</code></pre>
+    </div>
+    <div class="note"><div class="nt">⌨️ <span class="ko">단축키</span><span class="zh">快捷键</span></div><p><span class="ko">저장 <b>Ctrl+S</b> · 되돌리기 <b>Ctrl+Z</b> · Copilot 채팅 <b>Ctrl+Alt+I</b> · 자동완성 <b>Tab</b> · 터미널 <b>Ctrl+`</b></span><span class="zh">保存 <b>Ctrl+S</b> · 撤销 <b>Ctrl+Z</b> · Copilot 聊天 <b>Ctrl+Alt+I</b> · 补全 <b>Tab</b> · 终端 <b>Ctrl+`</b></span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick"><span class="ko">부록 C · CH9</span><span class="zh">附录 C · CH9</span></div>
+    <h2 class="title"><span class="ko">용어 사전</span><span class="zh">术语表</span></h2>
+    <table class="kv">
+      <tr><td><b><span class="ko">바이브코딩</span><span class="zh">Vibe 编程</span></b></td><td><span class="ko">AI에게 말로 시켜 코드를 만드는 방식</span><span class="zh">用说话让 AI 生成代码的方式</span></td></tr>
+      <tr><td><b>GUI / CLI</b></td><td><span class="ko">클릭 방식 / 명령어 창 방식</span><span class="zh">点击式 / 命令行方式</span></td></tr>
+      <tr><td><b><span class="ko">프롬프트</span><span class="zh">提示词</span></b></td><td><span class="ko">AI에게 주는 설계도(부탁 메시지)</span><span class="zh">给 AI 的设计图(指令)</span></td></tr>
+      <tr><td><b><span class="ko">컨텍스트 · 컨텍스트 창</span><span class="zh">上下文 · 上下文窗口</span></b></td><td><span class="ko">AI가 아는 정보 / 그 최대 크기</span><span class="zh">AI 知道的信息 / 其最大容量</span></td></tr>
+      <tr><td><b>PRD · <span class="ko">와이어프레임 · 목업</span><span class="zh">线框图 · 视觉稿</span></b></td><td><span class="ko">기획서 / 뼈대 배치 / 실제 모습</span><span class="zh">需求书 / 骨架布局 / 真实外观</span></td></tr>
+      <tr><td><b><span class="ko">프로토타입 · MVP</span><span class="zh">原型 · MVP</span></b></td><td><span class="ko">눌러지는 시제품 / 핵심이 도는 최소 제품</span><span class="zh">可点击样品 / 核心可用的最小产品</span></td></tr>
+      <tr><td><b><span class="ko">커밋 · 푸시 · 배포</span><span class="zh">提交 · 推送 · 部署</span></b></td><td><span class="ko">세이브 / GitHub로 보내기 / 인터넷 공개</span><span class="zh">存档 / 送到 GitHub / 上线公开</span></td></tr>
+    </table>
+  </section>
+
+  <section class="slide ink" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">
+    <div class="kick">THE END</div>
+    <div class="grow"></div>
+    <div class="stitle"><span class="ko">이제 여러분은<br/>진짜 개발자예요 🚀</span><span class="zh">现在，你们<br/>就是真正的开发者了 🚀</span></div>
+    <div class="ssub" style="color:#a1a1aa"><span class="ko">기획하고, 만들고, 세상에 배포했어요.<br/>남은 건 재미있게, 계속 만들어보는 것뿐!</span><span class="zh">你规划了、做出来了、还部署到了世界上。<br/>剩下的，就是开心地一直做下去!</span></div>
+    <div class="grow"></div>
+    <div class="foot" style="color:#71717a"><b>jdhschool.org</b> · <span class="ko">바이브코딩 원데이 클래스</span><span class="zh">Vibe 编程一日课</span></div>
+  </section>
+
+</div>
+
+<div class="nav no-print">
+  <button id="prev" onclick="go(cur-1)" aria-label="prev">‹</button>
+  <button id="next" onclick="go(cur+1)" aria-label="next">›</button>
+</div>
+<div class="hint no-print"><span class="ko">← → 로 이동 · 복사 버튼 · 中文 토글</span><span class="zh">← → 翻页 · 复制按钮 · 한국어 切换</span></div>
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var cur = 0;
+  var countEl=document.getElementById('count'), chapEl=document.getElementById('chapLabel'),
+      progEl=document.getElementById('prog'), prevB=document.getElementById('prev'), nextB=document.getElementById('next');
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  var chapIds=['s-intro','s-ch1','s-ch2','s-ch3','s-ch4','s-ch5','s-ch6','s-ch7','s-ch8','s-ch9'];
+
+  function pad(n){ return (n<10?'0':'')+n; }
+  function idIndex(id){ var el=document.getElementById(id); return el?slides.indexOf(el):-1; }
+  function isZh(){ return document.body.classList.contains('lang-zh'); }
+  function render(){
+    slides.forEach(function(s,k){ s.classList.toggle('is-hidden', k!==cur); });
+    countEl.textContent = pad(cur+1)+' / '+pad(slides.length);
+    var s=slides[cur];
+    chapEl.textContent = (isZh() && s.dataset.chapZh) ? s.dataset.chapZh : (s.dataset.chap||'');
+    progEl.style.width = ((cur+1)/slides.length*100)+'%';
+    prevB.disabled = cur===0; nextB.disabled = cur===slides.length-1;
+    var activeId=chapIds[0];
+    chapIds.forEach(function(id){ var idx=idIndex(id); if(idx>-1 && idx<=cur) activeId=id; });
+    tocLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+activeId); });
+    window.scrollTo(0,0); if(slides[cur]) slides[cur].scrollTop=0;
+  }
+  function go(n){ cur=Math.max(0,Math.min(slides.length-1,n)); if(history.replaceState) history.replaceState(null,'','#s'+(cur+1)); render(); }
+  function toggleLang(){
+    var zh = document.body.classList.toggle('lang-zh');
+    document.body.classList.toggle('lang-ko', !zh);
+    document.documentElement.lang = zh ? 'zh' : 'ko';
+    try{ localStorage.setItem('jdh_lang', zh?'zh':'ko'); }catch(e){}
+    render();
+  }
+  window.toggleLang=toggleLang;
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); go(cur+1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(cur-1); }
+    else if(e.key==='Home'){ go(0); } else if(e.key==='End'){ go(slides.length-1); }
+  });
+  tocLinks.forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); var idx=idIndex(a.getAttribute('href').slice(1)); if(idx>-1) go(idx); toggleToc(false); }); });
+  function toggleToc(force){ var t=document.getElementById('toc'), sc=document.getElementById('scrim'); var open=(typeof force==='boolean')?force:!t.classList.contains('open'); t.classList.toggle('open',open); sc.classList.toggle('show',open); }
+  window.toggleToc=toggleToc; window.go=go;
+  Object.defineProperty(window,'cur',{get:function(){return cur;}});
+  function copyCode(btn){
+    var card=btn.closest('.code'); var pre=card?card.querySelector('pre'):null; if(!pre) return;
+    var text=pre.innerText;
+    function done(){ var k=btn.querySelector('.ko'), z=btn.querySelector('.zh'); var ok=btn.getAttribute('data-o')||''; if(!btn.getAttribute('data-o')){ btn.setAttribute('data-o',btn.innerHTML);} btn.textContent = isZh()?'已复制 ✓':'복사됨 ✓'; setTimeout(function(){ btn.innerHTML=btn.getAttribute('data-o'); },1300); }
+    if(navigator.clipboard){ navigator.clipboard.writeText(text).then(done).catch(fallback); } else fallback();
+    function fallback(){ var r=document.createRange(); r.selectNodeContents(pre); var s=getSelection(); s.removeAllRanges(); s.addRange(r); try{document.execCommand('copy');done();}catch(e){} s.removeAllRanges(); }
+  }
+  window.copyCode=copyCode;
+  (function(){
+    try{ var L=localStorage.getItem('jdh_lang'); if(L==='zh'){ document.body.classList.remove('lang-ko'); document.body.classList.add('lang-zh'); document.documentElement.lang='zh'; } }catch(e){}
+    var m=(location.hash||'').match(/^#s(\d+)$/); if(m){ cur=Math.max(0,Math.min(slides.length-1,parseInt(m[1],10)-1)); } else { var idx=idIndex((location.hash||'').slice(1)); if(idx>-1) cur=idx; }
+    render();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# 강의 준비용 자료 — 저장소에 올리지 않음
+참고자료/
+designs/
+
+# OS / 편집기 부산물
+.DS_Store
+Thumbs.db
+*.log
