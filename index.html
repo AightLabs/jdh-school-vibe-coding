@@ -202,7 +202,7 @@
     <ul class="blist">
       <li><span class="ko"><b>1 · 바이브 코딩이란?</b>&nbsp; <small>AI와 함께 만드는 새로운 코딩</small></span><span class="zh"><b>1 · 什么是 Vibe 编程?</b>&nbsp; <small>与 AI 一起做的新式编程</small></span></li>
       <li><span class="ko"><b>2 · 기초 CS 지식</b>&nbsp; <small>언어·GUI/CLI·웹 3종·Git</small></span><span class="zh"><b>2 · 基础计算机知识</b>&nbsp; <small>语言·GUI/CLI·网页三件套·Git</small></span></li>
-      <li><span class="ko"><b>3 · 개발환경 설치</b>&nbsp; <small>VS Code·Git·Copilot</small></span><span class="zh"><b>3 · 安装开发环境</b>&nbsp; <small>VS Code·Git·Copilot</small></span></li>
+      <li><span class="ko"><b>3 · 개발환경 설치</b>&nbsp; <small>VS Code·Git·OpenCode</small></span><span class="zh"><b>3 · 安装开发环境</b>&nbsp; <small>VS Code·Git·OpenCode</small></span></li>
       <li><span class="ko"><b>4 · 프롬프트 엔지니어링</b>&nbsp; <small>AI에게 잘 시키는 법</small></span><span class="zh"><b>4 · 提示词工程</b>&nbsp; <small>如何把话说清楚让 AI 做好</small></span></li>
       <li><span class="ko"><b>5 · 컨텍스트 엔지니어링</b>&nbsp; <small>AI의 기억을 관리하는 법</small></span><span class="zh"><b>5 · 上下文工程</b>&nbsp; <small>管理 AI「记忆」的方法</small></span></li>
       <li><span class="ko"><b>6 · 기획 → 7 · 개발 → 8 · 배포</b>&nbsp; <small>PRD·목업·MVP·인터넷 공개</small></span><span class="zh"><b>6 · 规划 → 7 · 开发 → 8 · 部署</b>&nbsp; <small>PRD·原型·MVP·上线公开</small></span></li>
@@ -216,7 +216,7 @@
     <p class="lead"><span class="ko">“내가 기획한 것을, 만든 데까지, <b>인터넷 주소로 올려본다.</b>”</span><span class="zh">“把我规划的东西，做到哪算哪，<b>发布成一个网址。</b>”</span></p>
     <div class="row">
       <div class="pane accent"><div class="pt"><span class="ko">기획 → 목업</span><span class="zh">规划 → 原型</span></div><p><span class="ko">무엇을 만들지 글과 화면으로 정리</span><span class="zh">用文字和画面理清要做什么</span></p></div>
-      <div class="pane accent"><div class="pt"><span class="ko">개발 → 배포</span><span class="zh">开发 → 部署</span></div><p><span class="ko">Copilot과 만들고 인터넷에 공개</span><span class="zh">用 Copilot 做出来并发布上线</span></p></div>
+      <div class="pane accent"><div class="pt"><span class="ko">개발 → 배포</span><span class="zh">开发 → 部署</span></div><p><span class="ko">OpenCode와 만들고 인터넷에 공개</span><span class="zh">用 OpenCode 做出来并发布上线</span></p></div>
     </div>
     <div class="note ok"><div class="nt">✅ <span class="ko">완성은 목표가 아니에요</span><span class="zh">完成不是目标</span></div><p><span class="ko">오늘 못 끝내도 괜찮아요. <b>이후 3일 동안 매일 조금씩</b> 이어서 완성하면 됩니다.</span><span class="zh">今天做不完也没关系。<b>之后 3 天每天做一点</b>，慢慢完成就行。</span></p></div>
   </section>
@@ -455,7 +455,7 @@
       <div class="pane accent"><div class="pt">🗂️ GitHub <span class="ko">계정</span><span class="zh">账号</span></div><p><span class="ko">코드 보관·공개하는 곳. <b>이미 가입 완료!</b></span><span class="zh">保管·公开代码的地方。<b>已经注册好了!</b></span></p></div>
       <div class="pane"><div class="pt">📝 VS Code</div><p><span class="ko">코드를 쓰는 작업실(에디터).</span><span class="zh">写代码的工作台(编辑器)。</span></p></div>
       <div class="pane"><div class="pt">🌱 Git</div><p><span class="ko">코드를 GitHub로 보내는 배달부.</span><span class="zh">把代码送到 GitHub 的快递员。</span></p></div>
-      <div class="pane"><div class="pt">🤖 Copilot</div><p><span class="ko">코드를 대신 써주는 AI 조수.</span><span class="zh">替你写代码的 AI 助手。</span></p></div>
+      <div class="pane"><div class="pt">🤖 OpenCode</div><p><span class="ko">터미널에서 대화하는 무료 AI 코딩 도구.</span><span class="zh">在终端里对话的免费 AI 编程工具。</span></p></div>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">CLI로 빠르게</span><span class="zh">用 CLI 快速安装</span></div><p><span class="ko">아래 명령어는 <b>PowerShell</b>(시작 버튼 옆 돋보기에서 검색)에 <b>복사→붙여넣기→Enter</b>. 안 되면 다운로드 링크를 쓰세요.</span><span class="zh">下面的命令在 <b>PowerShell</b>(开始按钮旁的搜索里找)中 <b>复制→粘贴→回车</b>。不行就用下载链接。</span></p></div>
   </section>
@@ -486,15 +486,43 @@ git config --global user.email "my@email.com"</code></pre>
     <div class="note"><div class="nt">💡 <span class="ko">확인</span><span class="zh">检查</span></div><p><span class="ko">PowerShell을 껐다 켠 뒤 <code class="mono">git --version</code> → 숫자가 나오면 성공.</span><span class="zh">关掉再打开 PowerShell，输入 <code class="mono">git --version</code> → 出现数字就成功。</span></p></div>
   </section>
 
-  <section class="slide top" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
     <div class="kick"><span class="ko">연결 · CH3</span><span class="zh">连接 · CH3</span></div>
-    <h2 class="title">3) <span class="ko">GitHub 로그인 · 4) Copilot 켜기</span><span class="zh">登录 GitHub · 4) 打开 Copilot</span></h2>
+    <h2 class="title">3) <span class="ko">VS Code에서 GitHub 로그인</span><span class="zh">在 VS Code 登录 GitHub</span></h2>
     <ul class="blist">
-      <li><span class="ko"><b>GitHub 로그인:</b> VS Code 왼쪽 아래 <b>계정 아이콘</b> → “Sign in with GitHub” → 브라우저에서 <b>Authorize</b></span><span class="zh"><b>登录 GitHub:</b> VS Code 左下角 <b>账号图标</b> → “Sign in with GitHub” → 浏览器里点 <b>Authorize</b></span></li>
-      <li><span class="ko"><b>Copilot 설치:</b> 왼쪽 <b>확장(Extensions)</b> → <b>GitHub Copilot</b>과 <b>Copilot Chat</b> 두 개 Install</span><span class="zh"><b>安装 Copilot:</b> 左侧 <b>扩展(Extensions)</b> → 安装 <b>GitHub Copilot</b> 和 <b>Copilot Chat</b> 两个</span></li>
-      <li><span class="ko">로그인한 계정으로 <b>자동 연결</b> → 오른쪽에 채팅 아이콘 등장</span><span class="zh">用登录的账号 <b>自动连接</b> → 右侧出现聊天图标</span></li>
+      <li><span class="ko">VS Code 왼쪽 아래 <b>계정 아이콘</b> → “Sign in with GitHub” → 브라우저에서 <b>Authorize</b></span><span class="zh">VS Code 左下角 <b>账号图标</b> → “Sign in with GitHub” → 浏览器里点 <b>Authorize</b></span></li>
+      <li><span class="ko">미리 가입한 GitHub 계정으로 로그인 상태여야 해요</span><span class="zh">要先用已注册的 GitHub 账号登录</span></li>
+      <li><span class="ko">나중에 <b>배포(Publish to GitHub)</b>할 때 쓰여요</span><span class="zh">之后 <b>部署(Publish to GitHub)</b> 时会用到</span></li>
     </ul>
-    <div class="note warn"><div class="nt">⚠️ <span class="ko">아주 중요 — 학생(Student) 플랜인지 확인!</span><span class="zh">非常重要 — 确认是否为学生(Student)套餐!</span></div><p><span class="ko">2026년 정책 변경으로 <b>무료(Free)</b>면 <b>채팅 월 50회</b>뿐이라 금방 바닥나요. <a href="https://github.com/settings/copilot" target="_blank" rel="noopener">github.com/settings/copilot</a>에서 <b>Free가 아닌지</b> 확인하고, Free면 학생 혜택을 <b>활성화</b> 하세요.</span><span class="zh">2026 年政策变更后，<b>免费(Free)</b> 套餐每月只有 <b>50 次聊天</b>，很快用完。到 <a href="https://github.com/settings/copilot" target="_blank" rel="noopener">github.com/settings/copilot</a> 确认 <b>是否为 Free</b>，若是就 <b>激活</b> 学生权益。</span></p></div>
+    <div class="note"><div class="nt">💡 <span class="ko">참고</span><span class="zh">提示</span></div><p><span class="ko">GitHub 로그인은 <b>코드를 올리기 위한</b> 것이고, 코드를 <b>만드는</b> AI 도구는 다음 슬라이드에서 깝니다.</span><span class="zh">GitHub 登录是为了 <b>上传代码</b>；<b>生成</b> 代码的 AI 工具在下一页安装。</span></p></div>
+  </section>
+
+  <section class="slide" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">AI 도구 · CH3</span><span class="zh">AI 工具 · CH3</span></div>
+    <h2 class="title">4) <span class="ko">Node.js + OpenCode 설치</span><span class="zh">安装 Node.js + OpenCode</span></h2>
+    <p class="lead"><span class="ko">OpenCode는 터미널에서 <b>말로</b> 코드를 만들어주는 AI 도구예요. <b>npm</b>으로 설치하는데, 먼저 <b>Node.js</b>가 필요해요.</span><span class="zh">OpenCode 是在终端里用 <b>说话</b> 生成代码的 AI 工具。用 <b>npm</b> 安装，先要装 <b>Node.js</b>。</span></p>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">① Node.js 설치 · PowerShell</span><span class="zh">① 安装 Node.js · PowerShell</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>winget install OpenJS.NodeJS.LTS</code></pre>
+    </div>
+    <div class="code plain">
+      <div class="chd"><span class="fn"><span class="ko">② PowerShell 껐다 켠 뒤 · OpenCode 설치</span><span class="zh">② 关掉再开 PowerShell · 安装 OpenCode</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+<pre><code>npm i -g opencode-ai@latest
+opencode --version</code></pre>
+    </div>
+    <div class="note"><div class="nt">💡 <span class="ko">확인 · 문제 시</span><span class="zh">检查 · 遇到问题</span></div><p><span class="ko">Node 설치 확인 <code class="mono">node --version</code>. <code class="mono">npm</code>이 인식 안 되면 PowerShell을 <b>껐다 켜세요</b>. winget이 안 되면 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>에서 LTS 설치.</span><span class="zh">检查 Node <code class="mono">node --version</code>。若 <code class="mono">npm</code> 不识别，<b>关掉再开</b> PowerShell。winget 不行就到 <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> 装 LTS。</span></p></div>
+  </section>
+
+  <section class="slide top" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
+    <div class="kick"><span class="ko">모델 연결 · CH3</span><span class="zh">连接模型 · CH3</span></div>
+    <h2 class="title">5) <span class="ko">무료 모델 연결 (Zen 또는 Gemini)</span><span class="zh">连接免费模型(Zen 或 Gemini)</span></h2>
+    <ul class="blist">
+      <li><span class="ko">작업 폴더를 VS Code로 열고, 터미널에 <code class="mono">opencode</code> 실행</span><span class="zh">用 VS Code 打开工作文件夹，终端里运行 <code class="mono">opencode</code></span></li>
+      <li><span class="ko"><code class="mono">/connect</code> → <b>OpenCode Zen</b> 선택 → (Google/GitHub 가입 후) <b>API 키</b> 붙여넣기</span><span class="zh"><code class="mono">/connect</code> → 选 <b>OpenCode Zen</b> → (用 Google/GitHub 注册后)粘贴 <b>API 密钥</b></span></li>
+      <li><span class="ko"><code class="mono">/models</code> → <b>North Mini Code</b> 선택 (무료·빠름)</span><span class="zh"><code class="mono">/models</code> → 选 <b>North Mini Code</b>(免费·快)</span></li>
+      <li><span class="ko">(선택) 강사가 준 <b>Gemini API 키</b>로 연결해도 돼요</span><span class="zh">(可选)也可用老师给的 <b>Gemini API 密钥</b> 连接</span></li>
+    </ul>
+    <div class="note warn"><div class="nt">🔒 <span class="ko">안전 규칙 (꼭!)</span><span class="zh">安全规则(务必!)</span></div><p><span class="ko">무료 모델엔 <b>개인정보(이름·연락처) 입력 금지</b> — 코딩 과제만! 그리고 <b>결제수단(카드)은 등록하지 마세요</b>(과금 위험 0).</span><span class="zh">免费模型里 <b>禁止输入个人信息(姓名·联系方式)</b> — 只输入编程任务! 并且 <b>不要登记支付方式(卡)</b>(零扣费风险)。</span></p></div>
   </section>
 
   <section class="slide mission zinc" data-chap="3 · 개발환경 설치" data-chap-zh="3 · 安装开发环境">
@@ -505,7 +533,8 @@ git config --global user.email "my@email.com"</code></pre>
         <li><span class="ko">VS Code 설치 완료</span><span class="zh">安装好 VS Code</span></li>
         <li><span class="ko">Git 설치 + 이름·이메일 설정 완료</span><span class="zh">安装 Git + 设置名字·邮箱</span></li>
         <li><span class="ko">VS Code에서 GitHub 로그인 완료</span><span class="zh">在 VS Code 登录 GitHub</span></li>
-        <li><span class="ko">Copilot 설치 + <b>Free가 아닌지</b> 확인 완료</span><span class="zh">安装 Copilot + 确认 <b>不是 Free</b></span></li>
+        <li><span class="ko">Node.js + OpenCode 설치 완료</span><span class="zh">安装好 Node.js + OpenCode</span></li>
+        <li><span class="ko">OpenCode에서 <b>모델 연결</b> 완료 (Zen 또는 Gemini)</span><span class="zh">在 OpenCode <b>连接好模型</b>(Zen 或 Gemini)</span></li>
       </ul>
       <div class="mmeta"><span class="ko">예상 30분 · 난이도 보통 · 막히면 손 들기 🙋</span><span class="zh">约 30 分钟 · 难度中等 · 卡住就举手 🙋</span></div>
     </div>
@@ -579,7 +608,7 @@ git config --global user.email "my@email.com"</code></pre>
     <div class="kick"><span class="ko">템플릿 · CH4</span><span class="zh">模板 · CH4</span></div>
     <h2 class="title"><span class="ko">그대로 쓰는 프롬프트 틀</span><span class="zh">可直接套用的提示词</span></h2>
     <div class="code plain">
-      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+      <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
 <pre><code>[역할/角色] 나는 코딩 처음인 학생이야 / 我是初学编程的学生
 [맥락/背景] 이 폴더의 prd.md와 mockup.html을 참고해줘 / 参考本文件夹的 prd.md 和 mockup.html
 [요청/要求] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘 / 用一个 index.html 做出(什么)
@@ -760,7 +789,7 @@ git config --global user.email "my@email.com"</code></pre>
     <h2 class="title"><span class="ko">2단계 — Interactive Mockup.html 생성</span><span class="zh">第 2 步 — 生成 Interactive Mockup.html</span></h2>
     <p class="lead"><span class="ko">종이 대신 <b>눌러지는 목업</b>을 AI에게 만들게 해요. prd.md를 열어둔 채:</span><span class="zh">不用纸，让 AI 做一个 <b>能点击的原型</b>。打开着 prd.md:</span></p>
     <div class="code plain">
-      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+      <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
 <pre><code>이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
 mockup.html 하나로 만들어줘. 디자인은 단순하게,
 버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.
@@ -799,7 +828,7 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <h2 class="title"><span class="ko">3단계 — MVP 구현 프롬프트</span><span class="zh">第 3 步 — 实现 MVP 的提示词</span></h2>
     <p class="lead"><span class="ko"><code class="mono">index.html</code>을 새로 만들고, <b>prd.md·mockup.html을 함께 열어둔 채</b> 요청해요.</span><span class="zh">新建 <code class="mono">index.html</code>，<b>同时打开 prd.md·mockup.html</b> 再提要求。</span></p>
     <div class="code plain">
-      <div class="chd"><span class="fn">Copilot Chat</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
+      <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
 <pre><code>prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
 동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.
 参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
@@ -1009,7 +1038,7 @@ git push</code></pre>
   <section class="slide" data-chap="＋ 교양 · 더 알면 좋은 것" data-chap-zh="拓展 · 了解更多">
     <div class="kick"><span class="ko">교양 · AI와 LLM</span><span class="zh">拓展 · AI 与 LLM</span></div>
     <h2 class="title"><span class="ko">왜 바이브코딩이 될까? (LLM)</span><span class="zh">为什么 Vibe 编程行得通? (LLM)</span></h2>
-    <p class="lead"><span class="ko">오늘 쓰는 Copilot 같은 AI는 <b>LLM(대규모 언어 모델)</b>이에요. 엄청난 글을 학습해 <b>“다음에 올 말”을 예측</b>하는 똑똑한 자동완성이죠.</span><span class="zh">今天用的 Copilot 这类 AI 是 <b>LLM(大语言模型)</b>。学了海量文本，去 <b>预测「下一个词」</b> 的聪明自动补全。</span></p>
+    <p class="lead"><span class="ko">오늘 OpenCode로 연결해 쓰는 AI도 <b>LLM(대규모 언어 모델)</b>이에요. 엄청난 글을 학습해 <b>“다음에 올 말”을 예측</b>하는 똑똑한 자동완성이죠.</span><span class="zh">今天通过 OpenCode 连接使用的 AI 也是 <b>LLM(大语言模型)</b>。学了海量文本，去 <b>预测「下一个词」</b> 的聪明自动补全。</span></p>
     <ul class="blist">
       <li><span class="ko">코드도 “이럴 땐 보통 이렇게”를 잘 만들어줘요</span><span class="zh">写代码时也能给出「这种情况通常这样」</span></li>
       <li><span class="ko">똑똑하지만 <b>가끔 틀려요</b> → 확인은 사람 몫</span><span class="zh">聪明但 <b>偶尔会错</b> → 检查靠人</span></li>
@@ -1043,7 +1072,7 @@ git push</code></pre>
     <h2 class="title"><span class="ko">이후 3일, 매일 반복하는 4단계</span><span class="zh">之后 3 天，每天重复的 4 步</span></h2>
     <ul class="blist">
       <li><span class="ko"><b>열기</b> — VS Code로 내 폴더 열기 (context.md 먼저 읽기)</span><span class="zh"><b>打开</b> — 用 VS Code 打开我的文件夹(先读 context.md)</span></li>
-      <li><span class="ko"><b>고치기</b> — Copilot에게 “오늘은 ○○ 추가” → 저장 → 확인</span><span class="zh"><b>修改</b> — 对 Copilot 说「今天加 ○○」→ 保存 → 查看</span></li>
+      <li><span class="ko"><b>고치기</b> — OpenCode에게 “오늘은 ○○ 추가” → 저장 → 확인</span><span class="zh"><b>修改</b> — 对 OpenCode 说「今天加 ○○」→ 保存 → 查看</span></li>
       <li><span class="ko"><b>세이브</b> — Source Control에서 ✓ Commit</span><span class="zh"><b>存档</b> — 在 Source Control 点 ✓ Commit</span></li>
       <li><span class="ko"><b>올리기</b> — Sync/Push → 1~2분 뒤 내 주소에 반영!</span><span class="zh"><b>上传</b> — Sync/Push → 1~2 分钟后网址就更新!</span></li>
     </ul>
@@ -1056,7 +1085,7 @@ git push</code></pre>
     <ul class="blist">
       <li><span class="ko"><b>winget이 안 돼요</b> → 다운로드 링크(방법 B)로 설치</span><span class="zh"><b>winget 不行</b> → 用下载链接(方法 B)安装</span></li>
       <li><span class="ko"><b>git 명령이 인식 안 됨</b> → PowerShell을 껐다 켜기</span><span class="zh"><b>git 命令不识别</b> → 关掉再打开 PowerShell</span></li>
-      <li><span class="ko"><b>Copilot “한도 초과”</b> → Free 플랜(월 50회). 학생 플랜 활성화 / Tab 자동완성 활용</span><span class="zh"><b>Copilot「超出额度」</b> → Free 套餐(月 50 次)。激活学生套餐 / 多用 Tab 补全</span></li>
+      <li><span class="ko"><b>OpenCode 모델이 느리거나 막힘</b> → <code class="mono">/models</code>로 다른 무료 모델 전환(예: DeepSeek V4 Flash) 또는 Gemini 키</span><span class="zh"><b>OpenCode 模型慢或卡住</b> → 用 <code class="mono">/models</code> 换其他免费模型(如 DeepSeek V4 Flash)或用 Gemini 密钥</span></li>
       <li><span class="ko"><b>배포 404</b> → 파일명 index.html · Branch main · 1~2분 대기</span><span class="zh"><b>部署 404</b> → 文件名 index.html · Branch main · 等 1~2 分钟</span></li>
       <li><span class="ko"><b>바꿨는데 반영 안 됨</b> → Commit+Push 했는지 확인, 강력 새로고침(Ctrl+Shift+R)</span><span class="zh"><b>改了没生效</b> → 确认已 Commit+Push，强制刷新(Ctrl+Shift+R)</span></li>
     </ul>
@@ -1069,6 +1098,8 @@ git push</code></pre>
       <div class="chd"><span class="fn"><span class="ko">설치 · 최초 설정 (한 번만)</span><span class="zh">安装 · 初次设置(只需一次)</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
 <pre><code>winget install Microsoft.VisualStudioCode
 winget install Git.Git
+winget install OpenJS.NodeJS.LTS
+npm i -g opencode-ai@latest
 git config --global user.name "My Name"
 git config --global user.email "my@email.com"</code></pre>
     </div>
@@ -1078,7 +1109,7 @@ git config --global user.email "my@email.com"</code></pre>
 git commit -m "memo"
 git push</code></pre>
     </div>
-    <div class="note"><div class="nt">⌨️ <span class="ko">단축키</span><span class="zh">快捷键</span></div><p><span class="ko">저장 <b>Ctrl+S</b> · 되돌리기 <b>Ctrl+Z</b> · Copilot 채팅 <b>Ctrl+Alt+I</b> · 자동완성 <b>Tab</b> · 터미널 <b>Ctrl+`</b></span><span class="zh">保存 <b>Ctrl+S</b> · 撤销 <b>Ctrl+Z</b> · Copilot 聊天 <b>Ctrl+Alt+I</b> · 补全 <b>Tab</b> · 终端 <b>Ctrl+`</b></span></p></div>
+    <div class="note"><div class="nt">⌨️ <span class="ko">단축키</span><span class="zh">快捷键</span></div><p><span class="ko">저장 <b>Ctrl+S</b> · 되돌리기 <b>Ctrl+Z</b> · 터미널 <b>Ctrl+`</b> · OpenCode 실행 <b>opencode</b> · plan/build 전환 <b>Tab</b> · 모델 <b>/models</b></span><span class="zh">保存 <b>Ctrl+S</b> · 撤销 <b>Ctrl+Z</b> · 终端 <b>Ctrl+`</b> · 运行 OpenCode <b>opencode</b> · plan/build 切换 <b>Tab</b> · 模型 <b>/models</b></span></p></div>
   </section>
 
   <section class="slide top" data-chap="9 · 이후 3일 & 부록" data-chap-zh="9 · 之后3天 & 附录">

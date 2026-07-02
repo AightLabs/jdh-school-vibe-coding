@@ -7,7 +7,7 @@
 
 ## 1. 스타터란?
 "처음부터 빈 화면"이 아니라, **이미 돌아가는 완성 코드**에서 시작하는 시작 세트예요.
-바로 실행해 보고, Copilot에게 말하며 내 것으로 바꿔 나갑니다.
+바로 실행해 보고, OpenCode에게 말하며 내 것으로 바꿔 나갑니다.
 
 두 가지가 있어요:
 
@@ -29,7 +29,7 @@
 ## 3. 준비물 (수업 전/중)
 - **GitHub 계정** (사전 가입 완료)
 - **VS Code** · **Git** 설치 (슬라이드 CH3 참고)
-- **GitHub Copilot** — 학생(Student) 플랜 권장. 무료(Free)면 채팅 월 50회 제한
+- **Node.js + OpenCode** + 모델(Zen 무료 또는 Gemini 키) — AI 코딩 도구 (설치: [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md))
 - (권장) VS Code 확장 **Live Server** — 결과를 바로 미리보기
 
 ## 4. 시작하기 — 3단계
@@ -49,9 +49,9 @@
   - **Live Server**: 파일 우클릭 → **Open with Live Server** (또는 우측 하단 **Go Live**)
   - 마크다운(`.md`) 미리보기: **Ctrl+Shift+V**
 
-### ③ 내 것으로 바꾸기 (Copilot)
+### ③ 내 것으로 바꾸기 (OpenCode)
 - `prd.md`를 내 기획으로 채우기
-- Copilot Chat에 **하나씩** 부탁 → 저장 → 브라우저에서 확인 → 다시 부탁
+- OpenCode에 **하나씩** 부탁 → 저장 → 브라우저에서 확인 → 다시 부탁
 - 멈추기 전 `context.md`의 "다음에 할 일" 갱신
 
 ## 5. 배포하기 (내 저장소 → GitHub Pages)
@@ -63,10 +63,10 @@
 5. 1~2분 뒤 공개 주소: `https://내아이디.github.io/내저장소/`
 
 ## 6. 자주 막히는 곳
-- **실행했는데 게임이 안 나와요** → 인터넷 연결 확인(Phaser·Tailwind는 CDN). 브라우저 콘솔(F12)의 빨간 에러를 복사해 Copilot에게 주기
+- **실행했는데 게임이 안 나와요** → 인터넷 연결 확인(Phaser·Tailwind는 CDN). 브라우저 콘솔(F12)의 빨간 에러를 복사해 OpenCode에게 주기
 - **배포 404** → 파일명이 `index.html`인지, Pages Branch가 `main`인지, 1~2분 기다렸는지
 - **바꿨는데 사이트에 반영 안 됨** → `Commit` 후 `Push(Sync)` 했는지 확인 → 강력 새로고침(Ctrl+Shift+R)
-- **Copilot 한도 초과** → Free 플랜(월 50회). Tab 자동완성 활용 / 학생 플랜 활성화
+- **모델이 느리거나 막힘** → OpenCode에서 `/models`로 다른 무료 모델 전환, 또는 Gemini 키 사용
 
 ---
 문의·수정은 저장소 이슈로: https://github.com/AightLabs/jdh-school-vibe-coding
