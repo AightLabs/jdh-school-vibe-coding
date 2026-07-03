@@ -14,7 +14,7 @@
 | 스타터 | 만들 것 | 스택 | 폴더 |
 |---|---|---|---|
 | 🎮 게임 | 웹게임 (별 받기 등) | **Phaser 3** | `starters/game/` |
-| 🌟 비게임 | 소개/서비스 페이지 | **Tailwind CSS + Vanilla JS** | `starters/nongame/` |
+| 🌟 앱 | 소개/서비스 페이지 | **Tailwind CSS + Vanilla JS** | `starters/app/` |
 
 ## 2. 스타터 폴더에 들어 있는 것 (공통)
 | 파일 | 역할 |
@@ -29,7 +29,7 @@
 ## 3. 준비물 (수업 전/중)
 - **GitHub 계정** (사전 가입 완료)
 - **VS Code** · **Git** 설치 (슬라이드 CH3 참고)
-- **Node.js + OpenCode** + 모델(Zen 무료 또는 Gemini 키) — AI 코딩 도구 (설치: [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md))
+- **Node.js + OpenCode** + 모델(Zen 무료) — AI 코딩 도구 (설치: [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md))
 - (권장) VS Code 확장 **Live Server** — 결과를 바로 미리보기
 
 ## 4. 시작하기 — 3단계
@@ -42,7 +42,7 @@
   ```
 
 ### ② 내 폴더로 복사 후 열기
-- `starters/game` 또는 `starters/nongame` 폴더를 **바탕화면의 새 폴더**(영어 이름, 예: `my-game`)로 복사
+- `starters/game` 또는 `starters/app` 폴더를 **바탕화면의 새 폴더**(영어 이름, 예: `my-game`)로 복사
 - VS Code에서 그 새 폴더를 **File → Open Folder**
 - `index.html`을 실행/미리보기:
   - 브라우저로 더블클릭해서 열기, 또는
@@ -66,7 +66,7 @@
 - **실행했는데 게임이 안 나와요** → 인터넷 연결 확인(Phaser·Tailwind는 CDN). 브라우저 콘솔(F12)의 빨간 에러를 복사해 OpenCode에게 주기
 - **배포 404** → 파일명이 `index.html`인지, Pages Branch가 `main`인지, 1~2분 기다렸는지
 - **바꿨는데 사이트에 반영 안 됨** → `Commit` 후 `Push(Sync)` 했는지 확인 → 강력 새로고침(Ctrl+Shift+R)
-- **모델이 느리거나 막힘** → OpenCode에서 `/models`로 다른 무료 모델 전환, 또는 Gemini 키 사용
+- **모델이 느리거나 막힘** → OpenCode에서 `/models`로 다른 무료 모델 전환
 
 ---
 문의·수정은 저장소 이슈로: https://github.com/AightLabs/jdh-school-vibe-coding

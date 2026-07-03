@@ -1,113 +1,47 @@
 <!DOCTYPE html>
+<!--
+  ============================================================
+  🎮 게임 스타터 — 빈 뼈대(스켈레톤)
+  아직 게임이 안 만들어져 있어요. 이제부터 내가 만들 거예요!
+
+  시작하는 법
+  1) prd.md 를 내 게임으로 채우기 (최소한만 채워도 OK)
+  2) OpenCode 에게 prd.md 검토를 받으며 보강 → 그다음 만들기
+       "이 폴더의 prd.md를 참고해서 이 index.html에 웹게임을 만들어줘.
+        assets 폴더의 이미지·소리를 쓰고, 초보용 한국어 주석을 달아줘."
+  3) 저장(Ctrl+S) → Live Server(또는 브라우저)로 확인 → 하나씩 고쳐 부탁
+  ------------------------------------------------------------
+-->
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>내 웹게임 · Phaser 스타터</title>
-  <!-- Phaser 3 (안정 버전) 를 인터넷에서 불러와요. 인터넷이 되어야 실행됩니다. -->
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <title>내 웹게임</title>
+
+  <!-- (선택) 게임 엔진 Phaser 3 을 쓰고 싶으면 아래 주석을 풀어요 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script> -->
+
   <style>
-    /* 화면 전체를 어둡게 하고 게임을 가운데에 둬요 */
-    html,body{margin:0;height:100%;background:#0b1120;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif}
-    #game{width:100%;max-width:420px}
-    .tip{position:fixed;bottom:10px;left:0;right:0;text-align:center;color:#64748b;font-size:12px}
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #0b1020;
+      display: grid; place-items: center; min-height: 100vh; text-align: center; color: #e7ecf6; }
+    .hint { max-width: 560px; padding: 28px; line-height: 1.6; }
+    code { background: #1a2238; padding: 2px 7px; border-radius: 6px; font-size: .92em; }
+    h1 { color: #a5b4fc; }
+    small { opacity: .65 }
   </style>
 </head>
 <body>
-  <div id="game"></div>
-  <div class="tip">← → 방향키 또는 화면을 눌러서 이동 · 별을 받으면 점수 UP</div>
+
+  <!-- 게임 화면(canvas)이 여기에 만들어져요 -->
+  <div class="hint">
+    <h1>🎮 여기에 내 웹게임이 만들어져요</h1>
+    <p>지금은 <b>빈 뼈대</b>예요. 먼저 <b>prd.md</b>를 채운 뒤,<br/>
+       OpenCode에게 <code>prd.md를 참고해서 게임을 만들어줘</code> 라고 하세요.</p>
+    <p><small>🎨 그림·소리 에셋은 <code>assets/</code> 폴더에 있어요.</small></p>
+  </div>
 
   <script>
-  /* =========================================================
-     ⭐ 별 받기 (Star Catcher) — 나만의 게임 스타터
-     ---------------------------------------------------------
-     이 파일 하나가 완성된 웹게임이에요. 여기서부터 시작해서
-     OpenCode에게 "이런 걸 추가해줘"라고 말하며 키워 보세요.
-     예) 폭탄을 피하기, 목숨(하트), 시간 제한, 배경음악 ...
-     ========================================================= */
-
-  // 1) 게임 기본 설정 -------------------------------------------------
-  const config = {
-    type: Phaser.AUTO,                 // 브라우저에 맞는 방식 자동 선택
-    width: 400, height: 600,           // 게임 화면 크기(가로x세로)
-    backgroundColor: '#0e1524',        // 배경색
-    parent: 'game',                    // 위의 <div id="game"> 안에 넣기
-    physics: { default: 'arcade' },    // 간단한 물리(충돌) 엔진 사용
-    scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
-    scene: { create, update }          // 아래 create/update 함수를 사용
-  };
-
-  const game = new Phaser.Game(config);
-
-  // 2) 게임이 시작될 때 한 번 실행 (화면 만들기) ----------------------
-  function create() {
-    const scene = this;
-    scene.score = 0;
-
-    // 점수 글자
-    scene.scoreText = scene.add.text(16, 14, '점수: 0', {
-      fontFamily: 'system-ui', fontSize: '22px', color: '#ffffff', fontStyle: 'bold'
-    });
-
-    // 플레이어(받침대) — 화면 아래쪽 파란 막대
-    scene.player = scene.add.rectangle(200, 560, 84, 18, 0x4f46e5).setStrokeStyle(2, 0x818cf8);
-    scene.physics.add.existing(scene.player);
-    scene.player.body.setCollideWorldBounds(true);   // 화면 밖으로 못 나가게
-    scene.player.body.allowGravity = false;
-
-    // 떨어지는 별들을 담을 그룹
-    scene.stars = scene.physics.add.group();
-
-    // 별이 플레이어에 닿으면 catchStar 실행
-    scene.physics.add.overlap(scene.player, scene.stars, catchStar, null, scene);
-
-    // 0.8초마다 별 하나 생성
-    scene.time.addEvent({ delay: 800, loop: true, callback: () => spawnStar(scene) });
-
-    // 키보드 방향키 준비
-    scene.cursors = scene.input.keyboard.createCursorKeys();
-  }
-
-  // 3) 매 순간 반복 실행 (움직임 처리) --------------------------------
-  function update() {
-    const scene = this;
-    const speed = 320;
-
-    // 방향키로 좌우 이동
-    if (scene.cursors.left.isDown)       scene.player.body.setVelocityX(-speed);
-    else if (scene.cursors.right.isDown) scene.player.body.setVelocityX(speed);
-    else                                 scene.player.body.setVelocityX(0);
-
-    // 화면을 누르면(터치/마우스) 그 방향으로 이동
-    const p = scene.input.activePointer;
-    if (p.isDown) {
-      if (p.x < scene.player.x - 8)      scene.player.body.setVelocityX(-speed);
-      else if (p.x > scene.player.x + 8) scene.player.body.setVelocityX(speed);
-      else                               scene.player.body.setVelocityX(0);
-    }
-
-    // 바닥까지 놓친 별은 지우기
-    scene.stars.getChildren().forEach((star) => {
-      if (star.y > 640) star.destroy();
-    });
-  }
-
-  // 4) 별 하나 만들기 -------------------------------------------------
-  function spawnStar(scene) {
-    const x = Phaser.Math.Between(24, 376);
-    const star = scene.add.star(x, -20, 5, 8, 16, 0xfbbf24); // 5각 별, 노란색
-    scene.physics.add.existing(star);
-    star.body.allowGravity = false;
-    star.body.setVelocityY(Phaser.Math.Between(130, 210));    // 아래로 떨어지는 속도
-    scene.stars.add(star);
-  }
-
-  // 5) 별을 받았을 때 --------------------------------------------------
-  function catchStar(player, star) {
-    star.destroy();
-    this.score += 1;
-    this.scoreText.setText('점수: ' + this.score);
-  }
+    // 여기에 게임 코드를 채워요
   </script>
 </body>
 </html>

@@ -1,21 +1,21 @@
 # 바이브 코딩 첫걸음 · 장대현중고등학교
 
-AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중·고등 원데이 코딩 수업**(3시간) 자료입니다.
+AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중·고등 코딩 특강**(3시간) 자료입니다.
 강의 **슬라이드**와 **스타터 패키지**가 한 저장소에 들어 있어요.
 
 - 📊 **강의 슬라이드(웹):** https://aightlabs.github.io/jdh-school-vibe-coding/
 - 📦 **저장소:** https://github.com/AightLabs/jdh-school-vibe-coding
 - 🧰 **스타터 가이드:** [STARTER-GUIDE.md](./STARTER-GUIDE.md)
-- 🛠️ **당일 세팅(AI 도구):** [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md) — VS Code + OpenCode(npm) + Zen 무료 모델/Gemini 키
+- 🛠️ **당일 세팅(AI 도구):** [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md) — VS Code + OpenCode(npm) + Zen 무료 모델
 
 ## 📂 구성
 | 경로 | 내용 |
 |---|---|
 | `index.html` | **강의 슬라이드** (열면 바로 실행 · ← → 이동 · 코드 복사 · 인쇄 · 한국어/中文 토글) |
 | `starters/game/` | **게임 스타터** — Phaser 3 별 받기 게임 + prd.md + context.md |
-| `starters/nongame/` | **비게임 스타터** — Tailwind + Vanilla JS 소개 페이지 + prd.md + context.md |
+| `starters/app/` | **앱 스타터** — Tailwind + Vanilla JS 소개 페이지 + prd.md + context.md |
 | `STARTER-GUIDE.md` | 스타터 준비·사용·배포 정리 문서 |
-| `SETUP-OpenCode-Zen.md` | **당일 AI 도구 세팅** (OpenCode + Zen/Gemini) 가이드 |
+| `SETUP-OpenCode-Zen.md` | **당일 AI 도구 세팅** (OpenCode + Zen) 가이드 |
 
 ## 🧑‍🎓 학생용 빠른 시작
 1. 이 저장소를 받기 — 초록 **Code → Download ZIP**, 또는
@@ -48,5 +48,5 @@ AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중
 
 ## ⚙️ 스택
 - 강의 슬라이드: 순수 HTML/CSS/JS (Pretendard · JetBrains Mono · Noto Sans SC) — 외부 로컬 의존성 없음
-- 게임 스타터: Phaser 3 · 비게임 스타터: Tailwind CSS + Vanilla JS
+- 게임 스타터: Phaser 3 · 앱 스타터: Tailwind CSS + Vanilla JS
 - 배포: GitHub Pages
