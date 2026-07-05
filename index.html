@@ -133,6 +133,18 @@
   .t-tag{color:var(--c-tag)} .t-punc{color:var(--c-punc)} .t-attr{color:var(--c-attr)} .t-str{color:var(--c-str)} .t-fn{color:var(--c-fn)}
   .code.plain pre{color:#e7ecf6; background:#0e1524} .code.plain .chd{background:#0e1524; border-bottom-color:#25324a} .code.plain .fn{color:#9fb3d1}
 
+  /* rendered markdown preview */
+  .iolabel{font-family:var(--mono); font-weight:700; font-size:16.9px; color:var(--muted); letter-spacing:.03em; margin:0 0 8px}
+  .mdprev{border:1px solid var(--line); border-radius:16px; background:#fff; padding:14px 20px 18px}
+  .mdprev > :first-child{margin-top:0}
+  .mdprev h4{margin:0 0 10px; font-size:25px; font-weight:800; color:var(--ink); border-bottom:2px solid var(--line); padding-bottom:8px}
+  .mdprev strong{color:var(--ink); font-weight:800}
+  .mdprev ul{margin:10px 0 0; padding-left:22px}
+  .mdprev li{font-size:19.5px; line-height:1.7; color:var(--ink-2)}
+  .mdprev p{margin:10px 0 0; font-size:19.5px; line-height:1.5; color:var(--ink-2)}
+  .mdprev code{font-family:var(--mono); font-size:.88em; background:var(--bg-soft); padding:2px 7px; border-radius:6px; color:var(--indigo-d)}
+  .mdprev a{color:var(--indigo); text-decoration:underline}
+
   /* figure */
   figure.fig{margin:20px 0 0}
   figure.fig .svgbox{border:1px solid var(--line); border-radius:16px; background:#fff; padding:14px}
@@ -696,7 +708,7 @@ git config user.email "my@email.com"</code></pre></div>
       <div class="darrow">→</div>
       <div class="dcard hot"><div class="dnum">!</div><div class="dterm"><span class="ko">왜</span><span class="zh">为什么</span></div><div class="ddesc"><span class="ko">왜 필요한가요?</span><span class="zh">为什么需要?</span></div></div>
     </div>
-    <div class="recap"><div class="rt">📌 <span class="ko">0장 요약</span><span class="zh">第 0 章小结</span></div>
+    <div class="recap"><div class="rt">📌 <span class="ko">1장 요약</span><span class="zh">第 1 章小结</span></div>
       <ul>
         <li><span class="ko">컴퓨터는 시키는 대로만 하고, 그 명령서가 <b>프로그램</b>.</span><span class="zh">电脑只按吩咐做，那份命令书就是 <b>程序</b>。</span></li>
         <li><span class="ko">모든 건 <b>파일</b>, 담는 상자는 <b>폴더</b>, 종류는 <b>확장자</b>로 구분.</span><span class="zh">一切都是 <b>文件</b>，盒子是 <b>文件夹</b>，用 <b>后缀</b> 分类型。</span></li>
@@ -746,13 +758,6 @@ git config user.email "my@email.com"</code></pre></div>
       <li><span class="ko"><b>구체적으로 잘 설명하기</b> — 아는 걸 또렷하게 말할수록 원하는 결과가 나와요.</span><span class="zh"><b>说得具体清楚</b> —— 把懂的东西讲明白，越接近想要的结果。</span></li>
     </ul>
     <div class="note"><div class="nt">💡 <span class="ko">지금 단계에선</span><span class="zh">现阶段</span></div><p><span class="ko">지금은 <b>이 2가지</b>만 하면 돼요. 코드 원리를 깊이 파고드는 건 <b>전문가·개발자로 나아갈 때</b>의 이야기고요. AI는 똑똑한 조수, 방향을 정하는 건 <b>나</b>예요.</span><span class="zh">现在做好 <b>这两点</b> 就行。深挖代码原理，是 <b>走向专家·开发者</b> 时的事。AI 是聪明助手，定方向的是 <b>我</b>。</span></p></div>
-  </section>
-
-  <section class="sec">
-    <div class="kick">TODAY'S GOAL</div>
-    <h2 class="title"><span class="ko">목표는 딱 하나</span><span class="zh">目标只有一个</span></h2>
-    <p class="lead prose"><span class="ko">“내가 기획한 것을, 만든 데까지, <b>인터넷 주소로 올려본다.</b>”</span><span class="zh">“把我规划的东西，做到哪算哪，<b>发布成一个网址。</b>”</span></p>
-    <div class="note ok"><div class="nt">✅ <span class="ko">한 번에 다 못 만들어요 (당연해요)</span><span class="zh">一次做不完(很正常)</span></div><p><span class="ko">완성은 원래 한 번에 안 돼요. 그래서 목표는 완성이 아니라 <b>‘만든 데까지’ 올려보기</b>. 이후 <b>매일 조금씩</b> 이어서 완성해 나가면 돼요. 이 자습서가 그 길잡이예요.</span><span class="zh">完成本来就不是一次的事。所以目标不是完成，而是 <b>把「做到哪算哪」发布上线</b>。之后 <b>每天做一点</b>，慢慢完成。这本手册就是你的向导。</span></p></div>
   </section>
 
   <!-- ============ 3장 · 기획 → 프롬프트 → 컨텍스트 ============ -->
@@ -840,11 +845,15 @@ git config user.email "my@email.com"</code></pre></div>
     <div class="note"><div class="nt">💡 <span class="ko">좋은 프롬프트의 구조</span><span class="zh">好提示词的结构</span></div><p><span class="ko"><b>역할</b>(초보 학생이야) + <b>맥락</b>(prd.md 참고) + <b>요청</b>(무엇을) + <b>조건</b>(순수 HTML/JS, 주석) + <b>출력형식</b>(전체 코드로).</span><span class="zh"><b>角色</b>(我是初学者) + <b>背景</b>(参考 prd.md) + <b>要求</b>(做什么) + <b>条件</b>(纯 HTML/JS、加注释) + <b>输出形式</b>(给出完整代码)。</span></p></div>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">그대로 쓰는 프롬프트 틀 · OpenCode</span><span class="zh">可直接套用的提示词 · OpenCode</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>[역할/角色] 나는 코딩 처음인 학생이야 / 我是初学编程的学生
-[맥락/背景] 이 폴더의 prd.md와 mockup.html을 참고해줘 / 参考本文件夹的 prd.md 和 mockup.html
-[요청/要求] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘 / 用一个 index.html 做出(什么)
-[조건/条件] 외부 라이브러리 없이, 초보용 주석 / 不用外部库，加初学者注释
-[출력/输出] 완성된 전체 코드 / 给出完整代码</code></pre>
+<pre><code><span class="ko">[역할] 나는 코딩 처음인 학생이야
+[맥락] 이 폴더의 prd.md와 mockup.html을 참고해줘
+[요청] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘
+[조건] 외부 라이브러리 없이, 초보용 주석
+[출력] 완성된 전체 코드</span><span class="zh">[角色] 我是初学编程的学生
+[背景] 参考本文件夹的 prd.md 和 mockup.html
+[要求] 用一个 index.html 做出(什么)
+[条件] 不用外部库，加初学者注释
+[输出] 给出完整代码</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">고칠 때</span><span class="zh">要修改时</span></div><p><span class="ko">“버튼이 작아. 가운데로 모으고 2배 크게, 이기면 🎉를 결과 옆에 보여줘.” — <b>구체적으로, 하나씩.</b></span><span class="zh">「按钮太小。居中并放大 2 倍，赢了在结果旁显示 🎉。」— <b>要具体、一次一件。</b></span></p></div>
   </section>
@@ -882,18 +891,29 @@ git config user.email "my@email.com"</code></pre></div>
     </ul>
     <div class="code plain">
       <div class="chd"><span class="fn">context.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code># 프로젝트 기억 / 项目记忆 (context)
+<pre><code><span class="ko"># 프로젝트 기억 (context)
 
-## 무엇을 만드나 / 在做什么
+## 무엇을 만드나
 가위바위보 웹게임 (index.html 단일 파일)
 
-## 지금까지 결정 / 已决定
+## 지금까지 결정
 - 색: 남색 배경 + 흰 글씨, 버튼 크고 둥글게
-- 점수 기능 추가함 / 다시하기 버튼은 아직
+- 점수 기능 추가함, 다시하기 버튼은 아직
 
-## 다음에 할 일 / 下一步
+## 다음에 할 일
 - 이기면 🎉 애니메이션
-- 휴대폰에서 버튼 크기 조정</code></pre>
+- 휴대폰에서 버튼 크기 조정</span><span class="zh"># 项目记忆 (context)
+
+## 在做什么
+石头剪刀布网页游戏 (index.html 单文件)
+
+## 已决定
+- 颜色: 深蓝背景 + 白字，按钮又大又圆
+- 已加分数功能，重玩按钮还没做
+
+## 下一步
+- 赢了 🎉 加动画
+- 手机上调整按钮大小</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">가장 쉬운 습관</span><span class="zh">最简单的习惯</span></div><p><span class="ko">작업을 멈추기 전, 이 파일의 <b>“다음에 할 일”</b>만 업데이트해두면 내일의 내가 편해져요. <b>한 세션 = 한 목표</b>로 짧게 유지하고, 기억은 파일에 남겨 이어가는 게 프로의 방식이에요.</span><span class="zh">停工前只要更新这份文件的 <b>「下一步」</b>，明天的自己就轻松了。<b>一个会话 = 一个目标</b> 保持简短，记忆留在文件里接着做，这是老手的方式。</span></p></div>
   </section>
@@ -903,34 +923,52 @@ git config user.email "my@email.com"</code></pre></div>
     <h2 class="title"><span class="ko">새 세션에서 기억 불러오기</span><span class="zh">在新会话里载入记忆</span></h2>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">새 세션 첫 메시지 · 기억 불러오기</span><span class="zh">新会话第一句 · 载入记忆</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>아래는 이 프로젝트의 context.md와 현재 index.html이야.
-以下是本项目的 context.md 和当前 index.html。
-이 내용을 기준으로 이어서 작업하자 / 请以此为准继续。
-오늘 할 일 / 今天要做: "이기면 🎉 애니메이션 추가"
+<pre><code><span class="ko">아래는 이 프로젝트의 context.md와 현재 index.html이야.
+이 내용을 기준으로 이어서 작업하자.
+오늘 할 일: "이기면 🎉 애니메이션 추가"
 
-(여기에 context.md + 코드 붙여넣기 / 在此粘贴)</code></pre>
+(여기에 context.md + 코드 붙여넣기)</span><span class="zh">以下是本项目的 context.md 和当前 index.html。
+请以此为准继续。
+今天要做: "赢了 🎉 加动画"
+
+(在此粘贴 context.md + 代码)</span></code></pre>
     </div>
   </section>
 
   <section class="sec">
     <div class="kick"><span class="ko">이 파일들은 — Markdown</span><span class="zh">这些文件用 — Markdown</span></div>
     <h2 class="title"><span class="ko">prd.md·context.md는 Markdown으로 써요</span><span class="zh">prd.md·context.md 用 Markdown 写</span></h2>
-    <p class="lead prose"><span class="ko">방금 쓴 <code class="mono">prd.md</code>·<code class="mono">context.md</code>가 바로 <b>.md = Markdown</b> 파일이에요. Markdown은 <b>몇 가지 기호로 제목·굵게·목록</b>을 나타내는 아주 쉬운 글쓰기 문법이라, 사람도 AI도 구조를 한눈에 읽어요.</span><span class="zh">刚写的 <code class="mono">prd.md</code>·<code class="mono">context.md</code> 就是 <b>.md = Markdown</b> 文件。Markdown 用 <b>几个符号表示标题·加粗·列表</b>，是超简单的写作语法，人和 AI 都能一眼读懂结构。</span></p>
-    <table class="kv">
-      <tr><th style="width:44%"><span class="ko">문법</span><span class="zh">语法</span></th><th><span class="ko">결과</span><span class="zh">效果</span></th></tr>
-      <tr><td class="mono"># 제목  ·  ## 소제목</td><td><span class="ko">큰 제목 · 중간 제목</span><span class="zh">大标题 · 中标题</span></td></tr>
-      <tr><td class="mono">**굵게**</td><td><span class="ko"><b>굵게</b> 표시</span><span class="zh"><b>加粗</b></span></td></tr>
-      <tr><td class="mono">- 항목  ·  1. 항목</td><td><span class="ko">글머리 목록 · 번호 목록</span><span class="zh">项目符号 · 有序列表</span></td></tr>
-      <tr><td class="mono">`코드`</td><td><span class="ko">코드 글자 강조</span><span class="zh">行内代码</span></td></tr>
-      <tr><td class="mono">[링크](https://...)</td><td><span class="ko">클릭되는 링크</span><span class="zh">可点击链接</span></td></tr>
-      <tr><td class="mono">![설명](image.png)</td><td><span class="ko">이미지 넣기</span><span class="zh">插入图片</span></td></tr>
-    </table>
+    <p class="lead prose"><span class="ko">방금 쓴 <code class="mono">prd.md</code>·<code class="mono">context.md</code>가 바로 <b>.md = Markdown</b> 파일이에요. <b>몇 가지 기호로 제목·굵게·목록</b>을 나타내는 쉬운 문법이라, 아래 <b>왼쪽처럼 적으면</b> 미리보기에선 <b>오른쪽처럼</b> 보기 좋게 바뀌어요.</span><span class="zh">刚写的 <code class="mono">prd.md</code>·<code class="mono">context.md</code> 就是 <b>.md = Markdown</b> 文件。用 <b>几个符号表示标题·加粗·列表</b> 的简单语法，<b>像下面左边那样写</b>，预览里就会变成 <b>右边</b> 整齐好读的样子。</span></p>
+    <div class="row">
+      <div>
+        <div class="iolabel">⌨️ <span class="ko">입력 — .md 원본</span><span class="zh">输入 — .md 原文</span></div>
+        <div class="code plain" style="margin-top:0"><pre><code># 가위바위보 게임
+**규칙**
+- 이기면 +1점
+- 비기면 그대로
+
+`다시하기` 버튼도 있어요.
+[내 게임 보기](https://...)</code></pre></div>
+      </div>
+      <div>
+        <div class="iolabel">👀 <span class="ko">미리보기 — 출력</span><span class="zh">预览 — 输出</span></div>
+        <div class="mdprev">
+          <h4><span class="ko">가위바위보 게임</span><span class="zh">石头剪刀布游戏</span></h4>
+          <p><strong><span class="ko">규칙</span><span class="zh">规则</span></strong></p>
+          <ul>
+            <li><span class="ko">이기면 +1점</span><span class="zh">赢了 +1 分</span></li>
+            <li><span class="ko">비기면 그대로</span><span class="zh">平局不变</span></li>
+          </ul>
+          <p><code>다시하기</code> <span class="ko">버튼도 있어요.</span><span class="zh">还有「重玩」按钮。</span> <a><span class="ko">내 게임 보기</span><span class="zh">看我的游戏</span></a></p>
+        </div>
+      </div>
+    </div>
+    <div class="note"><div class="nt">🖱️ <span class="ko">미리보기 여는 법 — Open Preview</span><span class="zh">打开预览 — Open Preview</span></div><p><span class="ko"><code class="mono">.md</code> 파일을 연 상태에서 편집기 <b>오른쪽 위 미리보기 아이콘</b>(돋보기 모양)을 누르거나 <code class="mono">Ctrl+Shift+V</code>. 코드 옆에 나란히 보려면 <b>Open Preview to the Side</b> <code class="mono">Ctrl+K, V</code>. 파일을 <b>우클릭 → Open Preview</b>로도 열려요.</span><span class="zh">打开 <code class="mono">.md</code> 文件后，点编辑器 <b>右上角预览图标</b>(放大镜)或按 <code class="mono">Ctrl+Shift+V</code>。想并排看就用 <b>Open Preview to the Side</b> <code class="mono">Ctrl+K, V</code>。也可 <b>右键 → Open Preview</b>。</span></p></div>
   </section>
 
   <section class="sec">
     <div class="kick"><span class="ko">정리 — 3장</span><span class="zh">小结 — 第3章</span></div>
-    <h2 class="title"><span class="ko">Markdown 미리보기 · 3장 정리</span><span class="zh">Markdown 预览 · 第3章小结</span></h2>
-    <div class="note"><div class="nt">💡 <span class="ko">미리보기 · 코드블록</span><span class="zh">预览 · 代码块</span></div><p><span class="ko">VS Code에서 <code class="mono">Ctrl+Shift+V</code>로 <b>미리보기</b>를 볼 수 있어요. 백틱 3개로 위아래를 감싸면 여러 줄 코드가 상자로 보이고요.</span><span class="zh">在 VS Code 用 <code class="mono">Ctrl+Shift+V</code> 看 <b>预览</b>。用三个反引号上下包住，多行代码会显示成代码框。</span></p></div>
+    <h2 class="title"><span class="ko">3장 정리</span><span class="zh">第3章小结</span></h2>
     <div class="recap"><div class="rt">📌 <span class="ko">3장 요약</span><span class="zh">第 3 章小结</span></div>
       <ul>
         <li><span class="ko">코드보다 <b>기획(PRD)</b>이 먼저. 무엇을·왜·누구를 위해.</span><span class="zh">比代码更先的是 <b>规划(PRD)</b>。做什么·为什么·给谁。</span></li>
@@ -974,11 +1012,10 @@ git config user.email "my@email.com"</code></pre></div>
       <ol>
         <li><span class="ko"><b>목업 만들기.</b> 아래 프롬프트로 <b>눌러지는 목업</b>(mockup.html)을 먼저 만들어요.</span><span class="zh"><b>做原型。</b> 用下面提示词先做 <b>能点的原型</b>(mockup.html)。</span>
           <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
+<pre><code><span class="ko">이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
 mockup.html 하나로 만들어줘. 디자인은 단순하게,
-버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.
-参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
-设计简单，点按钮时能看到画面如何变化。</code></pre></div>
+버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.</span><span class="zh">参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
+设计简单，点按钮时能看到画面如何变化。</span></code></pre></div>
         </li>
         <li><span class="ko"><b>목업 확인.</b> <code class="mono">mockup.html</code>을 브라우저로 열어 흐름이 마음에 드는지 봐요.</span><span class="zh"><b>看原型。</b> 用浏览器打开 <code class="mono">mockup.html</code>，看流程是否满意。</span></li>
       </ol>
@@ -993,10 +1030,9 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
       <ol>
         <li><span class="ko"><b>MVP 구현.</b> <code class="mono">index.html</code>을 새로 만들고, prd.md·mockup.html을 함께 열어둔 채 아래처럼 부탁해요.</span><span class="zh"><b>实现 MVP。</b> 新建 <code class="mono">index.html</code>，同时打开 prd.md·mockup.html，照下面拜托。</span>
           <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
-동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.
-参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
-做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</code></pre></div>
+<pre><code><span class="ko">prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
+동작하는 MVP를 index.html 하나에 HTML/CSS/JS로, 초보자 주석과 함께 완성된 전체 코드로 만들어줘.</span><span class="zh">参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
+做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</span></code></pre></div>
         </li>
         <li><span class="ko"><b>결과 확인.</b> <code class="mono">index.html</code>을 <b>Live Server</b>로 열어 핵심 기능이 도는지 확인!</span><span class="zh"><b>看结果。</b> 用 <b>Live Server</b> 打开 <code class="mono">index.html</code>，看核心功能是否运行!</span></li>
       </ol>
@@ -1037,7 +1073,7 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <p class="lead prose"><span class="ko">우리가 쓰는 무료·빠른 모델은 똑똑하지만 <b>큰 요청엔 약해요.</b> 다음처럼 하면 훨씬 잘 돼요:</span><span class="zh">我们用的免费·快模型聪明，但 <b>不擅长大请求</b>。这样用就顺很多:</span></p>
     <ul class="blist">
       <li><span class="ko"><b>작게 쪼개기</b> — 한 번에 <b>기능 하나만</b> (“점수 표시만 추가해줘”).</span><span class="zh"><b>拆小</b> — 一次 <b>只做一个功能</b>(「只加个分数显示」)。</span></li>
-      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code>를 “다시 읽어줘”.</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code>。</span></li>
+      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">context.md</code>를 “다시 읽어줘”.</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">context.md</code>。</span></li>
       <li><span class="ko"><b>실패하면 반으로</b> — 큰 요청이 안 되면 더 잘게 나눠 다시.</span><span class="zh"><b>失败就减半</b> — 大请求不行就拆更小再试。</span></li>
       <li><span class="ko"><b>막히면 전환</b> — <code class="mono">/models</code>로 다른 무료 모델로.</span><span class="zh"><b>卡住就换</b> — <code class="mono">/models</code> 换其他免费模型。</span></li>
     </ul>
@@ -1091,18 +1127,9 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
         <li><span class="ko"><b>1~2분 뒤</b> 내 주소 <code class="mono">https://ID.github.io/REPO/</code> 가 열려요. 친구에게 보내보세요!</span><span class="zh"><b>1~2 分钟后</b> 网址 <code class="mono">https://ID.github.io/REPO/</code> 就能打开。发给朋友试试!</span></li>
       </ol>
     </div>
-  </section>
-
-  <section class="sec">
-    <div class="kick"><span class="ko">배포 — 원리</span><span class="zh">部署 — 原理</span></div>
-    <h2 class="title"><span class="ko">명령어로 하면 (원리)</span><span class="zh">用命令行(原理)</span></h2>
-    <div class="code plain">
-      <div class="chd"><span class="fn"><span class="ko">명령어로 하면 (원리는 이거예요)</span><span class="zh">用命令行(原理就是这个)</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>git add .
-git commit -m "first commit"
-git push</code></pre>
+    <div class="note ok"><div class="nt">🤖 <span class="ko">두 번째부터는 OpenCode에게 맡겨도 돼요</span><span class="zh">第二次起可交给 OpenCode</span></div><p><span class="ko">한 번 <b>Publish</b>해 둔 뒤엔, 버튼을 안 눌러도 이렇게 부탁하면 커밋·푸시를 대신해줘요:</span><span class="zh">Publish 过一次后，不点按钮，这样拜托它也会替你提交·推送:</span></p>
+      <div class="code plain" style="margin-top:8px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">지금까지 바꾼 걸 커밋하고 GitHub에 푸시해줘. 메시지는 "오늘 수정".</span><span class="zh">把改动提交并推送到 GitHub，提交信息写「今天的修改」。</span></code></pre></div>
     </div>
-    <div class="note"><div class="nt">👍 <span class="ko">버튼이 다 해줘요</span><span class="zh">按钮全包</span></div><p><span class="ko">위 명령을 몰라도 돼요 — VS Code의 <b>스테이징(+) → 커밋(✓) → Publish</b> 버튼이 똑같은 일을 대신해줘요. 원리만 알아두면 충분해요.</span><span class="zh">不会上面的命令也行 —— VS Code 的 <b>暂存(+) → 提交(✓) → Publish</b> 按钮做同样的事。懂原理就够。</span></p></div>
   </section>
 
   <section class="sec">
@@ -1192,14 +1219,40 @@ git push</code></pre>
   </section>
 
   <section class="sec">
+    <div class="kick"><span class="ko">Firebase — 실제 화면</span><span class="zh">Firebase — 实际画面</span></div>
+    <h2 class="title"><span class="ko">여기서 firebaseConfig를 복사해요</span><span class="zh">在这里复制 firebaseConfig</span></h2>
+    <p class="prose"><span class="ko">⚙️ <b>프로젝트 설정 → 내 앱</b>에서 <b>SDK 설정 및 구성 → 구성</b>을 고르면 아래처럼 <code class="mono">firebaseConfig</code> 코드가 나와요. 오른쪽 <b>복사 아이콘</b>으로 통째로 복사!</span><span class="zh">⚙️ <b>项目设置 → 我的应用</b> 里选 <b>SDK 设置和配置 → 配置</b>，就会出现下面的 <code class="mono">firebaseConfig</code> 代码。用右侧 <b>复制图标</b> 整段复制!</span></p>
+    <img class="shot" src="imgs/fb_config.png" alt="firebaseConfig 콘솔 화면" style="width:auto; max-width:100%; max-height:560px; margin:14px auto 0; display:block"/>
+    <div class="shotcap"><span class="ko">프로젝트 설정 → 내 앱 → SDK 설정 및 구성(구성)</span><span class="zh">项目设置 → 我的应用 → SDK 设置和配置(配置)</span></div>
+  </section>
+
+  <section class="sec">
+    <div class="kick"><span class="ko">Firebase — 실제 화면</span><span class="zh">Firebase — 实际画面</span></div>
+    <h2 class="title"><span class="ko">데이터가 쌓이는 곳 — Firestore</span><span class="zh">数据存放处 — Firestore</span></h2>
+    <p class="prose"><span class="ko"><b>데이터베이스 및 스토리지 → Firestore</b>를 열면 이런 화면이에요. 데이터는 <b>컬렉션(폴더) → 문서(한 건) → 필드(값)</b> 구조로 쌓여요. 위쪽 <b>규칙</b> 탭에서 <b>보안 규칙</b>도 걸 수 있어요.</span><span class="zh">打开 <b>数据库和存储 → Firestore</b> 就是这个画面。数据按 <b>集合(文件夹) → 文档(一条) → 字段(值)</b> 结构存放。上方 <b>规则</b> 标签可设 <b>安全规则</b>。</span></p>
+    <img class="shot" src="imgs/fb_firestore.png" alt="Firestore 데이터 화면" style="width:auto; max-width:100%; max-height:470px; margin:14px auto 0; display:block"/>
+    <div class="shotcap"><span class="ko">컬렉션 → 문서 → 필드 · 상단 “규칙” 탭 = 보안 규칙</span><span class="zh">集合 → 文档 → 字段 · 顶部「规则」标签 = 安全规则</span></div>
+    <div class="note ok"><div class="nt">🤖 <span class="ko">보안 규칙도 OpenCode에게 (복사)</span><span class="zh">安全规则也交给 OpenCode(复制)</span></div><p><span class="ko">위 <b>규칙</b> 탭을 직접 안 건드려도, 이렇게 부탁하면 돼요:</span><span class="zh">不用自己动上面的 <b>规则</b> 标签，这样拜托即可:</span></p>
+      <div class="code plain" style="margin-top:8px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">Firestore 보안 규칙을 "로그인한 사람만 읽고 쓰기"로 만들어줘.</span><span class="zh">把 Firestore 安全规则设成「只有登录者能读写」。</span></code></pre></div>
+    </div>
+  </section>
+
+  <section class="sec">
     <div class="kick"><span class="ko">Firebase — 코드 붙이기</span><span class="zh">Firebase — 接入代码</span></div>
     <h2 class="title"><span class="ko">② 코드에 붙이고 규칙 걸기</span><span class="zh">② 接入代码并设规则</span></h2>
-    <p class="prose"><span class="ko">복사한 <b>config</b>를 <code class="mono">index.html</code>에 붙이고, 나머지 연결은 <b>OpenCode에게 맡기면</b> 돼요.</span><span class="zh">把复制的 <b>config</b> 贴进 <code class="mono">index.html</code>，其余连接 <b>交给 OpenCode</b>。</span></p>
-    <div class="code plain"><div class="chd"><span class="fn">index.html</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>const firebaseConfig = {
-  apiKey: "…", authDomain: "…",
-  projectId: "…", appId: "…"
-};  // ← 콘솔에서 복사한 값 붙여넣기</code></pre></div>
-    <div class="note ok"><div class="nt">🤖 <span class="ko">OpenCode에게 이렇게</span><span class="zh">这样对 OpenCode 说</span></div><p><span class="ko">“이 <b>firebaseConfig</b>로 Firestore에 <b>저장·불러오기</b>를 붙여줘. 그리고 <b>보안 규칙</b>도 로그인 기준으로 만들어줘.”</span><span class="zh">"用这个 <b>firebaseConfig</b> 接上 Firestore 的 <b>存取</b>，<b>安全规则</b> 也按登录来写。"</span></p></div>
+    <p class="prose"><span class="ko">복사한 <b>config</b>는 <code class="mono">index.html</code> <b>맨 아래 &lt;script&gt; 안</b>(닫는 태그 <code class="mono">&lt;/body&gt;</code> 바로 위)에 붙여요. 위치가 헷갈리면 통째로 <b>OpenCode에게 맡겨도</b> 돼요.</span><span class="zh">复制的 <b>config</b> 贴到 <code class="mono">index.html</code> <b>最下方 &lt;script&gt; 里</b>(闭合标签 <code class="mono">&lt;/body&gt;</code> 正上方)。位置拿不准就整段 <b>交给 OpenCode</b>。</span></p>
+    <div class="code plain"><div class="chd"><span class="fn">index.html</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>&lt;body&gt;
+  … 내 화면(HTML) …
+
+  &lt;!-- ↓ 여기, &lt;/body&gt; 바로 위에 붙여요 --&gt;
+  &lt;script type="module"&gt;
+    const firebaseConfig = { apiKey:"…", projectId:"…", appId:"…" };
+    // ← 콘솔에서 복사한 값
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre></div>
+    <div class="note ok"><div class="nt">🤖 <span class="ko">OpenCode에게 이렇게 (복사)</span><span class="zh">这样拜托 OpenCode(复制)</span></div><p><span class="ko">붙여넣은 config로 <b>Firestore 저장·불러오기</b>는 이 문장 그대로:</span><span class="zh">用贴好的 config，让它做 <b>Firestore 存取</b>，照抄这句:</span></p>
+      <div class="code plain" style="margin-top:8px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">이 firebaseConfig로 Firebase를 연결하고, Firestore에 글 저장 + 목록 실시간 표시를 붙여줘.</span><span class="zh">用这个 firebaseConfig 连接 Firebase，加上 Firestore 存文章 + 实时显示列表。</span></code></pre></div>
+    </div>
   </section>
 
   <section class="sec">
@@ -1219,7 +1272,17 @@ git push</code></pre>
         <li><span class="ko"><b>규칙과 연결</b> — “로그인한 사람만”: <code class="mono">allow read, write: if request.auth != null;</code></span><span class="zh"><b>与规则连接</b> — 「只限登录者」: <code class="mono">allow read, write: if request.auth != null;</code></span></li>
       </ol>
     </div>
-    <div class="note ok"><div class="nt">🤖 <span class="ko">OpenCode에게 이렇게</span><span class="zh">这样对 OpenCode 说</span></div><p><span class="ko">“<b>Firebase Auth</b>로 <b>구글 로그인</b> 버튼을 붙이고, <b>로그인한 사람만</b> 자기 데이터를 읽고 쓰게 <b>보안 규칙</b>도 맞춰줘.”</span><span class="zh">"用 <b>Firebase Auth</b> 加 <b>Google 登录</b> 按钮，把 <b>安全规则</b> 设成 <b>只有登录者</b> 能读写自己的数据。"</span></p></div>
+    <div class="note ok"><div class="nt">🤖 <span class="ko">OpenCode에게 이렇게 (복사)</span><span class="zh">这样拜托 OpenCode(复制)</span></div><p><span class="ko"><b>구글 로그인</b> 버튼 붙이기는 이 문장 그대로:</span><span class="zh">加 <b>Google 登录</b> 按钮，照抄这句:</span></p>
+      <div class="code plain" style="margin-top:8px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">Firebase Auth로 구글 로그인 버튼을 넣고, 로그인한 사람만 글을 쓰게 해줘.</span><span class="zh">用 Firebase Auth 加 Google 登录按钮，只让登录的人能写文章。</span></code></pre></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="kick"><span class="ko">Firebase — 실제 화면</span><span class="zh">Firebase — 实际画面</span></div>
+    <h2 class="title"><span class="ko">로그인 방법 켜기 (실제 화면)</span><span class="zh">开启登录方式(实际画面)</span></h2>
+    <p class="prose"><span class="ko"><b>Authentication → 로그인 방법</b>에서 <b>이메일/비밀번호</b>나 <b>Google</b>을 클릭해 켜면 돼요. 우리 수업은 이 둘이면 충분해요.</span><span class="zh">在 <b>Authentication → 登录方式</b> 点 <b>邮箱/密码</b> 或 <b>Google</b> 开启即可。本课这两个就够。</span></p>
+    <img class="shot" src="imgs/fb_auth.png" alt="Authentication 로그인 방법 화면" style="width:auto; max-width:100%; max-height:540px; margin:14px auto 0; display:block"/>
+    <div class="shotcap"><span class="ko">Authentication → 로그인 방법 → 제공업체 선택</span><span class="zh">Authentication → 登录方式 → 选择提供商</span></div>
   </section>
 
   <!-- ============ 부록 · 문제 해결 ============ -->
@@ -1321,6 +1384,7 @@ git push</code></pre>
       <div class="pane accent"><div class="pt"><span class="ko">서버</span><span class="zh">服务器</span></div><p><span class="ko">요청하면 응답하는 <b>항상 켜진 컴퓨터</b> (식당 주방)</span><span class="zh">有请求就回应的 <b>常开电脑</b>(餐厅厨房)</span></p></div>
       <div class="pane"><div class="pt"><span class="ko">클라우드</span><span class="zh">云</span></div><p><span class="ko">그 컴퓨터를 사지 않고 <b>빌려 쓰는 것</b> (전기·수도처럼)</span><span class="zh">不买那台电脑，而是 <b>租用</b>(像水电)</span></p></div>
     </div>
+    <div class="note"><div class="nt">🔁 <span class="ko">요청 1번 → 응답 1번</span><span class="zh">一次请求 → 一次回应</span></div><p><span class="ko">보통 <b>요청 한 번에 응답 한 번</b>으로 짝을 이뤄요. 그리고 <b>필요할 때만 잠깐 연결</b>해 주고받고 끝나요 — 손님과 주방이 <b>항상 통화 중인 건 아니에요.</b></span><span class="zh">通常 <b>一次请求配一次回应</b>。而且 <b>只在需要时短暂连接</b>，收发完就结束 —— 客人和厨房 <b>并不是一直在通话</b>。</span></p></div>
     <div class="note"><div class="nt">💡 <span class="ko">오늘과 연결</span><span class="zh">与今天的联系</span></div><p><span class="ko"><b>GitHub Pages</b>도 클라우드 서버에 내 파일을 올려 24시간 보여주는 거예요.</span><span class="zh"><b>GitHub Pages</b> 也是把我的文件放到云服务器上，24 小时展示。</span></p></div>
   </section>
 
@@ -1350,7 +1414,7 @@ git push</code></pre>
     <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 110" role="img">
       <text x="80" y="70" font-size="40" text-anchor="middle">🗄️</text>
       <rect x="160" y="26" width="420" height="20" fill="#eef2ff" stroke="#c7d2fe"/><rect x="160" y="46" width="420" height="18" fill="#fff" stroke="#e4e4e7"/><rect x="160" y="64" width="420" height="18" fill="#fff" stroke="#e4e4e7"/>
-      <text x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름 / 名字   ·   점수 / 分数</text>
+      <text class="ko" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름   ·   점수</text><text class="zh" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">名字   ·   分数</text>
       <text x="176" y="60" font-size="12" fill="#3f3f46" font-family="monospace">민준 · 120</text>
       <text x="176" y="78" font-size="12" fill="#3f3f46" font-family="monospace">Wei · 95</text>
     </svg></div><figcaption><span class="ko">회원·점수·글 같은 정보를 표로 저장하고, SQL 언어로 찾아요</span><span class="zh">把会员·分数·帖子等以表格存储，用 SQL 语言查询</span></figcaption></figure>
