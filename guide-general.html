@@ -576,7 +576,7 @@
     <div class="kick"><span class="ko">설치 · OpenCode</span><span class="zh">安装 · OpenCode</span></div>
     <h2 class="title"><span class="ko">④ AI 도구 OpenCode 설치</span><span class="zh">④ 安装 AI 工具 OpenCode</span></h2>
     <p class="lead prose"><span class="ko">이제 npm으로 <b>OpenCode</b>를 깔아요. <b>PowerShell을 껐다 켠 뒤</b> 아래 한 줄.</span><span class="zh">现在用 npm 装 <b>OpenCode</b>。<b>关掉再开 PowerShell 后</b> 输入下面一行。</span></p>
-    <div class="code plain"><div class="chd"><span class="fn"><span class="ko">① OpenCode 설치</span><span class="zh">① 安装 OpenCode</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>npm i -g opencode-ai@latest</code></pre></div>
+    <div class="code plain"><div class="chd"><span class="fn"><span class="ko">① OpenCode 설치</span><span class="zh">① 安装 OpenCode</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>npm i -g opencode-ai</code></pre></div>
     <img class="shot" src="imgs/05_install_opencode.png" alt="OpenCode 설치 완료"/>
     <div class="shotcap"><span class="ko">설치 완료 화면 — 실행은 <b>프로젝트를 연 뒤</b> 뒤에서 해요</span><span class="zh">安装完成 —— 运行 <b>等打开项目后</b> 在后面做</span></div>
   </section>
@@ -761,7 +761,7 @@ git config user.email "my@email.com"</code></pre></div>
       <li><span class="ko">③ <b>화면 구성</b> — 위→아래로 뭐가 보이나</span><span class="zh">③ <b>画面结构</b> — 从上到下有什么</span></li>
       <li><span class="ko">④ <b>핵심 기능·규칙</b> — 꼭 되는 동작 1~3개</span><span class="zh">④ <b>核心功能·规则</b> — 必须能用的 1~3 个</span></li>
       <li><span class="ko">⑤ <b>담을 내용</b> — 실제 텍스트·데이터</span><span class="zh">⑤ <b>要放的内容</b> — 真实文字·数据</span></li>
-      <li><span class="ko">⑥ <b>분위기</b> — 색·글꼴·느낌</span><span class="zh">⑥ <b>风格</b> — 颜色·字体·感觉</span></li>
+      <li><span class="ko">⑥ <b>분위기</b> — 색·글꼴·느낌 <small>(더 자세히는 <code class="mono">design.md</code>)</small></span><span class="zh">⑥ <b>风格</b> — 颜色·字体·感觉 <small>(更细的放 <code class="mono">design.md</code>)</small></span></li>
     </ul>
     <div class="note ok"><div class="nt">🤝 <span class="ko">완벽히 안 채워도 OK — AI와 함께 다듬기</span><span class="zh">不用填完美 — 和 AI 一起打磨</span></div><p><span class="ko">최소한만 채우고 OpenCode에 <b>“이 prd.md 검토하고, 빠진 것·넣으면 좋을 걸 나에게 질문해줘”</b> 하면 함께 채워요. (스타터 <code class="mono">prd.md</code>엔 뼈대+예시가 들어 있어요.)</span><span class="zh">先填最少，再对 OpenCode 说 <b>「检查这个 prd.md，把缺的·该加的问我」</b>，边答边补。(模板 <code class="mono">prd.md</code> 里有骨架+示例。)</span></p></div>
   </section>
@@ -923,12 +923,12 @@ git config user.email "my@email.com"</code></pre></div>
       <div class="st-h">🧭 <span class="ko">계획 → 검토 → 실행</span><span class="zh">计划 → 检查 → 执行</span></div>
       <ol>
         <li><span class="ko"><b>계획 세우기</b> (아직 코드 X, 계획만):</span><span class="zh"><b>先列计划</b>(先别写代码):</span>
-          <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">prd.md를 참고해 "무엇을·어떤 순서로" 만들지 개발 계획을 plan.md에 단계별로 적어줘.
-아직 코드는 쓰지 마 — 계획만.</span><span class="zh">参考 prd.md，把"做什么·按什么顺序"的开发计划分步写进 plan.md。
-暂时别写代码 —— 只列计划。</span></code></pre></div>
+          <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">prd.md를 참고해 개발 계획을 plan.md에 단계별로 적어줘.
+각 단계 앞에 [ ] 체크박스를 붙이고, 끝나면 [x]로 바꿔 진행 상황이 보이게 해줘. (아직 코드는 X)</span><span class="zh">参考 prd.md，把开发计划分步写进 plan.md。
+每步前加 [ ] 复选框，完成就改成 [x]，让进度一目了然。(暂时别写代码)</span></code></pre></div>
         </li>
         <li><span class="ko"><b>계획 검토(반복).</b> <b>빠진 것·순서·너무 큰 단계</b>를 고쳐 달라고 반복. (“3단계를 둘로 쪼개줘”)</span><span class="zh"><b>检查计划(反复)。</b> 让它改 <b>漏项·顺序·太大的步骤</b>。(「第3步拆两步」)</span></li>
-        <li><span class="ko"><b>하나씩 실행.</b> 맘에 들면 “<b>1단계만</b> 실행해줘” → 확인 → “다음 단계”. 끝난 건 ✓.</span><span class="zh"><b>逐步执行。</b> 满意后「只执行 <b>第1步</b>」→ 确认 → 「下一步」。完成打 ✓。</span></li>
+        <li><span class="ko"><b>하나씩 실행.</b> 맘에 들면 “<b>1단계만</b> 실행해줘” → 확인 → 끝나면 plan.md에 <b>[x]</b> 표시 → 다음. <b>지금 어디까지 됐는지 한눈에.</b></span><span class="zh"><b>逐步执行。</b> 满意后「只执行 <b>第1步</b>」→ 确认 → 完成后在 plan.md 标 <b>[x]</b> → 下一步。<b>进度一目了然。</b></span></li>
       </ol>
     </div>
     <div class="note ok"><div class="nt">🛠 <span class="ko">고칠 때도 똑같이</span><span class="zh">修改时也一样</span></div><p><span class="ko">버그 수정·기능 추가도 “바로 고쳐줘” 말고 <b>“어디를 왜 바꿀지 먼저 계획해줘”</b> → 검토 → 실행.</span><span class="zh">改 bug·加功能也别「直接改」，先 <b>「说清改哪里·为什么」</b> → 检查 → 执行。</span></p></div>

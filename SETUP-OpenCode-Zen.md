@@ -19,7 +19,7 @@
 | 방법 | Windows | 비고 |
 |---|---|---|
 | **Scoop** `scoop install opencode` | ✅ 추천 | Windows 네이티브 패키지 매니저, 제일 깔끔 |
-| **npm** `npm i -g opencode-ai@latest` | ✅ | Node.js(v16+) 필요 |
+| **npm** `npm i -g opencode-ai` | ✅ | Node.js(v16+) 필요 |
 | **Chocolatey** `choco install opencode` | ✅ | Windows 패키지 매니저 |
 | curl `... \| bash` | △ | WSL 또는 Git Bash 안에서만 |
 | bun | ✕ | Windows 지원 아직 진행 중 |
@@ -45,7 +45,7 @@ winget install OpenJS.NodeJS.LTS
 
 **② OpenCode 설치**
 ```bat
-npm i -g opencode-ai@latest
+npm i -g opencode-ai
 ```
 
 **③ 설치 확인**
