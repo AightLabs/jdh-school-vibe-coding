@@ -781,11 +781,15 @@ git config user.email "my@email.com"</code></pre></div>
     <div class="note"><div class="nt">💡 <span class="ko">좋은 프롬프트의 구조</span><span class="zh">好提示词的结构</span></div><p><span class="ko"><b>역할</b>(초보 학생이야) + <b>맥락</b>(prd.md 참고) + <b>요청</b>(무엇을) + <b>조건</b>(순수 HTML/JS, 주석) + <b>출력형식</b>(전체 코드로).</span><span class="zh"><b>角色</b>(我是初学者) + <b>背景</b>(参考 prd.md) + <b>要求</b>(做什么) + <b>条件</b>(纯 HTML/JS、加注释) + <b>输出形式</b>(给出完整代码)。</span></p></div>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">그대로 쓰는 프롬프트 틀 · OpenCode</span><span class="zh">可直接套用的提示词 · OpenCode</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>[역할/角色] 나는 코딩 처음인 학생이야 / 我是初学编程的学生
-[맥락/背景] 이 폴더의 prd.md와 mockup.html을 참고해줘 / 参考本文件夹的 prd.md 和 mockup.html
-[요청/要求] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘 / 用一个 index.html 做出(什么)
-[조건/条件] 외부 라이브러리 없이, 초보용 주석 / 不用外部库，加初学者注释
-[출력/输出] 완성된 전체 코드 / 给出完整代码</code></pre>
+<pre><code><span class="ko">[역할] 나는 코딩 처음인 학생이야
+[맥락] 이 폴더의 prd.md와 mockup.html을 참고해줘
+[요청] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘
+[조건] 외부 라이브러리 없이, 초보용 주석
+[출력] 완성된 전체 코드</span><span class="zh">[角色] 我是初学编程的学生
+[背景] 参考本文件夹的 prd.md 和 mockup.html
+[要求] 用一个 index.html 做出(什么)
+[条件] 不用外部库，加初学者注释
+[输出] 给出完整代码</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">고칠 때</span><span class="zh">要修改时</span></div><p><span class="ko">“버튼이 작아. 가운데로 모으고 2배 크게, 이기면 🎉를 결과 옆에 보여줘.” — <b>구체적으로, 하나씩.</b></span><span class="zh">「按钮太小。居中并放大 2 倍，赢了在结果旁显示 🎉。」— <b>要具体、一次一件。</b></span></p></div>
   </section>
@@ -823,28 +827,42 @@ git config user.email "my@email.com"</code></pre></div>
     </ul>
     <div class="code plain">
       <div class="chd"><span class="fn">context.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code># 프로젝트 기억 / 项目记忆 (context)
+<pre><code><span class="ko"># 프로젝트 기억 (context)
 
-## 무엇을 만드나 / 在做什么
+## 무엇을 만드나
 가위바위보 웹게임 (index.html 단일 파일)
 
-## 지금까지 결정 / 已决定
+## 지금까지 결정
 - 색: 남색 배경 + 흰 글씨, 버튼 크고 둥글게
-- 점수 기능 추가함 / 다시하기 버튼은 아직
+- 점수 기능 추가함, 다시하기 버튼은 아직
 
-## 다음에 할 일 / 下一步
+## 다음에 할 일
 - 이기면 🎉 애니메이션
-- 휴대폰에서 버튼 크기 조정</code></pre>
+- 휴대폰에서 버튼 크기 조정</span><span class="zh"># 项目记忆 (context)
+
+## 在做什么
+石头剪刀布网页游戏 (index.html 单文件)
+
+## 已决定
+- 颜色: 深蓝背景 + 白字，按钮又大又圆
+- 已加分数功能，重玩按钮还没做
+
+## 下一步
+- 赢了 🎉 加动画
+- 手机上调整按钮大小</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">가장 쉬운 습관</span><span class="zh">最简单的习惯</span></div><p><span class="ko">작업을 멈추기 전, 이 파일의 <b>“다음에 할 일”</b>만 업데이트해두면 내일의 내가 편해져요. <b>한 세션 = 한 목표</b>로 짧게 유지하고, 기억은 파일에 남겨 이어가는 게 프로의 방식이에요.</span><span class="zh">停工前只要更新这份文件的 <b>「下一步」</b>，明天的自己就轻松了。<b>一个会话 = 一个目标</b> 保持简短，记忆留在文件里接着做，这是老手的方式。</span></p></div>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">새 세션 첫 메시지 · 기억 불러오기</span><span class="zh">新会话第一句 · 载入记忆</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>아래는 이 프로젝트의 context.md와 현재 index.html이야.
-以下是本项目的 context.md 和当前 index.html。
-이 내용을 기준으로 이어서 작업하자 / 请以此为准继续。
-오늘 할 일 / 今天要做: "이기면 🎉 애니메이션 추가"
+<pre><code><span class="ko">아래는 이 프로젝트의 context.md와 현재 index.html이야.
+이 내용을 기준으로 이어서 작업하자.
+오늘 할 일: "이기면 🎉 애니메이션 추가"
 
-(여기에 context.md + 코드 붙여넣기 / 在此粘贴)</code></pre>
+(여기에 context.md + 코드 붙여넣기)</span><span class="zh">以下是本项目的 context.md 和当前 index.html。
+请以此为准继续。
+今天要做: "赢了 🎉 加动画"
+
+(在此粘贴 context.md + 代码)</span></code></pre>
     </div>
   </section>
 
@@ -905,19 +923,17 @@ git config user.email "my@email.com"</code></pre></div>
       <ol>
         <li><span class="ko"><b>목업 만들기.</b> 아래 프롬프트로 <b>눌러지는 목업</b>(mockup.html)을 먼저 만들어요.</span><span class="zh"><b>做原型。</b> 用下面提示词先做 <b>能点的原型</b>(mockup.html)。</span>
           <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
+<pre><code><span class="ko">이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
 mockup.html 하나로 만들어줘. 디자인은 단순하게,
-버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.
-参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
-设计简单，点按钮时能看到画面如何变化。</code></pre></div>
+버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.</span><span class="zh">参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
+设计简单，点按钮时能看到画面如何变化。</span></code></pre></div>
         </li>
         <li><span class="ko"><b>목업 확인.</b> <code class="mono">mockup.html</code>을 브라우저로 열어 흐름이 마음에 드는지 봐요.</span><span class="zh"><b>看原型。</b> 用浏览器打开 <code class="mono">mockup.html</code>，看流程是否满意。</span></li>
         <li><span class="ko"><b>MVP 구현.</b> <code class="mono">index.html</code>을 새로 만들고, prd.md·mockup.html을 함께 열어둔 채 아래처럼 부탁해요.</span><span class="zh"><b>实现 MVP。</b> 新建 <code class="mono">index.html</code>，同时打开 prd.md·mockup.html，照下面拜托。</span>
           <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
-동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.
-参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
-做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</code></pre></div>
+<pre><code><span class="ko">prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
+동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.</span><span class="zh">参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
+做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</span></code></pre></div>
         </li>
         <li><span class="ko"><b>결과 확인.</b> <code class="mono">index.html</code>을 <b>Live Server</b>로 열어 핵심 기능이 도는지 확인!</span><span class="zh"><b>看结果。</b> 用 <b>Live Server</b> 打开 <code class="mono">index.html</code>，看核心功能是否运行!</span></li>
       </ol>
@@ -958,7 +974,7 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <p class="lead prose"><span class="ko">우리가 쓰는 무료·빠른 모델은 똑똑하지만 <b>큰 요청엔 약해요.</b> 다음처럼 하면 훨씬 잘 돼요:</span><span class="zh">我们用的免费·快模型聪明，但 <b>不擅长大请求</b>。这样用就顺很多:</span></p>
     <ul class="blist">
       <li><span class="ko"><b>작게 쪼개기</b> — 한 번에 <b>기능 하나만</b> (“점수 표시만 추가해줘”).</span><span class="zh"><b>拆小</b> — 一次 <b>只做一个功能</b>(「只加个分数显示」)。</span></li>
-      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code>를 “다시 읽어줘”.</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code>。</span></li>
+      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">context.md</code>를 “다시 읽어줘”.</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">context.md</code>。</span></li>
       <li><span class="ko"><b>실패하면 반으로</b> — 큰 요청이 안 되면 더 잘게 나눠 다시.</span><span class="zh"><b>失败就减半</b> — 大请求不行就拆更小再试。</span></li>
       <li><span class="ko"><b>막히면 전환</b> — <code class="mono">/models</code>로 다른 무료 모델로.</span><span class="zh"><b>卡住就换</b> — <code class="mono">/models</code> 换其他免费模型。</span></li>
     </ul>
@@ -1262,7 +1278,7 @@ git push</code></pre>
     <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 110" role="img">
       <text x="80" y="70" font-size="40" text-anchor="middle">🗄️</text>
       <rect x="160" y="26" width="420" height="20" fill="#eef2ff" stroke="#c7d2fe"/><rect x="160" y="46" width="420" height="18" fill="#fff" stroke="#e4e4e7"/><rect x="160" y="64" width="420" height="18" fill="#fff" stroke="#e4e4e7"/>
-      <text x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름 / 名字   ·   점수 / 分数</text>
+      <text class="ko" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름   ·   점수</text><text class="zh" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">名字   ·   分数</text>
       <text x="176" y="60" font-size="12" fill="#3f3f46" font-family="monospace">민준 · 120</text>
       <text x="176" y="78" font-size="12" fill="#3f3f46" font-family="monospace">Wei · 95</text>
     </svg></div><figcaption><span class="ko">회원·점수·글 같은 정보를 표로 저장하고, SQL 언어로 찾아요</span><span class="zh">把会员·分数·帖子等以表格存储，用 SQL 语言查询</span></figcaption></figure>

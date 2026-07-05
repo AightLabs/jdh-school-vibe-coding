@@ -680,9 +680,11 @@ git config user.email "my@email.com"</code></pre>
     </div>
     <div class="code">
       <div class="chd"><span class="dot" style="background:#ff5f56"></span><span class="dot" style="background:#ffbd2e"></span><span class="dot" style="background:#27c93f"></span><span class="fn">prd.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code># 제품 기획서 / 产品需求 (PRD)
+<pre><code><span class="ko"># 제품 기획서 (PRD)
 ## ① 한 줄 소개   ## ② 누가 볼까   ## ③ 어떤 화면
-## ④ 핵심 기능    ## ⑤ 분위기</code></pre>
+## ④ 핵심 기능    ## ⑤ 분위기</span><span class="zh"># 产品需求 (PRD)
+## ① 一句话介绍   ## ② 给谁看   ## ③ 什么画面
+## ④ 核心功能    ## ⑤ 风格</span></code></pre>
     </div>
     <div class="note ok"><div class="nt">🤝 <span class="ko">완벽히 안 채워도 OK — AI와 함께 다듬기</span><span class="zh">不用填完美 — 和 AI 一起打磨</span></div><p><span class="ko">최소한만 채우고 OpenCode에 <b>“이 prd.md 검토하고, 빠진 것·넣으면 좋을 걸 나에게 질문해줘”</b> 하면 함께 채워요. (스타터 <code class="mono">prd.md</code>엔 뼈대+예시가 들어 있어요)</span><span class="zh">先填最少，再对 OpenCode 说 <b>「检查这个 prd.md，把缺的·该加的问我」</b>，边答边补。(模板 <code class="mono">prd.md</code> 里有骨架+示例)</span></p></div>
   </section>
@@ -736,11 +738,15 @@ git config user.email "my@email.com"</code></pre>
     <h2 class="title"><span class="ko">그대로 쓰는 프롬프트 틀</span><span class="zh">可直接套用的提示词</span></h2>
     <div class="code plain">
       <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>[역할/角色] 나는 코딩 처음인 학생이야 / 我是初学编程的学生
-[맥락/背景] 이 폴더의 prd.md와 mockup.html을 참고해줘 / 参考本文件夹的 prd.md 和 mockup.html
-[요청/要求] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘 / 用一个 index.html 做出(什么)
-[조건/条件] 외부 라이브러리 없이, 초보용 주석 / 不用外部库，加初学者注释
-[출력/输出] 완성된 전체 코드 / 给出完整代码</code></pre>
+<pre><code><span class="ko">[역할] 나는 코딩 처음인 학생이야
+[맥락] 이 폴더의 prd.md와 mockup.html을 참고해줘
+[요청] index.html 하나에 HTML/CSS/JS로 (무엇을) 만들어줘
+[조건] 외부 라이브러리 없이, 초보용 주석
+[출력] 완성된 전체 코드</span><span class="zh">[角色] 我是初学编程的学生
+[背景] 参考本文件夹的 prd.md 和 mockup.html
+[要求] 用一个 index.html 做出(什么)
+[条件] 不用外部库，加初学者注释
+[输出] 给出完整代码</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">고칠 때</span><span class="zh">要修改时</span></div><p><span class="ko">“버튼이 작아. 가운데로 모으고 2배 크게, 이기면 🎉를 결과 옆에 보여줘.” — <b>구체적으로, 하나씩.</b></span><span class="zh">「按钮太小。居中并放大 2 倍，赢了在结果旁显示 🎉。」— <b>要具体、一次一件。</b></span></p></div>
   </section>
@@ -781,18 +787,29 @@ git config user.email "my@email.com"</code></pre>
     <h2 class="title">context.md — <span class="ko">프로젝트 기억 파일</span><span class="zh">项目记忆文件</span></h2>
     <div class="code plain">
       <div class="chd"><span class="fn">context.md</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code># 프로젝트 기억 / 项目记忆 (context)
+<pre><code><span class="ko"># 프로젝트 기억 (context)
 
-## 무엇을 만드나 / 在做什么
+## 무엇을 만드나
 가위바위보 웹게임 (index.html 단일 파일)
 
-## 지금까지 결정 / 已决定
+## 지금까지 결정
 - 색: 남색 배경 + 흰 글씨, 버튼 크고 둥글게
-- 점수 기능 추가함 / 다시하기 버튼은 아직
+- 점수 기능 추가함, 다시하기 버튼은 아직
 
-## 다음에 할 일 / 下一步
+## 다음에 할 일
 - 이기면 🎉 애니메이션
-- 휴대폰에서 버튼 크기 조정</code></pre>
+- 휴대폰에서 버튼 크기 조정</span><span class="zh"># 项目记忆 (context)
+
+## 在做什么
+石头剪刀布网页游戏 (index.html 单文件)
+
+## 已决定
+- 颜色: 深蓝背景 + 白字，按钮又大又圆
+- 已加分数功能，重玩按钮还没做
+
+## 下一步
+- 赢了 🎉 加动画
+- 手机上调整按钮大小</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">습관</span><span class="zh">习惯</span></div><p><span class="ko">작업을 멈추기 전, 이 파일의 <b>“다음에 할 일”</b>만 업데이트해두면 내일의 내가 편해져요.</span><span class="zh">停工前只要更新这份文件的 <b>「下一步」</b>，明天的自己就轻松了。</span></p></div>
   </section>
@@ -817,12 +834,15 @@ git config user.email "my@email.com"</code></pre>
     </svg></div><figcaption><span class="ko">세션이 끝나도 기억을 파일(context.md)에 남겨, 새 세션에서 불러와요</span><span class="zh">会话结束也把记忆留在文件(context.md)，新会话再载入</span></figcaption></figure>
     <div class="code plain">
       <div class="chd"><span class="fn"><span class="ko">새 채팅 첫 메시지</span><span class="zh">新聊天的第一句</span></span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>아래는 이 프로젝트의 context.md와 현재 index.html이야.
-以下是本项目的 context.md 和当前 index.html。
-이 내용을 기준으로 이어서 작업하자 / 请以此为准继续。
-오늘 할 일 / 今天要做: "이기면 🎉 애니메이션 추가"
+<pre><code><span class="ko">아래는 이 프로젝트의 context.md와 현재 index.html이야.
+이 내용을 기준으로 이어서 작업하자.
+오늘 할 일: "이기면 🎉 애니메이션 추가"
 
-(여기에 context.md + 코드 붙여넣기 / 在此粘贴)</code></pre>
+(여기에 context.md + 코드 붙여넣기)</span><span class="zh">以下是本项目的 context.md 和当前 index.html。
+请以此为准继续。
+今天要做: "赢了 🎉 加动画"
+
+(在此粘贴 context.md + 代码)</span></code></pre>
     </div>
     <div class="note ok"><div class="nt">✅ <span class="ko">핵심</span><span class="zh">核心</span></div><p><span class="ko">AI의 기억은 <b>사람이 관리</b>해요. <b>파일에 적고 → 새 세션에서 불러오기.</b> 이 습관이 큰 프로젝트를 가능하게 합니다.</span><span class="zh">AI 的记忆 <b>由人来管理</b>。<b>写进文件 → 在新会话里载入。</b> 这个习惯让大项目成为可能。</span></p></div>
   </section>
@@ -864,11 +884,10 @@ git config user.email "my@email.com"</code></pre>
     <p class="lead"><span class="ko">종이 대신 <b>눌러지는 목업</b>을 AI에게 만들게 해요. prd.md를 열어둔 채:</span><span class="zh">不用纸，让 AI 做一个 <b>能点击的原型</b>。打开着 prd.md:</span></p>
     <div class="code plain">
       <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
+<pre><code><span class="ko">이 폴더의 prd.md를 참고해서, 실제로 클릭되는 목업을
 mockup.html 하나로 만들어줘. 디자인은 단순하게,
-버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.
-参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
-设计简单，点按钮时能看到画面如何变化。</code></pre>
+버튼을 누르면 화면이 어떻게 바뀌는지 보이게 해줘.</span><span class="zh">参考本文件夹的 prd.md，做一个可点击的原型 mockup.html，
+设计简单，点按钮时能看到画面如何变化。</span></code></pre>
     </div>
     <div class="note"><div class="nt">💡 <span class="ko">목업 → MVP</span><span class="zh">原型 → MVP</span></div><p><span class="ko">이 목업이 마음에 들면, 다음 챕터에서 <b>진짜 동작(MVP)</b>을 채워 <code class="mono">index.html</code>로 완성해요.</span><span class="zh">原型满意后，下一章补上 <b>真正的功能(MVP)</b>，完成 <code class="mono">index.html</code>。</span></p></div>
   </section>
@@ -879,10 +898,9 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <p class="lead"><span class="ko"><code class="mono">index.html</code>을 새로 만들고, <b>prd.md·mockup.html을 함께 열어둔 채</b> 요청해요.</span><span class="zh">新建 <code class="mono">index.html</code>，<b>同时打开 prd.md·mockup.html</b> 再提要求。</span></p>
     <div class="code plain">
       <div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div>
-<pre><code>prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
-동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.
-参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
-做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</code></pre>
+<pre><code><span class="ko">prd.md와 mockup.html을 참고해서, 핵심 기능이 실제로
+동작하는 MVP를 index.html 하나에 HTML/CSS/JS로 만들어줘.</span><span class="zh">参考 prd.md 和 mockup.html，用一个 index.html(HTML/CSS/JS)
+做出核心功能真正能运行的 MVP，加初学者注释，给完整代码。</span></code></pre>
     </div>
     <div class="note ok"><div class="nt">✅ <span class="ko">확인</span><span class="zh">检查</span></div><p><span class="ko">OpenCode가 <code class="mono">index.html</code>을 <b>직접 고쳐줘요</b> → <b>브라우저(Live Server)로 열어</b> 핵심 기능이 도는지 확인!</span><span class="zh">OpenCode 会 <b>直接改</b> <code class="mono">index.html</code> → <b>用浏览器(Live Server)打开</b> 看核心功能是否运行!</span></p></div>
   </section>
@@ -918,7 +936,7 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
     <p class="lead"><span class="ko">무료·빠른 모델(예: <b>DeepSeek Flash</b>)은 똑똑하지만 <b>큰 요청엔 약해요.</b> 이렇게 하면 잘 돼요:</span><span class="zh">免费·快的模型(如 <b>DeepSeek Flash</b>)聪明，但 <b>不擅长大请求</b>。这样用就顺:</span></p>
     <ul class="blist">
       <li><span class="ko"><b>작게 쪼개기</b> — 한 번에 <b>기능 하나만</b> (“점수 표시만 추가해줘”)</span><span class="zh"><b>拆小</b> — 一次 <b>只做一个功能</b>(「只加个分数显示」)</span></li>
-      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code>를 “다시 읽어줘”</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">AGENTS.md</code></span></li>
+      <li><span class="ko"><b>맥락 다시 주기</b> — 헷갈려 하면 <code class="mono">prd.md</code>·<code class="mono">context.md</code>를 “다시 읽어줘”</span><span class="zh"><b>重新给上下文</b> — 迷糊时让它「再读」<code class="mono">prd.md</code>·<code class="mono">context.md</code></span></li>
       <li><span class="ko"><b>실패하면 반으로</b> — 큰 요청이 안 되면 더 잘게 나눠 다시</span><span class="zh"><b>失败就减半</b> — 大请求不行就拆更小再试</span></li>
       <li><span class="ko"><b>막히면 전환</b> — <code class="mono">/models</code>로 다른 무료 모델(Nemotron·MiMo 등)</span><span class="zh"><b>卡住就换</b> — <code class="mono">/models</code> 换其他免费模型</span></li>
     </ul>
@@ -1261,7 +1279,7 @@ git push</code></pre>
     <figure class="fig"><div class="svgbox"><svg viewBox="0 0 640 110" role="img">
       <text x="80" y="70" font-size="40" text-anchor="middle">🗄️</text>
       <rect x="160" y="26" width="420" height="20" fill="#eef2ff" stroke="#c7d2fe"/><rect x="160" y="46" width="420" height="18" fill="#fff" stroke="#e4e4e7"/><rect x="160" y="64" width="420" height="18" fill="#fff" stroke="#e4e4e7"/>
-      <text x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름 / 名字   ·   점수 / 分数</text>
+      <text class="ko" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">이름   ·   점수</text><text class="zh" x="176" y="41" font-size="12" fill="#4338ca" font-family="monospace">名字   ·   分数</text>
       <text x="176" y="60" font-size="12" fill="#3f3f46" font-family="monospace">민준 · 120</text>
       <text x="176" y="78" font-size="12" fill="#3f3f46" font-family="monospace">Wei · 95</text>
     </svg></div><figcaption><span class="ko">회원·점수·글 같은 정보를 표로 저장하고, SQL 언어로 찾아요</span><span class="zh">把会员·分数·帖子等以表格存储，用 SQL 语言查询</span></figcaption></figure>
