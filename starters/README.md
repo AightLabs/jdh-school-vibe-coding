@@ -7,6 +7,6 @@
 | **[game](./game/)** | 웹게임 | Phaser 3 |
 | **[app](./app/)** | 소개/서비스 페이지 | Tailwind CSS + Vanilla JS |
 
-각 폴더에는 `prd.md`(**기획서 뼈대 + 예시**) · `context.md`(기억 파일) · `index.html`(**빈 뼈대**) · `README.md`(사용법)가 들어 있어요.
+각 폴더에는 `AGENTS.md`(**AI가 자동으로 읽는 규칙**) · `prd.md`(**기획서 뼈대 + 예시**) · `design.md`(**색·폰트 가이드**) · `context.md`(기억 파일) · `index.html`(**빈 뼈대**) · `README.md`(사용법)가 들어 있어요.
 
 > ⚠️ `index.html`은 **완성된 앱이 아니라 빈 골격**이에요. 먼저 `prd.md`를 채우고 → AI(OpenCode)에게 **검토를 받으며 다듬은 뒤** → "prd.md 참고해서 만들어줘"로 직접 만들어 나가요.
