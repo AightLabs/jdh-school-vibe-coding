@@ -3,7 +3,7 @@
 AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중·고등 코딩 특강**(3시간) 자료입니다.
 강의 **슬라이드**와 **스타터 패키지**가 한 저장소에 들어 있어요.
 
-- 📊 **강의 슬라이드(웹):** https://aightlabs.github.io/jdh-school-vibe-coding/
+- 📊 **장대현 수업용(웹):** https://aightlabs.github.io/jdh-school-vibe-coding/ — 3부 개발환경 세팅 + 이후 스스로 읽는 자습서
 - 📦 **저장소:** https://github.com/AightLabs/jdh-school-vibe-coding
 - 🧰 **스타터 가이드:** [STARTER-GUIDE.md](./STARTER-GUIDE.md)
 - 🛠️ **당일 세팅(AI 도구):** [SETUP-OpenCode-Zen.md](./SETUP-OpenCode-Zen.md) — VS Code + OpenCode(npm) + Zen 무료 모델
@@ -11,7 +11,9 @@ AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중
 ## 📂 구성
 | 경로 | 내용 |
 |---|---|
-| `index.html` | **강의 슬라이드** (열면 바로 실행 · ← → 이동 · 코드 복사 · 인쇄 · 한국어/中文 토글) |
+| `index.html` | **장대현 수업용** — 3부 개발환경 세팅(수업) + 그 뒤로 자습서 형식 (← → 슬라이드 · #pN · 인쇄 · 한국어/中文) |
+| `index-general.html` | **(일반인용) 강의 슬라이드** — 기존 전체 3시간 강의 덱 · 추후 일반인 대상으로 수정 예정 |
+| `guide-general.html` | **(일반인용) 자습서** — 기존 자습서 · 추후 일반인 대상으로 수정 예정 |
 | `starters/game/` | **게임 스타터** — Phaser 3 별 받기 게임 + prd.md + context.md |
 | `starters/app/` | **앱 스타터** — Tailwind + Vanilla JS 소개 페이지 + prd.md + context.md |
 | `STARTER-GUIDE.md` | 스타터 준비·사용·배포 정리 문서 |
