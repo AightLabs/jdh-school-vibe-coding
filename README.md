@@ -14,8 +14,8 @@ AI와 대화하며 나만의 웹앱을 만들고 인터넷에 배포하는 **중
 | `index.html` | **장대현 수업용** — 3부 개발환경 세팅(수업) + 그 뒤로 자습서 형식 (← → 슬라이드 · #pN · 인쇄 · 한국어/中文) |
 | `index-general.html` | **(일반인용) 강의 슬라이드** — 기존 전체 3시간 강의 덱 · 추후 일반인 대상으로 수정 예정 |
 | `guide-general.html` | **(일반인용) 자습서** — 기존 자습서 · 추후 일반인 대상으로 수정 예정 |
-| `starters/game/` | **게임 스타터** — Phaser 3 별 받기 게임 + prd.md + context.md |
-| `starters/app/` | **앱 스타터** — Tailwind + Vanilla JS 소개 페이지 + prd.md + context.md |
+| `starters/game/` | **게임 스타터**(빈 뼈대) — Phaser 3 + prd.md·design.md·context.md·AGENTS.md + 에셋 |
+| `starters/app/` | **앱 스타터**(빈 뼈대) — Tailwind + Vanilla JS + prd.md·design.md·context.md·AGENTS.md + 아이콘 |
 | `STARTER-GUIDE.md` | 스타터 준비·사용·배포 정리 문서 |
 | `SETUP-OpenCode-Zen.md` | **당일 AI 도구 세팅** (OpenCode + Zen) 가이드 |
 
