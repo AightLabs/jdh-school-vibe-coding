@@ -1183,9 +1183,28 @@ mockup.html 하나로 만들어줘. 디자인은 단순하게,
         <li><span class="ko"><b>1~2분 뒤</b> 내 주소 <code class="mono">https://ID.github.io/REPO/</code> 가 열려요. 친구에게 보내보세요!</span><span class="zh"><b>1~2 分钟后</b> 网址 <code class="mono">https://ID.github.io/REPO/</code> 就能打开。发给朋友试试!</span></li>
       </ol>
     </div>
-    <div class="note ok"><div class="nt">🤖 <span class="ko">두 번째부터는 OpenCode에게 맡겨도 돼요</span><span class="zh">第二次起可交给 OpenCode</span></div><p><span class="ko">한 번 <b>Publish</b>해 둔 뒤엔, 버튼을 안 눌러도 이렇게 부탁하면 커밋·푸시를 대신해줘요:</span><span class="zh">Publish 过一次后，不点按钮，这样拜托它也会替你提交·推送:</span></p>
+    <div class="note ok"><div class="nt">🤖 <span class="ko">OpenCode에게 맡겨도 돼요</span><span class="zh">也可以交给 OpenCode</span></div><p><span class="ko">커밋·푸시는 버튼 대신 이렇게 부탁해도 돼요. (<b>처음 저장소 만들기부터</b> 맡기려면 → 다음 장 <b>GitHub CLI</b>)</span><span class="zh">提交·推送也可这样拜托它，不用点按钮。(想从 <b>第一次建仓库</b> 就交给它 → 见下页 <b>GitHub CLI</b>)</span></p>
       <div class="code plain" style="margin-top:8px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">지금까지 바꾼 걸 커밋하고 GitHub에 푸시해줘. 메시지는 "오늘 수정".</span><span class="zh">把改动提交并推送到 GitHub，提交信息写「今天的修改」。</span></code></pre></div>
     </div>
+  </section>
+
+  <section class="sec">
+    <div class="kick"><span class="ko">더 깊이 — GitHub CLI</span><span class="zh">深入 — GitHub CLI</span></div>
+    <h2 class="title"><span class="ko">처음부터 OpenCode에게 맡기기 (gh)</span><span class="zh">从第一次就交给 OpenCode (gh)</span></h2>
+    <p class="lead prose"><span class="ko">첫 배포는 <b>저장소 만들기·로그인</b> 때문에 버튼(Publish)이 편했죠. <b>GitHub CLI(<code class="mono">gh</code>)</b>를 깔면 그것까지 <b>OpenCode(터미널)</b>가 대신해요 — 즉 <b>처음부터</b> 맡기기.</span><span class="zh">首次部署因为要 <b>建仓库·登录</b> 用按钮(Publish)方便。装了 <b>GitHub CLI(<code class="mono">gh</code>)</b> 后，这些也能交给 <b>OpenCode(终端)</b> —— 从 <b>第一次</b> 就交给它。</span></p>
+    <div class="steps">
+      <div class="st-h">🧭 <span class="ko">한 번만 준비 → 이후 맡기기</span><span class="zh">准备一次 → 之后交给它</span></div>
+      <ol>
+        <li><span class="ko"><b>gh 설치.</b> PowerShell에 <code class="mono">winget install GitHub.cli</code>.</span><span class="zh"><b>装 gh。</b> PowerShell 里 <code class="mono">winget install GitHub.cli</code>。</span></li>
+        <li><span class="ko"><b>로그인(한 번).</b> <code class="mono">gh auth login</code> → GitHub 계정 인증.</span><span class="zh"><b>登录(一次)。</b> <code class="mono">gh auth login</code> → 认证 GitHub 账号。</span></li>
+        <li><span class="ko"><b>이제 OpenCode에게.</b> 저장소 생성·푸시·Pages까지 한 번에 부탁:</span><span class="zh"><b>然后交给 OpenCode。</b> 建仓库·推送·开 Pages 一次搞定:</span>
+          <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">gh CLI로 이 폴더를 새 public GitHub 저장소로 만들어 올리고,
+GitHub Pages를 main 브랜치로 켜줘.</span><span class="zh">用 gh CLI 把这个文件夹建成新的 public GitHub 仓库并推送，
+再把 GitHub Pages 设成 main 分支。</span></code></pre></div>
+        </li>
+      </ol>
+    </div>
+    <div class="note warn"><div class="nt">🔒 <span class="ko">공용 PC 주의</span><span class="zh">公用电脑注意</span></div><p><span class="ko"><code class="mono">gh</code>가 저장소 생성·인증·푸시를 다 처리해줘요. 단 <b>학교·공용 PC</b>라면 끝나고 <code class="mono">gh auth logout</code>으로 로그인 정보를 지워요.</span><span class="zh"><code class="mono">gh</code> 会处理建仓库·认证·推送。但在 <b>学校·公用电脑</b> 上，结束后用 <code class="mono">gh auth logout</code> 清除登录信息。</span></p></div>
   </section>
 
   <section class="sec">
