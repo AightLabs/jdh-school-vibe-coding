@@ -916,6 +916,25 @@ git config user.email "my@email.com"</code></pre></div>
   </section>
 
   <section class="sec">
+    <div class="kick"><span class="ko">개발 — 계획 먼저</span><span class="zh">开发 — 先做计划</span></div>
+    <h2 class="title"><span class="ko">바로 만들지 말고, 계획부터 짜게 해요</span><span class="zh">别急着做，先让 AI 列计划</span></h2>
+    <p class="lead prose"><span class="ko">큰 걸 한 번에 “만들어줘/고쳐줘” 하면 AI가 엉뚱하게 가요. 먼저 <b>계획</b>을 <code class="mono">plan.md</code>에 세우게 → <b>검토·수정 반복</b> → <b>하나씩 실행</b>. <b>만들 때도, 고칠 때도 똑같아요.</b></span><span class="zh">一上来就说「做/改」，AI 容易跑偏。先让它把 <b>计划</b> 写进 <code class="mono">plan.md</code> → <b>反复检查·修改</b> → <b>逐步执行</b>。<b>新建、修改都一样。</b></span></p>
+    <div class="steps">
+      <div class="st-h">🧭 <span class="ko">계획 → 검토 → 실행</span><span class="zh">计划 → 检查 → 执行</span></div>
+      <ol>
+        <li><span class="ko"><b>계획 세우기</b> (아직 코드 X, 계획만):</span><span class="zh"><b>先列计划</b>(先别写代码):</span>
+          <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">OpenCode</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code><span class="ko">prd.md를 참고해 "무엇을·어떤 순서로" 만들지 개발 계획을 plan.md에 단계별로 적어줘.
+아직 코드는 쓰지 마 — 계획만.</span><span class="zh">参考 prd.md，把"做什么·按什么顺序"的开发计划分步写进 plan.md。
+暂时别写代码 —— 只列计划。</span></code></pre></div>
+        </li>
+        <li><span class="ko"><b>계획 검토(반복).</b> <b>빠진 것·순서·너무 큰 단계</b>를 고쳐 달라고 반복. (“3단계를 둘로 쪼개줘”)</span><span class="zh"><b>检查计划(反复)。</b> 让它改 <b>漏项·顺序·太大的步骤</b>。(「第3步拆两步」)</span></li>
+        <li><span class="ko"><b>하나씩 실행.</b> 맘에 들면 “<b>1단계만</b> 실행해줘” → 확인 → “다음 단계”. 끝난 건 ✓.</span><span class="zh"><b>逐步执行。</b> 满意后「只执行 <b>第1步</b>」→ 确认 → 「下一步」。完成打 ✓。</span></li>
+      </ol>
+    </div>
+    <div class="note ok"><div class="nt">🛠 <span class="ko">고칠 때도 똑같이</span><span class="zh">修改时也一样</span></div><p><span class="ko">버그 수정·기능 추가도 “바로 고쳐줘” 말고 <b>“어디를 왜 바꿀지 먼저 계획해줘”</b> → 검토 → 실행.</span><span class="zh">改 bug·加功能也别「直接改」，先 <b>「说清改哪里·为什么」</b> → 检查 → 执行。</span></p></div>
+  </section>
+
+  <section class="sec">
     <div class="kick"><span class="ko">만들기 · 목업 → MVP</span><span class="zh">动手 · 原型 → MVP</span></div>
     <h2 class="title"><span class="ko">눌러지는 목업 → 진짜 도는 MVP</span><span class="zh">可点原型 → 真能跑的 MVP</span></h2>
     <p class="lead prose"><span class="ko">이제 실제로 만들어요. <b>두 번의 부탁</b>으로 목업을 먼저, 그다음 MVP를 완성해요. prd.md를 열어둔 채 진행하세요.</span><span class="zh">现在真正动手。<b>两次拜托</b> —— 先做原型，再完成 MVP。打开着 prd.md 进行。</span></p>
