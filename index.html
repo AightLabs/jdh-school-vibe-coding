@@ -234,14 +234,14 @@
   .cover-meta{margin-top:14px; display:flex; flex-direction:column; gap:6px}
   .cover-foot{font-size:18.2px; color:var(--muted-2)}
   .cover-foot b{color:var(--ink); font-weight:700}
-  .cover-qr{position:absolute; right:2px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:16px; width:200px; text-align:center; z-index:2}
-  .cover-qr img{width:120px; height:120px; box-sizing:border-box; border:1px solid var(--line); border-radius:14px; background:#fff; padding:7px; box-shadow:0 8px 24px rgba(20,20,40,.10)}
-  .cover-qr .cap{margin-top:6px; font-family:var(--mono); font-size:14.3px; font-weight:700; color:var(--indigo-d)}
-  .cover-qr .qr-url{margin-top:4px; font-family:var(--mono); font-size:11.5px; line-height:1.35; color:var(--indigo-d); word-break:break-all}
-  .cover-qr .qr-note{margin-top:5px; font-family:var(--mono); font-size:11.5px; font-weight:700; color:#b45309}
+  .cover-qr{position:absolute; right:2px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:20px; width:242px; text-align:center; z-index:2}
+  .cover-qr img{width:150px; height:150px; box-sizing:border-box; border:1px solid var(--line); border-radius:14px; background:#fff; padding:8px; box-shadow:0 8px 24px rgba(20,20,40,.10)}
+  .cover-qr .cap{margin-top:8px; font-family:var(--mono); font-size:17px; font-weight:700; color:var(--indigo-d)}
+  .cover-qr .qr-url{margin-top:5px; font-family:var(--mono); font-size:13px; line-height:1.4; color:var(--indigo-d); word-break:break-all}
+  .cover-qr .qr-note{margin-top:6px; font-family:var(--mono); font-size:13px; font-weight:700; color:#b45309}
   @media (max-width:620px){
     .cover-qr{position:static; transform:none; margin:24px auto 0; width:auto; align-items:center}
-    .cover-qr img{width:112px; height:112px}
+    .cover-qr img{width:132px; height:132px}
   }
   .cover-toc{margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:16.2px; color:var(--muted); line-height:1.8}
   .cover-toc b{color:var(--ink-2)}
@@ -267,6 +267,22 @@
     .code pre{white-space:pre-wrap; word-break:break-word; font-size:10.5pt}
     a{color:var(--ink); text-decoration:none}
   }
+
+  /* 3부(설치) 전체 폰트 확대 */
+  .sec.setup h2.title{font-size:37.5px}
+  .sec.setup .kick{font-size:17.5px}
+  .sec.setup h3.sub{font-size:24px}
+  .sec.setup p.lead{font-size:26px}
+  .sec.setup .prose{font-size:22.5px; line-height:1.6}
+  .sec.setup .blist li{font-size:24px}
+  .sec.setup .pane .pt{font-size:18.8px}
+  .sec.setup .pane p{font-size:22.5px}
+  .sec.setup .note .nt{font-size:21.5px}
+  .sec.setup .note p{font-size:23px}
+  .sec.setup .steps>.st-h{font-size:21.5px}
+  .sec.setup .steps ol>li{font-size:23px}
+  .sec.setup .code pre{font-size:20px}
+  .sec.setup .shotcap{font-size:18.5px}
 </style>
 </head>
 <body class="lang-ko">
@@ -354,7 +370,7 @@
     <div class="abar"></div>
   </div>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">준비물</span><span class="zh">要准备的</span></div>
     <h2 class="title"><span class="ko">무엇을, 왜 준비하나</span><span class="zh">要准备什么，为什么</span></h2>
     <p class="lead prose"><span class="ko">네 가지 도구가 필요해요. 각각 <b>맡은 역할이 달라요.</b> 지금은 이름만 눈에 익혀 두고, 아래에서 하나씩 깔아요.</span><span class="zh">需要四样工具，各有 <b>不同的分工。</b> 现在先眼熟名字，下面一个个装。</span></p>
@@ -367,7 +383,7 @@
     <div class="note"><div class="nt">💡 <span class="ko">순서와 이유</span><span class="zh">顺序与理由</span></div><p><span class="ko"><b>편집기(VS Code) → AI 도구(OpenCode) → 버전관리(Git·GitHub)</b> 순으로 깔아요. 설치 명령은 검은 창(<b>PowerShell</b>)에 <b>복사 → 붙여넣기 → Enter</b>. 붙여넣기가 낯설죠? 바로 아래에서 그 ‘검은 창’부터 이해하고 가요.</span><span class="zh">按 <b>编辑器(VS Code) → AI(OpenCode) → 版本管理(Git·GitHub)</b> 的顺序装。安装命令在黑窗口(<b>PowerShell</b>)里 <b>复制 → 粘贴 → 回车</b>。粘贴还不熟? 下面先从这个「黑窗口」讲起。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">개념 — 웹앱 3종 세트</span><span class="zh">概念 — 网页三件套</span></div>
     <h2 class="title"><span class="ko">코드 = 텍스트, 웹앱은 3종 세트</span><span class="zh">代码 = 文本，网页应用是三件套</span></h2>
     <p class="lead prose"><span class="ko">우리가 만들 웹앱은 <b>세 가지 언어</b>가 합쳐져 하나의 화면이 돼요. 각자 하는 일이 달라요 — 사람으로 치면 <b>뼈대·옷·움직임</b>이에요.</span><span class="zh">我们要做的网页应用，由 <b>三种语言</b> 合成一个画面。各司其职 —— 用人来比就是 <b>骨架·衣服·动作</b>。</span></p>
@@ -391,7 +407,7 @@
     <div class="note"><div class="nt">✍️ <span class="ko">코드는 ‘텍스트’라서 편집기(VS Code)를 써요</span><span class="zh">代码是「文本」，所以用编辑器(VS Code)</span></div><p><span class="ko">HTML·CSS·JS 모두 결국 <b>글자(텍스트)</b>예요. 그래서 사실 <b>메모장으로도</b> 만들 수 있어요. 하지만 <b>VS Code</b>는 문법을 <b>색으로 구분</b>해 주고 <b>자동완성·오류 표시·미리보기</b>로 코드 쓰기를 훨씬 쉽게 해줘요 — 그래서 제일 먼저 VS Code를 깝니다.</span><span class="zh">HTML·CSS·JS 归根到底都是 <b>文字(文本)</b>，所以其实 <b>用记事本也能</b> 写。但 <b>VS Code</b> 会给语法 <b>上色</b>，还有 <b>自动补全·错误提示·预览</b>，让写代码轻松得多 —— 所以先装 VS Code。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">개념 — GUI vs CLI</span><span class="zh">概念 — GUI vs CLI</span></div>
     <h2 class="title"><span class="ko">검은 창(CLI)이 뭐예요?</span><span class="zh">黑窗口(CLI)是什么?</span></h2>
     <p class="lead prose"><span class="ko">이제부터 도구들을 <b>검은 창에 글자를 쳐서</b> 설치할 거예요 — 이게 바로 <b>CLI</b>예요. 평소 쓰던 <b>클릭 방식(GUI)</b>과 뭐가 다른지 알면 하나도 안 무서워요.</span><span class="zh">接下来我们会 <b>在黑窗口里打字</b> 来安装工具 —— 这就是 <b>CLI</b>。搞懂它和平时的 <b>点击方式(GUI)</b> 有什么不同，就一点也不可怕。</span></p>
@@ -421,7 +437,7 @@
     </div></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">개념 — 검은 창 열기</span><span class="zh">概念 — 打开黑窗口</span></div>
     <h2 class="title"><span class="ko">우리가 쓸 검은 창 — PowerShell</span><span class="zh">我们用的黑窗口 — PowerShell</span></h2>
     <div class="note"><div class="nt">💡 <span class="ko">우리가 쓸 검은 창</span><span class="zh">我们要用的黑窗口</span></div><p><span class="ko">윈도우에선 <b>PowerShell</b>, VS Code 안에선 <b>터미널(Terminal)</b>이 바로 그 CLI예요. 겁먹지 말고 <b>복사 → 붙여넣기 → Enter</b>만 하면 돼요. (붙여넣기는 보통 <b>마우스 우클릭</b> 또는 <code class="mono">Ctrl+V</code>.)</span><span class="zh">Windows 里是 <b>PowerShell</b>，VS Code 里是 <b>终端(Terminal)</b>，都是 CLI。别怕，只要 <b>复制 → 粘贴 → 回车</b>。(粘贴通常是 <b>右键</b> 或 <code class="mono">Ctrl+V</code>。)</span></p></div>
@@ -436,7 +452,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">설치 — VS Code</span><span class="zh">安装 — VS Code</span></div>
     <h2 class="title"><span class="ko">① VS Code 설치</span><span class="zh">① 安装 VS Code</span></h2>
     <p class="lead prose"><span class="ko">방금 연 <b>PowerShell</b>에 아래 명령을 <b>복사 → 붙여넣기 → Enter</b>. 이번 장에서 도구를 <b>하나씩</b> 깔아요.</span><span class="zh">在刚打开的 <b>PowerShell</b> 里 <b>复制 → 粘贴 → 回车</b> 下面的命令。这一章逐个安装工具。</span></p>
@@ -450,7 +466,7 @@
 
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">설치 — Node</span><span class="zh">安装 — Node</span></div>
     <h2 class="title"><span class="ko">② Node.js 설치</span><span class="zh">② 安装 Node.js</span></h2>
     <p class="lead prose"><span class="ko"><b>OpenCode</b>는 <b>npm</b>(도구를 한 줄로 까는 ‘앱스토어’)으로 설치해요. 그 npm이 <b>Node.js</b>(브라우저 밖에서도 자바스크립트를 돌리는 엔진) 안에 들어 있어서, AI 도구를 깔려면 <b>Node부터</b> 필요해요.</span><span class="zh"><b>OpenCode</b> 用 <b>npm</b>(一行命令装工具的「应用商店」)安装。而 npm 在 <b>Node.js</b>(让 JavaScript 在浏览器外也能运行的引擎)里 —— 所以装 AI 工具要 <b>先装 Node</b>。</span></p>
@@ -462,7 +478,7 @@
     <div class="note"><div class="nt">💡 <span class="ko">확인</span><span class="zh">检查</span></div><p><span class="ko">설치 후 <b>PowerShell을 껐다 켜고</b> <code class="mono">node -v</code> · <code class="mono">npm -v</code> → <b>숫자(버전)</b>가 나오면 성공.</span><span class="zh">装完 <b>关掉再开 PowerShell</b>，输入 <code class="mono">node -v</code> · <code class="mono">npm -v</code> → 出现 <b>版本号</b> 就成功。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">설치 — Git</span><span class="zh">安装 — Git</span></div>
     <h2 class="title"><span class="ko">③ Git 설치 (이미 있을 수도!)</span><span class="zh">③ 安装 Git(可能已装!)</span></h2>
     <p class="lead prose"><span class="ko"><b>Git</b>은 다른 프로그램에 딸려 <b>이미 깔려 있을 때가 많아요.</b> 그러니 <b>먼저 확인</b>하고, 없을 때만 설치해요.</span><span class="zh"><b>Git</b> 常常随其他程序 <b>已经装好了</b>。所以 <b>先检查</b>，没有时再装。</span></p>
@@ -474,7 +490,7 @@
     <div class="note warn"><div class="nt">⚠️ <span class="ko">설치했다면 창을 껐다 켜기</span><span class="zh">装了就关掉再开</span></div><p><span class="ko">새로 깔았다면 <b>PowerShell을 껐다 다시 열고</b> <code class="mono">git --version</code>으로 <b>숫자(버전)</b>가 나오는지 확인해요.</span><span class="zh">若是新装的，<b>关掉 PowerShell 再打开</b>，用 <code class="mono">git --version</code> 确认 <b>版本号</b>。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">설치 — OpenCode</span><span class="zh">安装 — OpenCode</span></div>
     <h2 class="title"><span class="ko">④ AI 도구 OpenCode 설치</span><span class="zh">④ 安装 AI 工具 OpenCode</span></h2>
     <p class="lead prose"><span class="ko">이제 npm으로 <b>OpenCode</b>를 깔아요. <b>PowerShell을 껐다 켠 뒤</b> 아래 한 줄.</span><span class="zh">现在用 npm 装 <b>OpenCode</b>。<b>关掉再开 PowerShell 后</b> 输入下面一行。</span></p>
@@ -483,7 +499,7 @@
     <div class="shotcap"><span class="ko">설치 완료 화면 — 실행은 <b>프로젝트를 연 뒤</b> 뒤에서 해요</span><span class="zh">安装完成 —— 运行 <b>等打开项目后</b> 在后面做</span></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">둘러보기 — VS Code</span><span class="zh">熟悉 — VS Code</span></div>
     <h2 class="title"><span class="ko">VS Code 화면 4곳만 알면 돼요</span><span class="zh">VS Code 认识 4 个地方就够</span></h2>
     <p class="lead prose"><span class="ko">화면이 복잡해 보여도, 우리가 쓰는 건 <b>왼쪽 세로줄 아이콘 몇 개</b>와 <b>아래 터미널</b>뿐이에요.</span><span class="zh">界面看着复杂，但我们用的只有 <b>左侧竖排的几个图标</b> 和 <b>下方终端</b>。</span></p>
@@ -499,7 +515,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">확장 — VS Code</span><span class="zh">扩展 — VS Code</span></div>
     <h2 class="title"><span class="ko">⑤ VS Code 확장 2개 설치</span><span class="zh">⑤ 安装 2 个扩展</span></h2>
     <p class="lead prose"><span class="ko">왼쪽 <b>확장(⧉)</b> 아이콘(<code class="mono">Ctrl+Shift+X</code>) → 이름 검색 → <b>Install</b>. 두 개만 깔아요.</span><span class="zh">左侧 <b>扩展(⧉)</b> 图标(<code class="mono">Ctrl+Shift+X</code>) → 搜名字 → <b>Install</b>。只装两个。</span></p>
@@ -510,7 +526,7 @@
     <div class="note"><div class="nt">💡 <span class="ko">설치 후</span><span class="zh">安装后</span></div><p><span class="ko">언어팩은 <b>Restart</b> 후 적용돼요. 메뉴를 <b>중국어</b>로 쓰고 싶으면 <b>Chinese (Simplified) Language Pack</b>을 대신 설치하면 돼요. Live Server는 <code class="mono">index.html</code> 우클릭 → <b>Open with Live Server</b> 하면 브라우저에 바로 떠요.</span><span class="zh">语言包 <b>Restart</b> 后生效。想用 <b>韩语</b> 菜单就装 <b>Korean Language Pack</b>。Live Server 用 <code class="mono">index.html</code> 右键 → <b>Open with Live Server</b>，浏览器里马上显示。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">스타터 받기</span><span class="zh">下载模板</span></div>
     <h2 class="title"><span class="ko">⑥ 스타터 복사해서 내 프로젝트 만들기</span><span class="zh">⑥ 复制模板，做成我的项目</span></h2>
     <p class="lead prose"><span class="ko">맨 처음부터 빈 화면은 막막하니, <b>스타터(뼈대 프로젝트)</b>에서 시작해요. 쓸 스타터 폴더를 <b>복사해 이름만 바꾸면</b> 내 프로젝트가 돼요.</span><span class="zh">从一张白纸开始很茫然，所以从 <b>模板(骨架项目)</b> 起步。把要用的模板文件夹 <b>复制后改个名</b>，就成了我的项目。</span></p>
@@ -526,7 +542,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">스타터 고르기</span><span class="zh">选模板</span></div>
     <h2 class="title"><span class="ko">어떤 스타터를 넣을까</span><span class="zh">放哪个模板</span></h2>
     <div class="row">
@@ -537,7 +553,7 @@
     <div class="note warn"><div class="nt">⚠️ <span class="ko">폴더 이름 규칙</span><span class="zh">文件夹命名规则</span></div><p><span class="ko">폴더 이름·경로에 <b>한글·공백</b>은 피하세요 — 나중에 오류의 흔한 원인이에요. (폴더 안엔 <code class="mono">index.html · prd.md · context.md · design.md</code> · AI가 읽는 <code class="mono">AGENTS.md</code> · 에셋이 들어 있어요.)</span><span class="zh">文件夹名·路径别用 <b>中文·空格</b> —— 是以后常见的出错原因。(文件夹里有 <code class="mono">index.html · prd.md · context.md · design.md</code> · AI 读的 <code class="mono">AGENTS.md</code> · 素材。)</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">열기 — 프로젝트</span><span class="zh">打开 — 项目</span></div>
     <h2 class="title"><span class="ko">⑦ VS Code로 내 프로젝트 열기</span><span class="zh">⑦ 用 VS Code 打开我的项目</span></h2>
     <div class="steps">
@@ -550,7 +566,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">연결 — GitHub</span><span class="zh">连接 — GitHub</span></div>
     <h2 class="title"><span class="ko">⑧-1 GitHub 계정 & 로그인</span><span class="zh">⑧-1 GitHub 账号 & 登录</span></h2>
     <p class="lead prose"><span class="ko">나중에 <b>배포(코드 올리기)</b>를 하려면 두 가지를 미리 해둬요 — <b>GitHub 로그인</b>과 <b>커밋에 찍힐 이름표</b> 등록. <b>GitHub 계정이 없다면</b> 먼저 만들어요.</span><span class="zh">之后要 <b>部署(上传代码)</b>，先做两件事 —— <b>登录 GitHub</b> 和登记 <b>提交时署的名字</b>。<b>没有 GitHub 账号</b> 就先注册。</span></p>
@@ -567,7 +583,7 @@
     </ul>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">연결 — Git 이름표</span><span class="zh">连接 — Git 名字</span></div>
     <h2 class="title"><span class="ko">⑧-2 Git 이름표 등록</span><span class="zh">⑧-2 登记 Git 名字</span></h2>
     <p class="lead prose"><span class="ko">커밋(저장)할 때마다 <b>‘누가 만들었는지’ 이름표</b>가 함께 찍혀요. 터미널에서 아래처럼 이름·이메일을 등록해요.</span><span class="zh">每次提交(存档)都会带上 <b>「谁做的」名字</b>。在终端里像下面这样登记名字·邮箱。</span></p>
@@ -576,7 +592,7 @@ git config user.email "my@email.com"</code></pre></div>
     <div class="note"><div class="nt">🏠 <span class="ko">나 혼자 쓰는 내 컴퓨터라면?</span><span class="zh">只有我一个人用的电脑?</span></div><p><span class="ko">위 명령은 <b>지금 이 프로젝트에만</b> 이름표를 달아요 (안전한 기본값). <b>내 개인 컴퓨터</b>에서 <b>앞으로 만들 모든 프로젝트에 한 번에</b> 적용하고 싶으면, 그때만 <code class="mono">--global</code>을 붙여요 — <code class="mono">git config --global user.name "My Name"</code>. 단 <b>학교·공용 컴퓨터에선 붙이지 마세요</b> (다음 사람 커밋에도 내 이름이 남아요).</span><span class="zh">上面的命令 <b>只给当前这个项目</b> 署名(安全的默认)。只有当你想在 <b>自己的电脑</b> 上 <b>一次性对以后所有项目</b> 生效时，才加 <code class="mono">--global</code> —— <code class="mono">git config --global user.name "My Name"</code>。但 <b>学校·公用电脑别加</b>(会让下一个人也署我的名)。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">모델 연결</span><span class="zh">连接模型</span></div>
     <h2 class="title"><span class="ko">⑨-1 OpenCode 켜고 모델 연결</span><span class="zh">⑨-1 启动 OpenCode，连接模型</span></h2>
     <p class="lead prose"><span class="ko">OpenCode는 <b>‘창구’</b>일 뿐, 실제로 코드를 써주는 <b>AI 모델</b>을 연결해야 움직여요. VS Code 터미널(<code class="mono">Ctrl+`</code>)에서 시작해요.</span><span class="zh">OpenCode 只是 <b>「窗口」</b>，还要连上真正写代码的 <b>AI 模型</b> 才动。在 VS Code 终端(<code class="mono">Ctrl+`</code>)开始。</span></p>
@@ -592,7 +608,7 @@ git config user.email "my@email.com"</code></pre></div>
     <div class="shotcap"><span class="ko"><code class="mono">/connect</code> → 목록에서 <b>OpenCode Zen</b> 선택</span><span class="zh"><code class="mono">/connect</code> → 列表选 <b>OpenCode Zen</b></span></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">모델 연결 — 키·모델</span><span class="zh">连接模型 — 密钥·模型</span></div>
     <h2 class="title"><span class="ko">⑨-2 키 붙여넣고 무료 모델 고르기</span><span class="zh">⑨-2 粘贴密钥，选免费模型</span></h2>
     <div class="steps">
@@ -609,7 +625,7 @@ git config user.email "my@email.com"</code></pre></div>
     <div class="note warn"><div class="nt">🔒 <span class="ko">안전 규칙 (꼭!)</span><span class="zh">安全规则(务必!)</span></div><p><span class="ko"><b>결제수단(카드)은 등록하지 마세요</b> — 무료 모델만 쓰면 과금 위험 0. 무료 모델엔 <b>개인정보 입력 금지</b>, 코딩 과제만! 키는 <b>비밀번호처럼</b> 다뤄요. 느리거나 막히면 <code class="mono">/models</code>로 다른 무료 모델로 바꿔요.</span><span class="zh"><b>不要登记支付方式(卡)</b> —— 只用免费模型就零扣费。免费模型里 <b>禁止输入个人信息</b>，只写编程任务! 密钥当 <b>密码</b> 对待。慢或卡就用 <code class="mono">/models</code> 换其他免费模型。</span></p></div>
   </section>
 
-  <section class="sec">
+  <section class="sec setup">
     <div class="kick"><span class="ko">3부 마무리</span><span class="zh">第3部收尾</span></div>
     <h2 class="title"><span class="ko">여기까지 하면 준비 끝! 🎉</span><span class="zh">到这里就准备好了! 🎉</span></h2>
     <div class="recap"><div class="rt">📌 <span class="ko">개발환경 세팅 요약</span><span class="zh">开发环境搭建小结</span></div>
