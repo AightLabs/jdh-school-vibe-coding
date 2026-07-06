@@ -234,15 +234,14 @@
   .cover-meta{margin-top:14px; display:flex; flex-direction:column; gap:6px}
   .cover-foot{font-size:18.2px; color:var(--muted-2)}
   .cover-foot b{color:var(--ink); font-weight:700}
-  .cover-qr{display:flex; gap:40px; margin:22px 0 0; flex-wrap:wrap}
-  .cover-qr .qr-item{width:232px; text-align:center}
-  .cover-qr img{width:134px; height:134px; box-sizing:border-box; border:1px solid var(--line); border-radius:14px; background:#fff; padding:8px; box-shadow:0 8px 24px rgba(20,20,40,.10)}
-  .cover-qr .cap{margin-top:8px; font-family:var(--mono); font-size:15.6px; font-weight:700; color:var(--indigo-d)}
-  .cover-qr .qr-url{margin-top:6px; font-family:var(--mono); font-size:13px; line-height:1.4; color:var(--indigo-d); word-break:break-all}
+  .cover-qr{position:absolute; right:2px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:16px; width:200px; text-align:center; z-index:2}
+  .cover-qr img{width:120px; height:120px; box-sizing:border-box; border:1px solid var(--line); border-radius:14px; background:#fff; padding:7px; box-shadow:0 8px 24px rgba(20,20,40,.10)}
+  .cover-qr .cap{margin-top:6px; font-family:var(--mono); font-size:14.3px; font-weight:700; color:var(--indigo-d)}
+  .cover-qr .qr-url{margin-top:4px; font-family:var(--mono); font-size:11.5px; line-height:1.35; color:var(--indigo-d); word-break:break-all}
+  .cover-qr .qr-note{margin-top:5px; font-family:var(--mono); font-size:11.5px; font-weight:700; color:#b45309}
   @media (max-width:620px){
-    .cover-qr{gap:20px; justify-content:center}
-    .cover-qr .qr-item{width:auto; max-width:260px}
-    .cover-qr img{width:120px; height:120px}
+    .cover-qr{position:static; transform:none; margin:24px auto 0; width:auto; align-items:center}
+    .cover-qr img{width:112px; height:112px}
   }
   .cover-toc{margin-top:22px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:16.2px; color:var(--muted); line-height:1.8}
   .cover-toc b{color:var(--ink-2)}
@@ -313,6 +312,7 @@
         <img src="assets/qr-part12.svg" alt="1·2부 실습 자료 QR"/>
         <div class="cap"><span class="ko">📱 1·2부 실습 자료</span><span class="zh">📱 第1·2部 材料</span></div>
         <div class="qr-url">https://vibe-studio--jdh-school-ai-showcase.asia-east1.hosted.app/</div>
+        <div class="qr-note"><span class="ko">⚠️ 2027.7.6. 당일만 사용 가능</span><span class="zh">⚠️ 仅 2027.7.6. 当天可用</span></div>
       </div>
       <div class="qr-item">
         <img src="assets/qr-slides.svg" alt="3부·자습서 QR"/>
