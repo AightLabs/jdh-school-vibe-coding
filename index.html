@@ -326,6 +326,8 @@
     <div class="cover-qr">
       <div class="qr-item">
         <img src="assets/qr-slides.svg" alt="3부·자습서 QR"/>
+        <div class="cap"><span class="ko">📱 3부·자습서</span><span class="zh">📱 第3部·自学</span></div>
+        <div class="qr-url">https://aightlabs.github.io/jdh-school-vibe-coding/</div>
       </div>
     </div>
     <div class="cover-grow"></div>
@@ -1629,7 +1631,7 @@ GitHub Pages를 main 브랜치로 켜줘.</span><span class="zh">用 gh CLI 把�
 
   function hashTarget(){
     var hs=(location.hash||'').replace('#',''); if(!hs) return -1;
-    var m=hs.match(/^p(\d+)$/i);
+    var m=hs.match(/^[ps]?(\d+)$/i);
     if(m){ var n=parseInt(m[1],10)-1; if(!isNaN(n)) return Math.max(0,Math.min(pages.length-1,n)); }
     return idIndex(hs);
   }
