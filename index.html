@@ -545,13 +545,19 @@
   <section class="sec setup">
     <div class="kick"><span class="ko">스타터 받기</span><span class="zh">下载模板</span></div>
     <h2 class="title"><span class="ko">⑥ 스타터 복사해서 내 프로젝트 만들기</span><span class="zh">⑥ 复制模板，做成我的项目</span></h2>
-    <p class="lead prose"><span class="ko">맨 처음부터 빈 화면은 막막하니, <b>스타터(뼈대 프로젝트)</b>에서 시작해요. 쓸 스타터 폴더를 <b>복사해 이름만 바꾸면</b> 내 프로젝트가 돼요.</span><span class="zh">从一张白纸开始很茫然，所以从 <b>模板(骨架项目)</b> 起步。把要用的模板文件夹 <b>复制后改个名</b>，就成了我的项目。</span></p>
+    <p class="lead prose"><span class="ko">맨 처음부터 빈 화면은 막막하니, <b>스타터(뼈대 프로젝트)</b>에서 시작해요. 먼저 스타터 저장소를 받을게요 — <b>아무 폴더(예: 바탕화면) 빈 공간</b>에서 <b>마우스 우클릭 → 터미널에서 열기</b>로 터미널을 연 뒤, 아래 명령을 실행해요. (<code class="mono">Win + E</code>로 파일 탐색기를 먼저 열면 편해요.)</span><span class="zh">从一张白纸开始很茫然，所以从 <b>模板(骨架项目)</b> 起步。先下载模板仓库 —— 在 <b>任意文件夹(如桌面)的空白处</b> <b>右键 → 在终端中打开</b>，再运行下面命令。(先按 <code class="mono">Win + E</code> 打开文件资源管理器更方便。)</span></p>
+    <figure class="fig"><div class="svgbox"><img class="tall-img" src="assets/illustrations/explorer-open-terminal.png" alt="파일 탐색기 빈 공간에서 마우스 우클릭 후 터미널에서 열기를 선택하는 안내 이미지"/></div><figcaption><span class="ko">폴더를 선택하지 말고, 빈 공간에서 우클릭해요</span><span class="zh">不要选中文件夹，在空白处右键</span></figcaption></figure>
+    <div class="code plain"><div class="chd"><span class="fn">Terminal / PowerShell</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>git clone https://github.com/AightLabs/jdh-school-vibe-coding.git</code></pre></div>
+    <div class="note"><div class="nt">💡 <span class="ko">이 명령이 하는 일</span><span class="zh">这条命令做什么</span></div><p><span class="ko">지금 터미널이 열린 폴더 안에 <code class="mono">jdh-school-vibe-coding</code> 폴더가 통째로 <b>내려받아져요</b>. 다음 장에서 이 안의 스타터를 복사할 거예요.</span><span class="zh">会把 <code class="mono">jdh-school-vibe-coding</code> 文件夹整个 <b>下载</b> 到终端当前所在的文件夹里。下一页复制里面的模板。</span></p></div>
+  </section>
+
+  <section class="sec setup">
+    <div class="kick"><span class="ko">스타터 받기</span><span class="zh">下载模板</span></div>
+    <h2 class="title"><span class="ko">⑥ 스타터 복사해서 내 프로젝트 만들기</span><span class="zh">⑥ 复制模板，做成我的项目</span></h2>
+    <p class="lead prose"><span class="ko">앞에서 받은 폴더에서 <b>쓸 스타터만 복사해</b> 이름을 바꾸면 내 프로젝트가 돼요.</span><span class="zh">从上一页下载的文件夹里 <b>只复制要用的模板</b> 并改名，就成了我的项目。</span></p>
     <div class="steps">
       <div class="st-h">🧭 <span class="ko">직접 해보기</span><span class="zh">动手做</span></div>
       <ol>
-        <li><span class="ko"><b>스타터 저장소 받기.</b> 아무 폴더(예: 바탕화면)에서 터미널을 열고 아래 명령 실행.</span><span class="zh"><b>下载模板仓库。</b> 在任意文件夹(如桌面)打开终端，运行下面命令。</span>
-          <div class="code plain" style="margin-top:10px"><div class="chd"><span class="fn">Terminal / PowerShell</span><button class="cp" onclick="copyCode(this)"><span class="ko">복사</span><span class="zh">复制</span></button></div><pre><code>git clone https://github.com/AightLabs/jdh-school-vibe-coding.git</code></pre></div>
-        </li>
         <li><span class="ko"><b>쓸 스타터 폴더를 복사.</b> 받은 폴더 안 <code class="mono">starters/game</code>(또는 <code class="mono">starters/app</code>) 폴더를 <b>통째로 복사</b>(<code class="mono">Ctrl+C → Ctrl+V</code>)해서 바탕화면 같은 곳에 붙여넣어요.</span><span class="zh"><b>复制要用的模板文件夹。</b> 把 <code class="mono">starters/game</code>(或 <code class="mono">starters/app</code>)文件夹 <b>整个复制</b>(<code class="mono">Ctrl+C → Ctrl+V</code>)到桌面等地方。</span></li>
         <li><span class="ko"><b>복사본 이름 바꾸기.</b> 복사한 폴더를 우클릭 → <b>이름 바꾸기</b> → <b>영어 이름</b>으로 (예: <code class="mono">my-game</code>, <code class="mono">my-app</code>). 이 폴더가 이제 <b>내 프로젝트</b>예요.</span><span class="zh"><b>给副本改名。</b> 右键复制的文件夹 → <b>重命名</b> → 起 <b>英文名</b>(如 <code class="mono">my-game</code>, <code class="mono">my-app</code>)。这个文件夹就是 <b>我的项目</b>。</span></li>
       </ol>
